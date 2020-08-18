@@ -2,7 +2,9 @@
 title: ArchLinux Arm 可用的国内软件源
 date: "2020-03-23T23:46:17.284Z"
 tags:
-categories:
+- Arch
+categories: 
+- Arch
 description:
 ---
 
@@ -12,7 +14,7 @@ description:
 
 下面是几个国内可用的 ArchLinux Arm 软件源，添加到 `/etc/pacman.d/mirrorlist` 中即可正常使用
 
-```conf
+```bash
 ## 清华
 
 Server = http://mirrors.tuna.tsinghua.edu.cn/archlinuxarm/$arch/$repo
@@ -28,7 +30,7 @@ Server = http://mirrors.stuhome.net/archlinuxarm/$arch/$repo
 
 在设置完软件源之后，需要执行下面的命令，初始化key
 
-```shell
+```bash
 pacman-key --init
 pacman-key --populate
 ```

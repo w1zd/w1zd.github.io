@@ -16,7 +16,7 @@ toc: true
 
 `this._init` 方法被定义在 `initMixin` 函数中。`initMixin` 函数在 `Vue` 构造函数定义之后，和其他一组函数一起立即就被调用了，而且这一组函数调用全部接收了 `Vue` 构造函数作为实参。
 
-```js
+```javascript
   function Vue (options) {
     if (!(this instanceof Vue)
     ) {
@@ -34,7 +34,7 @@ toc: true
 
 我们来看一下 `initMixin` 函数的定义，特别简单，接收 `Vue` 构造函数作为形参，并且为构造函数原型添加了 `_init` 方法。
 
-```js
+```javascript
   function initMixin (Vue) {
     Vue.prototype._init = function (options) {
       [. . . .]
@@ -46,7 +46,7 @@ toc: true
 
 在顶级作用域中， `initMixin` 上面定义了一个变量 `uid$3`，这个变量被当做一个计数器，每当创建一个 `Vue` 实例的时候，都会自增，然后添加为当次创建的 `Vue` 实例的属性。
 
-```js
+```javascript
   function initMixin (Vue) {
     Vue.prototype._init = function (options) {
       // a uid
@@ -60,7 +60,7 @@ toc: true
 
 在 `_init` 方法内部设置了一个 `this` 的帮助变量。通常情况下，我们会将代表当前函数上下文对象的 `this` 关键字保存在其他变量中，方便以后使用，比如 `self = this`。 这里的做法是类似的，将 `this` 保存在了一个名为 `vm` 的变量中：
 
-```js
+```javascript
   function initMixin (Vue) {
     Vue.prototype._init = function (options) {
       var vm = this;
@@ -73,7 +73,7 @@ toc: true
 
 接下来，`._init`方法中，设置了性能检查相关的内容。
 
-```js
+```javascript
 function initMixin (Vue) {
   Vue.prototype._init = function (options) {
     ...
@@ -91,7 +91,7 @@ function initMixin (Vue) {
 
 这里声明了两个变量 `startTag` 和 `endTag`.
 
-```js
+```javascript
 
 function initMixin (Vue) {
   Vue.prototype._init = function (options) {
@@ -104,7 +104,7 @@ function initMixin (Vue) {
 
 然后你可能会注意到这个奇怪的注释：
 
-```js
+```javascript
 /* istanbul ignore if */
 ```
 
@@ -112,7 +112,7 @@ function initMixin (Vue) {
 
 `if` 语句首先检查的是当前环境是开发环境还是生产环境，然后判断 `config.performence` 属性是否有设置为 `true`。
 
-```js
+```javascript
 function initMixin (Vue) {
   Vue.prototype._init = function (options) {
     [. . . .]
@@ -128,7 +128,7 @@ function initMixin (Vue) {
 
 这里我们不得不去关注一下 `config` 这个对象，这个对象声明在别的地方，并且默认的 `performance` 这个属性是 `false`。
 
-```js
+```javascript
 var config = ({
   [. . . .]
     /**
@@ -143,7 +143,7 @@ var config = ({
 
 我们继续回到 `_init` 方法里面来，`if` 语句中接下来又检查了一个名为 `mark` 的变量。
 
-```js
+```javascript
 function initMixin (Vue) {
   Vue.prototype._init = function (options) {
     [. . . .]
@@ -159,7 +159,7 @@ function initMixin (Vue) {
 
 那我们又不得不去找找看 `mark` 到底是在哪儿定义的。
 
-```js
+```javascript
   var mark;
   var measure;
 
@@ -186,7 +186,7 @@ function initMixin (Vue) {
 
 查看代码我们会发现，这个`mark`变量，只会在特定的情况下被赋值。首先呢，他会检查，我们是否在浏览器环境中，然后检查 `window.performance` 是否存在。
 
-```js
+```javascript
   // Browser environment sniffing
   var inBrowser = typeof window !== 'undefined';
   [. . . .]
@@ -213,7 +213,7 @@ function initMixin (Vue) {
 
 所以，我们继续回头看一下 `mark` 变量的初始化代码：
 
-```js
+```javascript
 {
   var perf = inBrowser && window.performance;
   /* istanbul ignore if */
@@ -247,7 +247,7 @@ function initMixin (Vue) {
 
 下面的代码，检查了是否是开发环境，确认了性能配置选项是否被设置为 `true`, 还确认了 `mark` 函数是否存在。如果上述三个检查都通过了，Vue 会设置两个变量 `startTag` 和 `endTag`, 然后使用 `startTag` 作为形参调用 `mark` 函数。
 
-```js
+```javascript
 function initMixin (Vue) {
   Vue.prototype._init = function (options) {
     var vm = this;

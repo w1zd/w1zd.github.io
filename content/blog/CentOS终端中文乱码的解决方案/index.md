@@ -18,7 +18,7 @@ toc: true
 
 当ssh连接后，终端中显示如下：
 
-```shell
+```bash
 -bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8): No such file or directory
 ```
 
@@ -26,13 +26,13 @@ toc: true
 
 编辑`/etc/enviroment`文件，加入语言设置即可
 
-```shell
+```bash
 vi /etc/environment
 ```
 
 添加如下内容
 
-```conf
+```bash
 LANG=en_US.utf-8
 LC_ALL=en_US.utf-8
 ```

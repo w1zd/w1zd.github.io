@@ -1,17 +1,25 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `AGG`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `AGG`,
+      summary: `一个“自命不凡”的程序员。`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.app/`,
+    description: `Enjoy life && Enjoy Coding`,
+    siteUrl: `https://agg.me`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `ryan__pan`,
+      github: `a-gg`,
     },
+    nav: [
+      { name: "Posts", url: "/posts" },
+      { name: "Categories", url: "/categories" },
+      { name: "Tags", url: "/tags" },
+      { name: "About", url: "/about" },
+    ],
   },
   plugins: [
+    `gatsby-plugin-stylus`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -33,7 +41,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 800,
             },
           },
           {
@@ -42,7 +50,15 @@ module.exports = {
               wrapperStyle: `margin-bottom: 1.0725rem`,
             },
           },
-          `gatsby-remark-prismjs`,
+          `gatsby-remark-autolink-headers`,
+          {
+            resolve: `gatsby-remark-highlight-code`,
+            options: {
+              terminal: 'carbon',
+              theme: 'zenburn'
+            }
+          },
+          // `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
         ],
@@ -60,8 +76,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `AGG's Blog`,
+        short_name: `AGG`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
@@ -70,12 +86,12 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-typography`,
+    //   options: {
+    //     pathToConfigModule: `src/utils/typography`,
+    //   },
+    // },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

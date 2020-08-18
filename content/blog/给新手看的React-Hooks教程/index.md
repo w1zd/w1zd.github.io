@@ -7,7 +7,7 @@ categories:
 - React
 description: Hooks 到底是个啥玩意儿？？？
 ---
-![React Hooks](reacthooks.png)
+![React Hooks](./reacthooks.png)
 "Hooks 到底是个啥玩意儿？？？"
 
 你是不是有这样的疑惑？在你自认为已经了解了差不多 React 所有的内容的时候，Hooks 就这么出现了。
@@ -70,7 +70,7 @@ export default Counter;
 
 有了React Hooks 之后，我们可以重写这个类组件并删除很多内容，使其更易理解
 
-```js
+```javascript
 import React, { useState } from 'react';
 
 function CounterWithHooks(props) {

@@ -111,12 +111,12 @@ CONFIG_PACKAGE_trojan=y
 
 将修改后的代码，push 到 github，会自动出发 github action 的编译工作。
 
-![github action](01.png)
+![github action](./01.png)
 
 ### 下载固件
 
 等待编译完成之后就可以在 Github Action 里面下载编译好的固件了，这里要提醒一下，不要用下载工具下载，因为下载链接有权限校验，下载工具下载不下来。
 
-![github action](02.png)
+![github action](./02.png)
 
 <font color="red">到这里我们就已经获取到要用的固件了，下一篇我会告诉大家如何进行固件安装，敬请期待</font>

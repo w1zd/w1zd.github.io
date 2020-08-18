@@ -28,7 +28,7 @@ Hooks 是 React 很出色的一个功能更新。它极大的简化了之前在�
 > 如果你想看最终版本的代码，直接访问 [Codesandbox](https://codesandbox.io/s/github/wtjs/react-debounce-throttle-hooks) 就可以
 我们的编辑器最小版的代码应该是这样：
 
-```js
+```javascript
 import React, { useState } from 'react';
 import debounce from 'lodash.debounce';
 
@@ -69,7 +69,7 @@ function App() {
 
 首先，我们需要一个防抖函数来封装对 `saveToDb` 函数的调用：
 
-```js
+```javascript
 import React, { useState } from 'react';
 import debounce from 'lodash.debounce';
 
@@ -99,7 +99,7 @@ function App() {
 
 这样就跟我们预想的一样了：
 
-```js
+```javascript
 import React, { useState, useCallback } from 'react';
 import debounce from 'lodash.debounce';
 
@@ -133,7 +133,7 @@ function App() {
 
 同样，这样也能和我们预期的一样：
 
-```js
+```javascript
 import React, { useState, useRef } from 'react';
 import debounce from 'lodash.debounce';
 
@@ -167,7 +167,7 @@ function App() {
 
 下面的代码是我们使用 `useCallback` 来实现我们的构思：
 
-```js
+```javascript
 import React, { useState, useCallback } from "react";
 import debounce from "lodash.debounce";
 
@@ -198,14 +198,14 @@ function App() {
 
 这个代码确实能正常运行也能完成我们要的功能，但是很奇怪的，我的 TypeScript Linter 报了一个错误：
 
-```text
+```bash
 React Hook useCallback received a function whose dependencies are unknown.
 Pass an inline function instead. eslint(react-hooks/exhaustive-deps)
 ```
 
 但是这个代码能在 JavaScript 环境下正常运行，并且没有任何错误（使用的是 create-react-app 模板）。不管怎么样，下边给大家提供一个替代方案，使用 `useRef` 来实现的 `useDebounce` Hook:
 
-```js
+```javascript
 function useDebounce(callback, delay) {
   // Memoizing the callback because if it's an arrow function
   // it would be different on each render

@@ -21,7 +21,7 @@ GitLab也可以用来部署私有Git服务器，后续如果有机会我再发�
 ## 第一步：准备依赖环境
 * [安装和配置MySQL](https://github.com/a-gg/a-gg.github.io/issues/2)
 * 创建用户及用户组`git`
-```shell
+```bash
 groupadd git
 useradd -g git git
 ```
@@ -29,11 +29,11 @@ useradd -g git git
 
 ## 第二步：下载Gogs解压二进制包
 下载地址:[https://gogs.io/docs/installation/install_from_binary.html](https://gogs.io/docs/installation/install_from_binary.html)
-```shell
+```bash
 wget https://dl.gogs.io/0.11.86/gogs_0.11.86_linux_amd64.tar.gz
 ```
 解压：
-```shell
+```bash
 tar -xvf gogs_0.11.86_linux_amd64.tar.gz
 ```
 
@@ -41,12 +41,12 @@ tar -xvf gogs_0.11.86_linux_amd64.tar.gz
 在gogs文件夹下面，已经提供了相应的模板文件`gogs/scripts/systemd/gogs.service`
 
 我们需要将其复制到`/etc/systemd/system`目录下：
-```shell
+```bash
 cp scripts/systemd/gogs.service /etc/systemd/system;
 ```
 
 修改内容
-```shell
+```bash
 vi /etc/systemd/system/gogs.service;
 ```
 修改数据库，因为我们选择使用的MySQL所以将`After`修改成MySQL
@@ -61,23 +61,23 @@ After=mysqld.service
 
 注意看配置文件里的这个配置项：`ExecStart=/home/git/gogs/gogs web`
 所以，我们需要把自己下载的gogs文件夹移动到git目录下，或者直接将这里路径改成自己需要的路径
-```shell
+```bash
 mv gogs /home/git
 ```
 
 激活服务：
-```shell
+```bash
 systemctl enable gogs
 ```
 
 ## 创建数据库
 在Gogs文件夹内也提供了相应的创建数据库的文件`mysqls.sql`，直接使用即可
-```shell
+```bash
 mysql -uroot -p < scripts/mysql.sql
 ```
 
 ## 启动Gogs
-```shell
+```bash
 systemctl start gogs
 ```
 

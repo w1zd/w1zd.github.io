@@ -14,7 +14,7 @@ description: 本文主要讲述如何是用原生JavaScript实现ajax，jsonp以
 `ajax`的技术核心是`XMLHttpRequest`对象。
 `ajax`请求过程：创建`XMLHttpRequest`对象、连接服务器、发送请求、接收响应数据。
 下面简单封装一个函数，之后稍作解释
-```js
+```javascript
 ajax({
 url: "./TestXHR.aspx", //请求地址
 type: "POST", //请求方式
@@ -109,7 +109,7 @@ JSONP由两部分组成：回调函数和数据，回调函数一般是由网页
 比如网页端创建一个`script`标签，并给其`src`赋值为`http://www.superfiresun.com/json/?callback=process`，此时网页端就发起一个请求。服务端将要返回的数据拼好最为函数的参数传入，服务端返回的数据格式类似`process({'name':'superfiresun'})`，网页端接收到了响应值，因为请求者是 `script`，所以相当于直接调用 process 方法，并且传入了一个参数。
 
 单看响应返回的数据，JSONP 比 ajax 方式就多了一个回调函数。
-```js
+```javascript
 function jsonp(options) {
 	options = options || {};
 	if (!options.url || !options.callback) {
@@ -162,7 +162,7 @@ function formatParams(data) {
 1. DOMContentLoaded事件，在DOM树加载完成之后立即执行，始终会在load之前执行。
 IE9+、FF、Chrome、Safari3.1+和Opera9+都支持该事件。
 对于不支持该事件的浏览器，可以使用如下代码：
-```js
+```javascript
 setTimeout(function(){
 　　// 代码块
 }, 0) ;
@@ -182,7 +182,7 @@ load 事件和 readystatechange 事件的触发顺序会因页面的外部资源
 interactive 和 complete 的顺序也是不一致的，谁都有可能先执行，引用的外部资源越多，对交互阶段越有利。所以为了尽可能早的执行代码，两个状态要同时判断。
 3. doScroll
 IE5.5+支持，当页面中有滚动条时，可以用 doScroll(“right”)/doScroll(“down”) 等来移动滚动条，这个方法只有等DOM加载完成以后才能用，所以在IE低版本浏览器中可以通过这个属性判断 DOM 结构是否加载完成。介绍这个属性主要是模仿 jquery 中的解决方案。
-```js
+```javascript
 function ready(readyFn) {
 	//非IE浏览器
 	if (document.addEventListener) {

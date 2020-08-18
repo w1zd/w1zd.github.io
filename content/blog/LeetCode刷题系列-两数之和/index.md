@@ -18,7 +18,7 @@ toc: true
 
 ## 示例
 
-```plain
+```markdown
 给定 nums = [2, 7, 11, 15], target = 9
 
 因为 nums[0] + nums[1] = 2 + 7 = 9
@@ -34,7 +34,7 @@ toc: true
 
 最简单的方案则是双层for循环，进行遍历判断，但是这种方案时间复杂度相对来说比较高 `O(n^2)`
 
-```js
+```javascript
 /**
  * @param {number[]} nums
  * @param {number} target
@@ -56,7 +56,7 @@ var twoSum = function(nums, target) {
 
 相比上面的双层for循环，这个方法的时间复杂度会比较低 `O(n)`
 
-```js
+```javascript
 /**
  * @param {number[]} nums
  * @param {number} target

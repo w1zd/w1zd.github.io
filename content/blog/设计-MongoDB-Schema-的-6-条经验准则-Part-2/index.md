@@ -26,7 +26,7 @@ description: 设计 MongoDB Schema 的 6 条经验准则第二部分。
 
 在添加了一个对于 `Task` 文档的引用数组之后，单个的 `Person` 文档可能长这样：
 
-```mongodb
+```bash
 db.person.findOne()
 {
     _id: ObjectID("AAF1"),
@@ -42,7 +42,7 @@ db.person.findOne()
 
 另一方面，在程序里某些上下文中，我们需要展示一个任务列表（举个例子，一个多人项目中的所有任务）并且需要快速的找出每项任务的负责人。其实我们可以通过在 `Task` 文档中额外添加对 `Person` 的引用来优化这个查询效率。
 
-```mongodb
+```bash
 db.tasks.findOne()
 {
     _id: ObjectID("ADF9"),
@@ -63,7 +63,7 @@ db.tasks.findOne()
 
 在我们之前提到的商品部件的例子中，你可以将可替换部件的 `name` 进行非规范化存储，放到 `parts[]` 数组中。 下面是之前没有进行非规范化存储的代码，给大家参考。
 
-```mongodb
+```bash
 > db.products.findOne()
 {
     name : 'left-handed smoke shifter',
@@ -80,7 +80,7 @@ db.tasks.findOne()
 
 非规范化存储意味着在需要显示商品所有部件名字的时候，不需要进行应用程序级别的连接查询，但是在你需要可替换部件的其他信息的时候，你仍然需要进行链接查询。
 
-```mongodb
+```bash
 > db.products.findOne()
 {
     name : 'left-handed smoke shifter',
@@ -97,7 +97,7 @@ db.tasks.findOne()
 
 虽然这样使得我们获取部件名称更加容易，但是这会给应用程序级别的连接查询增加一些工作：
 
-```mongodb
+```bash
 // Fetch the product document
 > product = db.products.findOne({catalog_number: 1234});  
   // Create an array of ObjectID()s containing *just* the part numbers
@@ -118,7 +118,7 @@ db.tasks.findOne()
 
 你也可以将`一`的内容非规范化存储到`多`的字段中：
 
-```mongodb
+```bash
 > db.parts.findOne()
 {
     _id : ObjectID('AAAA'),
@@ -140,7 +140,7 @@ db.tasks.findOne()
 
 这里有一个将数据非规范化存储到”超级多“那一侧的例子。我将会把主机的 ip 地址（从”一“那一侧）添加到单独的日志信息中：
 
-```mongodb
+```bash
 > db.logmsg.findOne()
 {
     time : ISODate(""2014-03-28T09:42:41.284Z".382Z"),
@@ -152,13 +152,13 @@ db.tasks.findOne()
 
 当你查询特定的 ip 地址最近的日志消息的时候，将会变得更加容易：查询从两条变成了一条
 
-```mongodb
+```bash
 > last_5k_msg = db.logmsg.find({ipaddr : '127.66.66.66'}).sort({time : -1}).limit(5000).toArray()
 ```
 
 事实上，如果你存储到“一”那一边的信息非常少，你完全可以将**所有**的信息全部费正规化存储到“超级多”那一边，然后将另外一个集合完全省掉。
 
-```mongodb
+```bash
 > db.logmsg.findOne()
 {
     time : ISODate(""2014-03-28T09:42:41.284Z".382Z"),
@@ -170,7 +170,7 @@ db.tasks.findOne()
 
 另一方面，你也可以将数据非规范化存储到“一”那一侧。假设你想将来自主机的最后 1000 条日志消息保留在 `hosts` 文档中。 你可以使用 MondoDB 2.4 中引入的 `$each` `$slice` 功能保留最后 1000 条消息，并且使其顺序不变。
 
-```mongodb
+```javascript
 //  Get log message from monitoring system logmsg = get_log_msg();
 log_message_here = logmsg.msg;
 log_ip = logmsg.ipaddr;
@@ -183,13 +183,13 @@ host_id = host_doc._id;
 db.logmsg.save({time : now, message : log_message_here, ipaddr : log_ip, host : host_id ) });
 // Push the denormalized log message onto the ‘one’ side
 db.hosts.update( {_id: host_id },{
-            $push : {
-                logmsgs : {
-                    $each:  [ { time : now, message : log_message_here } ],
-                    $sort:  { time : 1 },  // Only keep the latest ones
-                    $slice: -1000 }        // Only keep the latest 1000
-            }
-         } );
+    $push : {
+        logmsgs : {
+            $each:  [ { time : now, message : log_message_here } ],
+            $sort:  { time : 1 },  // Only keep the latest ones
+            $slice: -1000 }        // Only keep the latest 1000
+    }
+} );
 ```
 
 注意，这里使用了投影规范（{_id: 1}), 可以防止 MongoDB 通过网络发送整个 `hosts` 文档。通过告诉 MongoDB 只返回 `_id` 字段，我们将网络开销减少到存储这个字段所需要的几个字节（当然，要加上传输协议的开销）。

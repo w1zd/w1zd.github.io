@@ -10,7 +10,7 @@ categories:
 在JQuery中，对CheckBox的操作分两个阶段，一个是JQuery1.6之前的版本，一个是1.6之后的版本
 
 在1.6之前，我们这么做：
-```html
+```markup
 <input type='checkbox' id='checkbox'/> 
 <script> 
 var isChecked = $('#checkbox').attr('checked'); 
@@ -33,7 +33,7 @@ jQuery在之后的版本中对属性和特性进行了比较细致的区分，�
 3. 对于值是true/false的property，类似于input的checked attribute等，attribute取得值是HTML文档字面量值，property是取得计算结果，property改变并不影响attribute字面量，但attribute改变会一向property计算  
 	`<input id="test3" type="checkbox"/>`
 
-	```js
+	```javascript
 		var t=document.getElementById('test3');
         console.log(t.getAttribute('checked'));//null
         console.log(t.checked);//false;
@@ -49,7 +49,7 @@ jQuery在之后的版本中对属性和特性进行了比较细致的区分，�
 
 4. 对于一些和路径相关的属性，两者取得值也不尽相同，但是同样attribute取得是字面量，property取得是计算后的完整路径  
 	`<a id="test4" href="#">Click</a>`
-	```js
+	```javascript
 	var t=document.getElementById('test4');
     console.log(t.getAttribute('href'));//#
     console.log(t.href);//file:///C:/Users/bsun/Desktop/ss/anonymous.html#

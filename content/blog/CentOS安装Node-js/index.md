@@ -72,7 +72,7 @@ export PATH=$NODE_HOME/bin:$PATH
 
 然后重新登录就可以测试了
 
-```shell
+```bash
 node -v
 ```
 
@@ -98,7 +98,7 @@ tar -zxvf node-v6.9.1.tar.gz
 
 这里要注意 gcc 好像要求是4.8以上的，如果不是可能报错
 
-```shell
+```bash
 sudo yum install gcc gcc-c++
 ```
 

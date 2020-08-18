@@ -21,7 +21,7 @@ description: ES6的普及度越来越高，本文主要介绍ES6中最常见的�
   - 2 先声明再使用
   - 3 不允许重复声明
 
-```js
+```javascript
 /* 基本使用 */
 let num = 2
 
@@ -36,7 +36,7 @@ console.log(num)
 - const声明一个**只读的常量**。一旦声明，常量的值就不能改变。
 - const的作用域与let命令相同：只在声明所在的块级作用域内有效
 
-```js
+```javascript
 const PI = 3.1415
 console.log(PI) // 3.1415
 
@@ -52,7 +52,7 @@ user.name = 'jack'
 
 - 说明：代替原始的字符串拼接
 
-```js
+```javascript
 const num = 1
 
 // ${} 中可以使用JS表达式
@@ -68,7 +68,7 @@ let dv = `<div>${num}</div>`
 - 注意：**不要在Vue的选项属性或回调上使用箭头函数**
   - 比如：`created: () => console.log(this.a)` 或 `vm.$watch('a', newValue => this.myMethod())`
 
-```js
+```javascript
 /* 语法： */
 var fn = arg => arg
 
@@ -92,7 +92,7 @@ var fn = function () {
 - 说明：rest 参数的类型是：数组
 - 注意：rest 参数之后不能再有其他参数（即只能是最后一个参数），否则会报错
 
-```js
+```javascript
 function add(...values) {
   var sum = 0
   values.forEach(function(val) {
@@ -115,7 +115,7 @@ function f(a, ...b, c) {
 - [ES6解构](http://es6.ruanyifeng.com/#docs/destructuring)
 - ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。
 
-```js
+```javascript
 // 对象解构
 var { foo, bar } = { foo: "aaa", bar: "bbb" }
 foo // "aaa"
@@ -136,7 +136,7 @@ foo({x: 1, y: 2}) // 1 2
 
 - 对象中的属性和方法，都可以使用简化语法
 
-```js
+```javascript
 /* 属性的简化语法： */
 var foo = 'bar'
 var baz = {foo}
@@ -163,7 +163,7 @@ var o = {
 
 - ES6 允许字面量定义对象时，用表达式作为对象的属性名，即把表达式放在方括号内。
 
-```js
+```javascript
 var propKey = 'foo'
 var methodKey = 'bar'
 
@@ -182,7 +182,7 @@ var obj = {
 - 注意：ES6中的class仅仅是一个语法糖，并不是真正的类，与Java等服务端语言中的类是有区别的
 - [ES6 - 文档](http://es6.ruanyifeng.com/#docs/class)
 
-```js
+```javascript
 class Person {
   constructor() {
     // 实例属性
@@ -205,7 +205,7 @@ console.log(Person.age)
   - 1 如果子类提供了 constructor，那么，必须要调用`super()`
   - 2 子类添加属性，必须在 super() 调用后面
 
-```js
+```javascript
 // 类继承：
 class Chinese extends Person {
   constructor(name, gender, weight) {
@@ -233,7 +233,7 @@ const ch = new Chinese('小明', '男', 130)
 - 注意2：`export` 每个模块可以使用多次
 - 注意3：一个模块可以导出多个内容，`export default` 和 `export` 可以一起使用
 
-```js
+```javascript
 // main.js
 // 导入 default 内容，可自定义导入名称
 // import num from './a.js'
@@ -244,7 +244,7 @@ const num = 123
 export default num
 ```
 
-```js
+```javascript
 // main.js
 // 导入 export内容
 // 注意：导入非default模块内容（str、fn），必须与 导出名称 相同，或者通过 as 修改
@@ -261,7 +261,7 @@ export const str = 'abc'
 export function fn() {}
 ```
 
-```js
+```javascript
 // main.js
 import { str, fn } from './b'
 
@@ -276,7 +276,7 @@ export { str, fn }
 
 - 扩展运算符（spread）是三个点（...）。作用：将一个数组转为用逗号分隔的参数序列
 
-```js
+```javascript
 var arr = ['a', 'b', 'c']
 console.log(...arr)
 
@@ -288,7 +288,7 @@ console.log(arr[0], arr[1], arr[2]);
 
 - 注意：该语法不是真正的ES规范，需要使用`stage-2`解析
 
-```js
+```javascript
 var obj = {name: 'jack', age: 19}
 var o = {...obj, gender: 'male'}
 // o => {name: 'jack', age: 19, gender: 'male'}
@@ -302,7 +302,7 @@ var o = {...obj, gender: 'male'}
 
 ### 介绍
 
-```html
+```markup
 Promise 是异步编程的一种解决方案，比传统的解决方案`回调函数和事件`更合理和更强大
 Promise 将异步操作以同步操作（链式编程）的流程表达出来，避免了层层嵌套的回调函数（回调地狱的问题）
 ```
@@ -316,7 +316,7 @@ Promise 将异步操作以同步操作（链式编程）的流程表达出来，
 
 ### 基本使用
 
-```js
+```javascript
 // Promise 是一个构造函数
 // 通过 new 创建Promise的实例对象
 var promise = new Promise(function(resolve, reject) {
@@ -336,7 +336,7 @@ var promise = new Promise(function(resolve, reject) {
 - `catch()`：用于指定发生错误时的回调函数
 - 说明：`then()`方法可以有多个，按照先后顺序执行，通过回调函数返回值传递数据给下一个then
 
-```js
+```javascript
 let promise = new Promise(function(resolve, reject) {
   console.log('1 Promise');
   // 异步操作
@@ -352,7 +352,7 @@ console.log('2 Hi!');
 
 - 异步读取图片示例：
 
-```js
+```javascript
 const loadImageAsync = function(url) {
   return new Promise(function(resolve, reject) {
     const image = new Image()
@@ -388,7 +388,7 @@ loadImageAsync('url')
 
 ### all 和 race
 
-```js
+```javascript
 // 所有请求发送成功：
 const p = Promise.all([
   axios('http://vue.studyit.io/api/getlunbo'),

@@ -12,7 +12,7 @@ JavaScript是解释型的语言，但是他并不是真的在运行的时候逐�
 
 我们来看下面这个例子：
 
-```js
+```javascript
 func();
 
 function func(){
@@ -31,7 +31,7 @@ JavaScript引擎在对JavaScript代码进行解释执行之前，会对JavaScrip
 当变量和函数的声明处在作用域比较靠后的位置的时候，变量和函数的声明会被提升到作用域的开头。
 
 重新来看上面的那段代码
-```js
+```javascript
 func();
 
 function func(){
@@ -39,7 +39,7 @@ function func(){
 }
 ```
 由于JavaScript的预解析机制，上面的代码就等效于：
-```js
+```javascript
 function func(){
     alert("Funciton has been called");
 }
@@ -47,7 +47,7 @@ function func(){
 func();
 ```
 看完函数声明的提升，再来看一个变量声明提升的例子：
-```js
+```javascript
 alert(a);
 var a = 1;
 ```
@@ -67,7 +67,7 @@ Wait a minute, 不是说要提前的吗？那不是应该alert出来1，为什�
 所以我们说的提升，是**声明**的提升。
 
 那么再回过头看，上面的代码就等效于：
-```js
+```javascript
 var a; //这里是声明
 alert(a);//变量声明之后并未有初始化和赋值操作，所以这里是 undefined
 a = 1;
@@ -78,7 +78,7 @@ a = 1;
 
 ### 函数同名
 观察下面这段代码:
-```js
+```javascript
 func1();
 function func1(){
     console.log('This is func1');
@@ -90,12 +90,12 @@ function func1(){
 }
 ```
 输出结果为：
-```text
+```bash
 This is last func1
 This is last func1
 ```
 原因分析：由于预解析机制，`func1`的声明会被提升，提升之后的代码为：
-```js
+```javascript
 function func1(){
     console.log('This is func1');
 }
@@ -108,23 +108,23 @@ func1();
 同名的函数，后面的会覆盖前面的，所以两次输出结果都是`This is last func1`。
 
 ### 变量和函数同名
-```js
+```javascript
 alert(foo); 
 function foo(){}
 var foo = 2;
 ```
 当出现变量声明和函数同名的时候，只会对函数声明进行提升，变量会被忽略。所以上面的代码的输出结果为
-```js
+```javascript
 function foo(){}
 ```
 我们还是来吧预解析之后的代码展现出来:
-```js
+```javascript
 function foo(){};
 alert(foo);
 foo = 2;
 ```
 再来看一种
-```js
+```javascript
 var num = 1;
 function num () {
     alert( num );
@@ -136,7 +136,7 @@ num();
 Uncaught TypeError: num is not a function
 ```
 直接上预解析后的代码：
-```js
+```javascript
 function num(){
     alert(num);
 }
@@ -147,7 +147,7 @@ num();
 ## 预解析是分作用域的
 声明提升并不是将所有的声明都提升到window对象下面，提升原则是提升到变量运行的环境(作用域)中去。
 
-```js
+```javascript
 function showMsg() 
 { 
     var msg = 'This is message'; 
@@ -156,7 +156,7 @@ alert(msg); // msg未定义
 ```
 
 还是直接把预解析之后的代码写出来：
-```js
+```javascript
 function showMsg() 
 { 
     var msg;
@@ -167,7 +167,7 @@ alert(msg); // msg未定义
 
 ## 预解析是分段的
 分段，其实就分script标签的
-```html
+```markup
 <script>
 func();  // 输出 AA2;
 function func(){
@@ -192,14 +192,14 @@ function func(){
 tip:但是要注意，分段只是单纯的针对函数，变量并不会分段预解析。
 
 ## 函数表达式并不会被提升
-```js
+```javascript
 func();
 var func = function(){
     alert("我被提升了");
 };
 ```
 这里会直接报错，`func is not a function`，原因就是函数表达式，并不会被提升。只是简单地当做变量声明进行了处理，如下：
-```js
+```javascript
 var func;
 func();
 func = function(){
@@ -208,7 +208,7 @@ func = function(){
 ```
 
 ## 条件式函数声明
-```js
+```javascript
 console.log(typeof func);
 if(true){
     function(){

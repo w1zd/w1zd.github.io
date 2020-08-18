@@ -16,19 +16,19 @@ toc: true
 
 命令行中输入如下命令，添加Nginx源
 
-```shell
+```bash
 sudo yum install epel-release
 ```
 
 ## Step Two-安装Nginx
 
-```shell
+```bash
 sudo yum install nginx
 ```
 
 ## Step Three-启动Nginx
 
-```shell
+```bash
 sudo systemctl start nginx
 ```
 
@@ -36,7 +36,7 @@ sudo systemctl start nginx
 
 如果使用的是防火墙
 
-```shell
+```bash
 sudo firewall-cmd --permanent --zone=public --add-service=http 
 sudo firewall-cmd --permanent --zone=public --add-service=https
 sudo firewall-cmd --reload

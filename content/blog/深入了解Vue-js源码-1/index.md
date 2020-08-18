@@ -9,7 +9,7 @@ description: '本系列文章详细介绍了Vue.js源代码，对其中的JavaSc
 toc: true
 ---
 
-![Vue Constructor](vue-constructor.png)
+![Vue Constructor](./vue-constructor.png)
 
 本系列文章详细介绍了Vue.js源代码，对其中的JavaScript代码进行了详细的说明。 并且尝试将概念分解为JavaScript初学者可以理解的水平。
 
@@ -21,7 +21,7 @@ toc: true
 
 在 Vue.js 源代码中，创建新的 Vue 实例是通过使用 Vue 对象构造函数来实现的：
 
-```js
+```javascript
 function Vue (options) {
   if (process.env.NODE_ENV !== 'production' &&
     !(this instanceof Vue)
@@ -34,7 +34,7 @@ function Vue (options) {
 
 我们可以将对象构造函数理解为用于创建的模板。而对象构造函数通常按约定以大写字母开头：
 
-```js
+```javascript
 // Vue 构造函数的声明
 function Vue (options) {
 	// 构造函数函数体
@@ -43,7 +43,7 @@ function Vue (options) {
 
 我们一般使用 `new` 关键字调用对象构造函数。 例如，您可以按如下方式调用Vue构造函数：
 
-```js
+```javascript
 var vm = new Vue({
   // options
 })
@@ -53,7 +53,7 @@ var vm = new Vue({
 
 Vue 构造函数会接收一个参数：`options`。
 
-```js
+```javascript
 function Vue (options) {
 	[. . . .]
 }
@@ -61,7 +61,7 @@ function Vue (options) {
 
 Vue 对象构造函数中会使用 `if` 语句来判断当前环境是否为生产环境：
 
-```js
+```javascript
 if (process.env.NODE_ENV !== 'production' &&
     !(this instanceof Vue)
    ) {
@@ -71,13 +71,13 @@ if (process.env.NODE_ENV !== 'production' &&
 
 如果当前的环境为生产环境，则 `if` 语句中的 `&&` 短路运算会返回 `false`, 并且后续的表达式`!(this instanceof Vue)`将不会被执行。
 
-```js
+```javascript
 process.env.NODE_ENV !== 'production' &&
 ```
 
 如果您在开发环境中，则构造函数中会检查 `this` 是否为 Vue 的实例。
 
-```js
+```javascript
 !(this instanceof Vue)
 ```
 
@@ -87,7 +87,7 @@ process.env.NODE_ENV !== 'production' &&
 
 我们将在另一篇文章中查看 `warn` 函数的实现细节。 如果您仔细观察，会发现传递给 `warn` 函数的参数使用到了单引号和反引号：
 
-```js
+```javascript
 warn('Vue is a constructor and should be called with the `new` keyword');
 ```
 
@@ -95,7 +95,7 @@ warn('Vue is a constructor and should be called with the `new` keyword');
 
 最后，Vue函数构造函数调用 `this._init` 方法，并将构造函数函数被调用时接收到的 `options`参数作为实参传递给该方法：
 
-```js
+```javascript
 function Vue (options) {
   [....]
   this._init(options);

@@ -15,12 +15,12 @@ toc: true
 ## 什么是浅拷贝，什么是深拷贝？
 ### 什么是浅拷贝
 关于浅拷贝的概念，我在网上看到一种说法，直接上代码。
-```js
+```javascript
 var person = {name: "Jason", age: 18, car: {brand: "Ferrari", type: "430"}};
 var person1 = person; 		//他们认为这是浅拷贝
 ```
 但是我个人认为，上面这个根本不涉及拷贝，只是一个简单的引用赋值。以我的理解，浅拷贝应该是不考虑对象的引用类型的属性，只对当前对象的所有成员进行拷贝，代码如下：
-```js
+```javascript
 function copy(obj){
 	var objCopy = {};
 	for(var key in obj){
@@ -50,7 +50,7 @@ var personCopy = copy(person);
 
 #### jQuery的$.extend()
 我们可以通过`$.extend()`方法来完成深复制。值得庆幸的是，我们在`jQuery`中可以通过添加一个参数来实现递归`extend`。调用`$.extend(true, {}, ...)`就可以实现深复制，参考下面的例子:
-```js
+```javascript
 var x = {
     a: 1,
     b: { f: { g: 1 } },
@@ -65,7 +65,7 @@ z.b.f === x.b.f       // false
 ```
 
 但是jQuery的这个`$.extend()`方法，有弊端，什么弊端呢？我们看下面的例子：
-```js
+```javascript
 var objA = {};
 var objB = {};
 
@@ -81,7 +81,7 @@ $.extend(true,{},a);
 
 ### 使用JSON对象实现深拷贝
 使用`JSON`全局对象的`parse`和`stringify`方法来实现深复制也算是一个简单讨巧的方法。
-```js
+```javascript
 function jsonClone(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
@@ -94,7 +94,7 @@ var clone = jsonClone({ a:1 });
 ### 自己造轮子
 下面我们给出一个简单的解决方案，当然这个方案是参考别人的方式来实现的。希望对大家有用。
 
-```js
+```javascript
 var clone = (function() {
 	//这个方法用来获取对象的类型 返回值为字符串类型 "Object RegExp Date Array..."
 	var classof = function(o) {
