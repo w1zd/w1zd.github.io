@@ -5,9 +5,9 @@ import TOC from "../components/toc"
 import SEO from "../components/seo"
 // import { rhythm, scale } from "../utils/typography"
 import { useEffect } from "react"
-import Gitalk from 'gitalk'
-import 'gitalk/dist/gitalk.css'
-import md5 from 'blueimp-md5'
+import Gitalk from "gitalk"
+import "gitalk/dist/gitalk.css"
+import md5 from "blueimp-md5"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
@@ -19,14 +19,12 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       clientSecret: "0696af88afb5cf1c7ee3732d34c78464092faab8",
       repo: "A-GG.github.io",
       owner: "A-GG",
-      admin: [
-        "a-gg",
-      ],
+      admin: ["a-gg"],
       id: md5(window.location.pathname), // Ensure uniqueness and length less than 50
       distractionFreeMode: false, // Facebook-like distraction free mode
-    });
+    })
 
-    gitalk.render("gitalk-container");
+    gitalk.render("gitalk-container")
   }, [])
 
   return (

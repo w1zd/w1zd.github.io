@@ -4,31 +4,8 @@ import "../../theme-chic/css/_page/profile.styl"
 
 import Layout from "../components/layout"
 
-const BlogIndex = () => {
-  const data = useStaticQuery(graphql`
-    query ProfileQuery {
-      avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
-        childImageSharp {
-          fixed(width: 500, height: 500) {
-            ...GatsbyImageSharpFixed
-          }
-        }
-      }
-      site {
-        siteMetadata {
-          title
-          author {
-            name
-            summary
-          }
-          social {
-            github
-            twitter
-          }
-        }
-      }
-    }
-  `)
+const BlogIndex = ({data}) => {
+  // const  = useStaticQuery()
 
   const { author, social } = data.site.siteMetadata
   return (
@@ -61,3 +38,28 @@ const BlogIndex = () => {
 }
 
 export default BlogIndex
+
+export const pageQuery = graphql`
+query ProfileQuery {
+  avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+    childImageSharp {
+      fixed(width: 500, height: 500) {
+        ...GatsbyImageSharpFixed
+      }
+    }
+  }
+  site {
+    siteMetadata {
+      title
+      author {
+        name
+        summary
+      }
+      social {
+        github
+        twitter
+      }
+    }
+  }
+}
+`
