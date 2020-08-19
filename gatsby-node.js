@@ -33,20 +33,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Create blog posts pages.
   const posts = result.data.allMarkdownRemark.edges
-  const postsPerPage = 10
-  const numPages = Math.ceil(posts.length / postsPerPage)
-  Array.from({length: numPages}).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? `/posts` : `/posts/${i + 1}`,
-      component: path.resolve("./src/templates/posts.js"),
-      context: {
-        limit: postsPerPage,
-        skip: i * postsPerPage,
-        numPages,
-        currentPage: i + 1,
-      },
-    })
-  })
 
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
@@ -60,6 +46,84 @@ exports.createPages = async ({ graphql, actions }) => {
         previous,
         next,
       },
+    })
+  })
+
+  // create Posts List Page
+  const postsPerPage = 10
+  const numPages = Math.ceil(posts.length / postsPerPage)
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/posts` : `/posts/${i + 1}`,
+      component: path.resolve("./src/templates/posts.js"),
+      context: {
+        limit: postsPerPage,
+        skip: i * postsPerPage,
+        numPages,
+        currentPage: i + 1,
+      },
+    })
+  })
+
+  // create Category page
+  const categories = await graphql(
+    `
+      query categoryQuery {
+        allMarkdownRemark(filter: {}) {
+          group(field: frontmatter___categories) {
+            fieldValue
+            nodes {
+              id
+            }
+          }
+        }
+      }
+    `
+  )
+
+  categories.data.allMarkdownRemark.group.forEach(item => {
+    const numPagesOfTag = Math.ceil(item.nodes.length / postsPerPage)
+    Array.from({ length: numPagesOfTag }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/category/${item.fieldValue}` : `/category/${fieldValue}/${i + 1}`,
+        component: path.resolve("./src/templates/category.tsx"),
+        context: {
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          category: item.fieldValue
+        },
+      })
+    })
+  })
+
+  // create Tag Page
+  const tags = await graphql(
+    `
+      query tagQuery {
+        allMarkdownRemark(filter: {}) {
+          group(field: frontmatter___tags) {
+            fieldValue
+            nodes {
+              id
+            }
+          }
+        }
+      }
+    `
+  )
+
+  tags.data.allMarkdownRemark.group.forEach(item => {
+    const numPagesOfTag = Math.ceil(item.nodes.length / postsPerPage)
+    Array.from({ length: numPagesOfTag }).forEach((_, i) => {
+      createPage({
+        path: i === 0 ? `/tag/${item.fieldValue}` : `/tag/${fieldValue}/${i + 1}`,
+        component: path.resolve("./src/templates/tag.tsx"),
+        context: {
+          limit: postsPerPage,
+          skip: i * postsPerPage,
+          tag: item.fieldValue
+        },
+      })
     })
   })
 }

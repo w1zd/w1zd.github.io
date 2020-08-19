@@ -1,0 +1,50 @@
+import React from "react"
+import Paginator from "../components/paginator"
+import PostsList from "../components/postslist"
+import { graphql } from "gatsby"
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+
+const Tag = ({ data }) => {
+  const tag = window.location.pathname.replace("/tag/", "");
+  return (
+    <Layout>
+      <SEO title={tag}></SEO>
+      <div className="container">
+        <div className="post-wrap categories">
+          <h2 className="post-title">
+            -&nbsp;Tag&nbsp;·&nbsp;{tag}-
+          </h2>
+        </div>
+        <PostsList posts={data.allMarkdownRemark.nodes}></PostsList>
+        <Paginator
+          {...data.allMarkdownRemark.pageInfo}
+          url="/category"
+        ></Paginator>
+      </div>
+    </Layout>
+  )
+}
+
+export default Tag
+export const pageQuery = graphql`
+  query tagsQuery($limit: Int!, $skip: Int!, $tag: String!) {
+    allMarkdownRemark(limit: $limit, skip: $skip, filter: {frontmatter: {tags: {glob: $tag}}}, sort: {fields: frontmatter___date}) {
+      pageInfo {
+        currentPage
+        pageCount
+      }
+      nodes {
+        frontmatter {
+          title
+          date(formatString: "MMMM DD, YYYY")
+          tags
+        }
+        id
+        fields {
+          slug
+        }
+      }
+    }
+  }
+`

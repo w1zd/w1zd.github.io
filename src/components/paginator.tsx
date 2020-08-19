@@ -1,40 +1,41 @@
 import React from "react"
+import { Link } from "gatsby"
 
-const Paginator = ({ pageCount, currentPage }) => {
+const Paginator = ({ pageCount, currentPage, url }) => {
   let startNum: number = 1
   let endNum: number = pageCount
   let indicators = []
   if (pageCount > 7) {
     startNum = currentPage - 3
     endNum = currentPage + 3
-    if(startNum < 1){
-      endNum += 1 - startNum;
-      startNum = 1;
+    if (startNum < 1) {
+      endNum += 1 - startNum
+      startNum = 1
     }
-    if(endNum > pageCount){
-      startNum -= endNum - pageCount;
-      endNum = pageCount;
+    if (endNum > pageCount) {
+      startNum -= endNum - pageCount
+      endNum = pageCount
     }
   }
-  for(let i:number = startNum; i <= endNum; i ++){
+  for (let i: number = startNum; i <= endNum; i++) {
     let indicate: React.ReactNode
-    if (currentPage == i ) {
-      indicate = <span className="page-number current" key={i}>{i}</span>
+    if (currentPage == i) {
+      indicate = (
+        <span className="page-number current" key={i}>
+          {i}
+        </span>
+      )
     } else {
       indicate = (
-        <a className="page-number" href={`/posts/${i == 1 ? "" : i}`} key={i}>
+        <Link className="page-number" to={`${url}/${i == 1 ? "" : i}`} key={i}>
           {i}
-        </a>
+        </Link>
       )
     }
     indicators.push(indicate)
   }
 
-  return (
-    <nav className="pagination">
-      {indicators}
-    </nav>
-  )
+  return <nav className="pagination">{indicators}</nav>
 }
 
 export default Paginator

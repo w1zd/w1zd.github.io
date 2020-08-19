@@ -1,37 +1,20 @@
 import React from "react"
 import { graphql } from "gatsby"
-import moment from "moment"
 
-// import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-// import { rhythm } from "../utils/typography"
 import Paginator from '../components/paginator'
+import PostsList from '../components/postslist'
 
 const Posts = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
-  let lastYear
+  const posts = data.allMarkdownRemark.nodes
+  
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
-      <div className="post-wrap archive">
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          let curYear = moment(new Date(node.frontmatter.date)).year()
-
-          return (
-            <article className="archive-item" key={node.fields.slug}>
-              {lastYear !== (lastYear = curYear) ? <h3>{curYear}</h3> : ""}
-              <a className="archive-item-link" href={`${node.fields.slug}`}>
-                {title}
-              </a>
-              <span className="archive-item-date">{node.frontmatter.date}</span>
-            </article>
-          )
-        })}
-      </div>
-      <Paginator {...data.allMarkdownRemark.pageInfo}></Paginator>
+      <PostsList posts={posts}></PostsList>
+      <Paginator {...data.allMarkdownRemark.pageInfo} url="/posts"></Paginator>
     </Layout>
   )
 }
@@ -59,19 +42,19 @@ export const pageQuery = graphql`
         perPage
         totalCount
       }
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-          }
+      nodes {
+        excerpt
+        frontmatter {
+          description
+          date(formatString: "MMMM DD, YYYY")
+          title
+        }
+        id
+        fields {
+          slug
         }
       }
+     
     }
   }
 `

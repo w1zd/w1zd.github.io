@@ -1,10 +1,12 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 const Categories = ({ data }) => {
   return (
     <Layout>
+      <SEO title="Categories"></SEO>
       <div className="container">
         <div className="post-wrap categories">
           <h2 className="post-title">-&nbsp;Categories&nbsp;-</h2>
@@ -38,7 +40,7 @@ const Categories = ({ data }) => {
                   {item.nodes.length > 5 && (
                     <Link
                       className="more-post-link"
-                      to="{`/category/${item.fieldValue}`}"
+                      to={`/category/${item.fieldValue}`}
                     >
                       More >>
                     </Link>
