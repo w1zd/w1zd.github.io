@@ -6,7 +6,10 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const Category = ({ data }) => {
-  const cate = window.location.pathname.replace("/category/", "");
+  let cate = ""
+  if (typeof window !== `undefined`) {
+    cate = window.location.pathname.replace("/category/", "");
+  }
   return (
     <Layout>
       <SEO title={cate}></SEO>

@@ -20,7 +20,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
       repo: "A-GG.github.io",
       owner: "A-GG",
       admin: ["a-gg"],
-      id: md5(window.location.pathname), // Ensure uniqueness and length less than 50
+      id: md5(location.pathname), // Ensure uniqueness and length less than 50
       distractionFreeMode: false, // Facebook-like distraction free mode
     })
 

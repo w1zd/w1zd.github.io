@@ -16,12 +16,16 @@ const Header = () => {
       }
     }
   `)
+  let w = {localStorage: {getItem(){},setItem(){}}};
+  if(typeof window != "undefined"){
+    w = window
+  }
   const [isMenuActive, setisMenuActive] = useState(false)
-  const currentTheme = window.localStorage && window.localStorage.getItem('theme');
+  const currentTheme = w.localStorage && w.localStorage.getItem('theme');
   const [isDark, setisDark] = useState(currentTheme == 'dark' ? true : false);
   const [theme, setTheme] = useState(isDark ? 'Dark': "Light");
   useEffect(() => {
-    window.localStorage.setItem("theme", isDark ? 'dark' : 'light');
+    w.localStorage.setItem("theme", isDark ? 'dark' : 'light');
     if(isDark){
       setTheme('Dark')
       document.getElementsByTagName('body')[0].classList.add('dark-theme');

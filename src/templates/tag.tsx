@@ -6,7 +6,10 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const Tag = ({ data }) => {
-  const tag = window.location.pathname.replace("/tag/", "");
+  let tag = "";
+  if (typeof window !== `undefined`) {
+    tag = window.location.pathname.replace("/tag/", "");
+  }
   return (
     <Layout>
       <SEO title={tag}></SEO>
