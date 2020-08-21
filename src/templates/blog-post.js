@@ -25,7 +25,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
     })
 
     gitalk.render("gitalk-container")
-  }, [])
+  }, [location.pathname])
 
   return (
     <Layout location={location} title={siteTitle}>
