@@ -1,4 +1,14 @@
-# Headless Server 是个什么东西？
+---
+title: Headless Server 是个什么东西？
+date: "2020-11-10T13:10:23.284Z"
+tags: 
+- Linux
+categories:
+- Linux
+description: 无头服务器（Headless Server），是指没有显示器、键盘、鼠标等其他外设的电脑。
+toc: true
+---
+
 
 ![HeadLess Server](headless-server.jpg)
 
