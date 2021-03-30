@@ -7,7 +7,7 @@ import Layout from "../components/layout"
 const BlogIndex = ({data}) => {
   // const  = useStaticQuery()
 
-  const { author, social } = data.site.siteMetadata
+  const { author, social,description } = data.site.siteMetadata
   return (
     <Layout title={data.site.siteMetadata.title}>
       <div className="container">
@@ -23,6 +23,7 @@ const BlogIndex = ({data}) => {
           <div className="nickname">{author.name}</div>
           <div className="description">
             <p>{author.summary}</p>
+            <p>{description}</p>
           </div>
           <div className="links">
             {Object.keys(social).map(key => (
@@ -51,6 +52,7 @@ query ProfileQuery {
   site {
     siteMetadata {
       title
+      description
       author {
         name
         summary
@@ -58,6 +60,8 @@ query ProfileQuery {
       social {
         github
         twitter
+        wechat
+        qq
       }
     }
   }
