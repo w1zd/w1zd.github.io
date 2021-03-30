@@ -3,13 +3,14 @@ module.exports = {
     title: `AGG`,
     author: {
       name: `AGG`,
-      summary: `一个“自命不凡”的程序员。`,
+      summary: `🤪 A Goofy Genius! 🤪 `,
     },
     description: `Enjoy life && Enjoy Coding`,
     siteUrl: `https://agg.me`,
     social: {
-      twitter: `ryan__pan`,
-      github: `a-gg`,
+      twitter: `https://twitter.com/ryan__pan`,
+      github: `https://github.com/a-gg`,
+      wechat: `/wechat.jpg`,
     },
     nav: [
       { name: "Posts", url: "/posts" },
