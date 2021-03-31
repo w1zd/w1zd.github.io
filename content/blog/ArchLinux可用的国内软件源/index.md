@@ -10,7 +10,7 @@ description:
 
 今天尝试给自己的树莓派 3B+ 装了 ArchLinux，但是装好之后 pacman 安装软件各种慢，发现是软件源的问题，就尝试网上找了一些相应的国内软件源，配置好之后，又各种报错404。
 
-** 树莓派安装的是 Arm 版的 ArchLinux， 所以软件源也应该找相应 Arm 版的 **
+*** 树莓派安装的是 Arm 版的 ArchLinux， 所以软件源也应该找相应 Arm 版的 ***
 
 下面是几个国内可用的 ArchLinux Arm 软件源，添加到 `/etc/pacman.d/mirrorlist` 中即可正常使用
 
