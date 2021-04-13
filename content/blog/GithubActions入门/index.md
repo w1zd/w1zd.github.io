@@ -16,7 +16,11 @@ description: 借助 GitHub Actions，可以直接从 GitHub 构建、测试和�
 
 经过一番努力之后，终于正常跑起来了，但是由于使用的 Windows 系统配置特别差，CPU 动不动就要飙到 100%，Gatsby 最终生成静态站点的过程及其痛苦。
 
+<<<<<<< HEAD
 由于所在网络环境的问题，最终将生成的静态内容推送到 Github Pages 服务的过程也是很糟心 😢。
+=======
+由于所在网络环境的问题，最终将生成的静态内容推送到 Github Pages 服务的过程也是很糟心😢。
+>>>>>>> cbbba62... a写一半换电脑
 
 遂决定，使用 Github Actions 自动打包自动部署。趁有空花了一下午时间，把 Github Lab 中的 Github actions 的内容都过了一遍，这里就做个简单的记录。
 
@@ -29,6 +33,7 @@ Github Actions 可以粗略的理解为集成在 Github 中的 CI/CD 服务， �
 ![ci/cd](./cicd.png)
 
 Github Actions 目前可以用来做以下这些事情：
+<<<<<<< HEAD
 
 - 自动化测试（持续集成）
 - 持续交付和部署
@@ -333,3 +338,15 @@ jobs:
 本文只是讲解了一些日常用法，关于 Github Actions 更深层次的学习，大家可以参考[官网文档](https://docs.github.com/en/actions/learn-github-actions)。
 
 Github Actions 使得定制开发工作流如此简单，在 DevOps 方面还有很多的可能性，必然会是日后发展的趋势（当然我是说它这种模式，毕竟，它是要收钱的🤣 🤣 🤣）。
+=======
+* 自动化测试（持续集成）
+* 持续交付和部署
+* 触发 Code Review
+* 管理分支
+* 分类 Issue 和 PR
+
+由于是集成在 Github 中的，我们不需要自己购买以及配置相关的构建服务器，Github 本身就提供了云环境供大家使用。
+
+## 使用步骤
+
+>>>>>>> cbbba62... a写一半换电脑
