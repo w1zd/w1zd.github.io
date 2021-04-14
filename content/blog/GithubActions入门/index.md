@@ -8,6 +8,7 @@ categories:
   - DevOps
 description: 借助 GitHub Actions，可以直接从 GitHub 构建、测试和部署代码，轻松实现所有软件工作流程的自动化。
 ---
+![github-actions](./github-actions.png)
 
 这个博客站是我自己用 Gatsby 随便拼凑了一下造出来的，前几天发现好久都没有更新博客了，心里还是很愧疚的 🤣，那就更新一篇吧。
 
