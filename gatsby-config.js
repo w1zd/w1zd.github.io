@@ -5,6 +5,7 @@ module.exports = {
       name: `AGG`,
       summary: `🤪 A Goofy Genius! 🤪 `,
     },
+    postCopyright: true,
     description: `Enjoy life && Enjoy Coding`,
     siteUrl: `https://agg.me`,
     social: {

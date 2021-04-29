@@ -11,7 +11,7 @@ import md5 from "blueimp-md5"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
-  const siteTitle = data.site.siteMetadata.title
+  const { title: siteTitle, postCopyright, author ,siteUrl} = data.site.siteMetadata
   const { previous, next } = pageContext
   useEffect(() => {
     const gitalk = new Gitalk({
@@ -65,6 +65,26 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             className="post-content"
             dangerouslySetInnerHTML={{ __html: post.html }}
           ></div>
+          {postCopyright && (
+            <section className="post-copyright">
+              <p className="copyright-item">
+                <span>Author:&nbsp;</span>
+                <span>{author.name}</span>
+              </p>
+
+              <p className="copyright-item">
+                <span>Permalink:</span>
+                <span>
+                  <a href={siteUrl + post.fields.slug}> {siteUrl + post.fields.slug} </a>
+                </span>
+              </p>
+
+              <p className="copyright-item">
+                <span>License:&nbsp;</span>
+                <span>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> 许可协议。转载请注明出处！</span>
+              </p>
+            </section>
+          )}
 
           <section className="post-tags">
             <div>
@@ -120,6 +140,8 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        postCopyright
+        siteUrl
         author {
           name
         }
@@ -129,6 +151,9 @@ export const pageQuery = graphql`
       id
       excerpt(pruneLength: 160)
       html
+      fields {
+        slug
+      }
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY HH:mm:ss")
