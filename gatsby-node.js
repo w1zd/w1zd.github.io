@@ -116,7 +116,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const numPagesOfTag = Math.ceil(item.nodes.length / postsPerPage)
     Array.from({ length: numPagesOfTag }).forEach((_, i) => {
       createPage({
-        path: i === 0 ? `/tag/${item.fieldValue}` : `/tag/${fieldValue}/${i + 1}`,
+        path: i === 0 ? `/tag/${item.fieldValue}` : `/tag/${item.fieldValue}/${i + 1}`,
         component: path.resolve("./src/templates/tag.tsx"),
         context: {
           limit: postsPerPage,
