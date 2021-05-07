@@ -51,7 +51,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                   Category:
                   {post.frontmatter.categories.map(item => {
                     return (
-                      <a key={item} href={`categories/${item}`}>
+                      <a key={item} href={`/categories/${item}`}>
                         {item}
                       </a>
                     )
