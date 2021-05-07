@@ -93,7 +93,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 {post.frontmatter.tags.length !== 0 &&
                   post.frontmatter.tags.map(item => {
                     return (
-                      <a key={item} href={`/tags/${item}`}>
+                      <a key={item} href={`/tag/${item}`}>
                         {item}
                       </a>
                     )
