@@ -2,7 +2,7 @@
 
 var os = require('os');
 var fs = require('fs');
-var path$1 = require('path');
+var path = require('path');
 var events = require('events');
 var child_process = require('child_process');
 var util = require('util');
@@ -41,7 +41,8 @@ var os__default = /*#__PURE__*/_interopDefaultLegacy(os);
 var os__namespace = /*#__PURE__*/_interopNamespace(os);
 var fs__default = /*#__PURE__*/_interopDefaultLegacy(fs);
 var fs__namespace = /*#__PURE__*/_interopNamespace(fs);
-var path__default = /*#__PURE__*/_interopDefaultLegacy(path$1);
+var path__default = /*#__PURE__*/_interopDefaultLegacy(path);
+var path__namespace = /*#__PURE__*/_interopNamespace(path);
 var events__default = /*#__PURE__*/_interopDefaultLegacy(events);
 var child_process__default = /*#__PURE__*/_interopDefaultLegacy(child_process);
 var util__default = /*#__PURE__*/_interopDefaultLegacy(util);
@@ -7361,7 +7362,7 @@ async function run() {
       cwd: `${workingDir}/public`,
     });
 
-    fs__namespace.writeFileSync(path.join(os__namespace.homedir(), ".ssh/id_rsa"), privateKey);
+    fs__namespace.writeFileSync(path__namespace.join(os__namespace.homedir(), ".ssh/id_rsa"), privateKey);
     await exec_2(
       `git push`,
       ["-f", repoURLMyOwn, `master`],
