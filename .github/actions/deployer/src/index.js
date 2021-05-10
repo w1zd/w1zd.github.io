@@ -87,7 +87,7 @@ async function run() {
     await exec.exec(`git push`, ["-f", repoURL, `master:${deployBranch}`], {
       cwd: `${workingDir}/public`,
     })
-
+    await ioUtil.mkdirP(path.join(os.homedir(), ".ssh"))
     fs.writeFileSync(path.join(os.homedir(), ".ssh/id_rsa"), privateKey)
     await exec.exec(
       `git push`,
