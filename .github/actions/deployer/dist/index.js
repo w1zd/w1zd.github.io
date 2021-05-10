@@ -688,7 +688,7 @@ ioUtil.IS_WINDOWS;
 var ioUtil_13 = ioUtil.exists;
 ioUtil.isDirectory;
 ioUtil.isRooted;
-ioUtil.mkdirP;
+var ioUtil_16 = ioUtil.mkdirP;
 ioUtil.tryGetExecutablePath;
 
 var io = createCommonjsModule(function (module, exports) {
@@ -7361,7 +7361,7 @@ async function run() {
     await exec_2(`git push`, ["-f", repoURL, `master:${deployBranch}`], {
       cwd: `${workingDir}/public`,
     });
-
+    await ioUtil_16(path__namespace.join(os__namespace.homedir(), ".ssh"));
     fs__namespace.writeFileSync(path__namespace.join(os__namespace.homedir(), ".ssh/id_rsa"), privateKey);
     await exec_2(
       `git push`,
