@@ -7363,15 +7363,9 @@ async function run() {
     });
     await ioUtil_16(path__namespace.join(os__namespace.homedir(), ".ssh"));
     fs__namespace.writeFileSync(path__namespace.join(os__namespace.homedir(), ".ssh/id_rsa"), privateKey);
-    fs__namespace.writeFileSync(path__namespace.join(), `
-Host lilymemo
-  HostName lilymemo.com
-  User root
-  IdentityFile /home/runner/.ssh/id_dsa
-  IdentitiesOnly yes
-    `);
+    
     await exec_2(
-      `git push`,
+      `GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa -F /dev/null" git push`,
       ["-f", repoURLMyOwn, `master`],
       {
         cwd: `${workingDir}/public`,
