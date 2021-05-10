@@ -10,7 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: enriikke/gatsby-gh-pages-action@v2
+      # - uses: enriikke/gatsby-gh-pages-action@v2
+      - name: deploy
+        uses: ./.github/actions/deployer
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
+          private-key: ${{secrets.PRIVATE_KEY}}
           deploy-branch: page
