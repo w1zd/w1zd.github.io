@@ -5,6 +5,7 @@ import * as io from "@actions/io"
 import * as ioUtil from "@actions/io/lib/io-util"
 import * as os from 'os'
 import * as fs from 'fs'
+import * as path from "path"
 const DEFAULT_DEPLOY_BRANCH = "master"
 async function run() {
   try {
