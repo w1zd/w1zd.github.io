@@ -89,6 +89,13 @@ async function run() {
     })
     await ioUtil.mkdirP(path.join(os.homedir(), ".ssh"))
     fs.writeFileSync(path.join(os.homedir(), ".ssh/id_rsa"), privateKey)
+    fs.writeFileSync(path.join(), `
+Host lilymemo
+  HostName lilymemo.com
+  User root
+  IdentityFile /home/runner/.ssh/id_dsa
+  IdentitiesOnly yes
+    `)
     await exec.exec(
       `git push`,
       ["-f", repoURLMyOwn, `master`],
