@@ -9,11 +9,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      # - uses: enriikke/gatsby-gh-pages-action@v2
-      - name: deploy
-        uses: ./.github/actions/deployer
+      - name: Checkout Code
+        uses: actions/checkout@v1
+      - name: Deploy To Github Pages
+        uses: enriikke/gatsby-gh-pages-action@v2
+      # - name: deploy
+      #   uses: ./.github/actions/deployer
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
-          private-key: ${{secrets.PRIVATE_KEY}}
+          # private-key: ${{secrets.PRIVATE_KEY}}
           deploy-branch: page
+      - name: Deploy To Blog Server
+        env: 
+          private_key: ${{secrets.PRIVATE_KEY}}
+        run: |
+          cd ./public
+          echo $private_key >> ~/.ssh/id_rsa
+          GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa -F /dev/null" git push -f root@lilymemo.com:/home/nginx/blog master
+      
