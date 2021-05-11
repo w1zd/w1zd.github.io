@@ -24,6 +24,7 @@ jobs:
           private_key: ${{secrets.PRIVATE_KEY}}
         run: |
           cd ./public
+          mkdir ~/.ssh
           echo $private_key >> ~/.ssh/id_rsa
           GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa -F /dev/null" git push -f root@lilymemo.com:/home/nginx/blog master
       
