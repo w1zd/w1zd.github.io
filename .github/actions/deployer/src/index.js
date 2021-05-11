@@ -3,9 +3,9 @@ import * as exec from "@actions/exec"
 import * as github from "@actions/github"
 import * as io from "@actions/io"
 import * as ioUtil from "@actions/io/lib/io-util"
-import * as os from 'os'
-import * as fs from 'fs'
-import * as path from "path"
+// import * as os from 'os'
+// import * as fs from 'fs'
+// import * as path from "path"
 const DEFAULT_DEPLOY_BRANCH = "master"
 async function run() {
   try {
@@ -60,7 +60,7 @@ async function run() {
       deployRepo || github.context.repo.repo
     }`
     const repoURL = `https://${accessToken}@github.com/${repo}.git`
-    const repoURLMyOwn = `root@lilymemo.com:/home/nginx/blog`
+    // const repoURLMyOwn = `root@lilymemo.com:/home/nginx/blog`
     console.log("Ready to deploy your new shiny site!")
     console.log(`Deploying to repo: ${repo} and branch: ${deployBranch}`)
     console.log(
@@ -87,16 +87,15 @@ async function run() {
     await exec.exec(`git push`, ["-f", repoURL, `master:${deployBranch}`], {
       cwd: `${workingDir}/public`,
     })
-    await ioUtil.mkdirP(path.join(os.homedir(), ".ssh"))
-    fs.writeFileSync(path.join(os.homedir(), ".ssh/id_rsa"), privateKey)
+    // await ioUtil.mkdirP(path.join(os.homedir(), ".ssh"))
+    // fs.writeFileSync(path.join(os.homedir(), ".ssh/id_rsa"), privateKey)
     
-    await exec.exec(
-      `GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa -F /dev/null" git push`,
-      ["-f", repoURLMyOwn, `master`],
-      {
-        cwd: `${workingDir}/public`,
-      }
-    )
+    // await exec.exec(
+    //   `GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa -F /dev/null" git push -f ${repoURLMyOwn} master`,
+    //   {
+    //     cwd: `${workingDir}/public`,
+    //   }
+    // )
     console.log("Finished deploying your site.")
     console.log("Enjoy! ✨")
   } catch (err) {
