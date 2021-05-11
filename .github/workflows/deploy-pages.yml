@@ -25,8 +25,9 @@ jobs:
         run: |
           mkdir ~/.ssh
           echo $private_key >> ~/.ssh/id_rsa
-          cat ~/.ssh/id_rsa
-        
+          scp root@lilymemo.com:/home/nginx/blog/1.txt 1.txt
+          cat 1.txt
+          
         # cd ./public
         # GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa -F /dev/null" git push -f root@lilymemo.com:/home/nginx/blog master
       
