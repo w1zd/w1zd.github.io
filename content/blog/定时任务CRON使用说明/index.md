@@ -7,12 +7,12 @@ tags:
 categories:
 - Linux
 description: Cron 是类 Unix 系统中用于执行定时任务的工具，我们可以通过 Cron 在固定时间、日期、间隔下，运行定期任务（可以是命令和脚本）。Cron 最常使用的是服务器运维和管理方向，当然也可用于其他地方，如：定期下载文件等。
-toc: true
+toc: false
 ---
 
-## Cron 简介
-
 ![cron](cover-cron.png)
+
+## Cron 简介
 
 `Cron` 是类 Unix 系统中用于执行定时任务的工具，我们可以通过 `cron` 在固定时间、日期、间隔下，运行定期任务（可以是命令和脚本）。`cron` 最常使用的是服务器运维和管理方向，当然也可用于其他地方，如：定期下载文件等。
 

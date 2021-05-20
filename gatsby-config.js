@@ -41,6 +41,7 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          `gatsby-remark-mathjax`,
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -58,7 +59,7 @@ module.exports = {
             resolve: `gatsby-remark-highlight-code`,
             options: {
               terminal: 'carbon',
-              theme: 'zenburn'
+              theme: 'base16-light'
             }
           },
           // `gatsby-remark-prismjs`,
