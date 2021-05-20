@@ -8,10 +8,16 @@ import { useEffect } from "react"
 import Gitalk from "gitalk"
 import "gitalk/dist/gitalk.css"
 import md5 from "blueimp-md5"
+import { Helmet } from "react-helmet"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
-  const { title: siteTitle, postCopyright, author ,siteUrl} = data.site.siteMetadata
+  const {
+    title: siteTitle,
+    postCopyright,
+    author,
+    siteUrl,
+  } = data.site.siteMetadata
   const { previous, next } = pageContext
   useEffect(() => {
     const gitalk = new Gitalk({
@@ -28,25 +34,25 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   }, [location.pathname])
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout isFocus={true} title={siteTitle}>
       <SEO title={post.frontmatter.title}></SEO>
+      <Helmet>
+        <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
+          async
+        ></script>
+      </Helmet>
       <div className="container">
-        <TOC></TOC>
+        {post.frontmatter.toc && <TOC></TOC>}
+
         <article className="post-wrap">
           <header className="post-header">
             <h1 className="post-title">{post.frontmatter.title}</h1>
             <div className="post-meta">
-              Author:
-              <a itemProp="author" rel="author" href="/">
-                {data.site.siteMetadata.author.name}
-              </a>
+              <span className="post-author">{data.site.siteMetadata.author.name}</span>
+              <span className="post-time">{post.frontmatter.date}</span>
               &nbsp;
-              <span className="post-time">
-                Date:
-                <a href="#/">{post.frontmatter.date}</a>
-              </span>
-              &nbsp;
-              {post.frontmatter.categories.length !== 0 && (
+              {/* {post.frontmatter.categories.length !== 0 && (
                 <span className="post-category">
                   Category:
                   {post.frontmatter.categories.map(item => {
@@ -57,7 +63,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                     )
                   })}
                 </span>
-              )}
+              )} */}
             </div>
           </header>
 
@@ -65,7 +71,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             className="post-content"
             dangerouslySetInnerHTML={{ __html: post.html }}
           ></div>
-          {postCopyright && (
+          {/* {postCopyright && (
             <section className="post-copyright">
               <p className="copyright-item">
                 <span>Author:&nbsp;</span>
@@ -75,18 +81,27 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               <p className="copyright-item">
                 <span>Permalink:</span>
                 <span>
-                  <a href={siteUrl + post.fields.slug}> {siteUrl + post.fields.slug} </a>
+                  <a href={siteUrl + post.fields.slug}>
+                    {" "}
+                    {siteUrl + post.fields.slug}{" "}
+                  </a>
                 </span>
               </p>
 
               <p className="copyright-item">
                 <span>License:&nbsp;</span>
-                <span>本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC-4.0</a> 许可协议。转载请注明出处！</span>
+                <span>
+                  本博客所有文章除特别声明外，均采用{" "}
+                  <a href="http://creativecommons.org/licenses/by-nc/4.0/">
+                    CC-BY-NC-4.0
+                  </a>{" "}
+                  许可协议。转载请注明出处！
+                </span>
               </p>
             </section>
-          )}
+          )} */}
 
-          <section className="post-tags">
+          {/* <section className="post-tags">
             <div>
               <span>Tag(s):</span>
               <span className="tag">
@@ -112,8 +127,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               <span>· </span>
               <a href={data.site.siteMetadata.siteUrl}>home</a>
             </div>
-          </section>
-          <section className="post-nav">
+          </section> */}
+          {/* <section className="post-nav">
             {previous && (
               <a className="prev" rel="prev" href={previous.fields.slug}>
                 {previous.frontmatter.title}
@@ -124,7 +139,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 {next.frontmatter.title}
               </a>
             )}
-          </section>
+          </section> */}
 
           <section className="post-comment" id="gitalk-container"></section>
         </article>
@@ -156,10 +171,11 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY HH:mm:ss")
+        date(formatString: "MMMM DD, YYYY")
         description
         categories
         tags
+        toc
       }
     }
   }
