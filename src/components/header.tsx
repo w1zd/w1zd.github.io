@@ -52,13 +52,13 @@ const Header = () => {
                 {item.name}
               </a>
             ))}
-            <input
+            {/* <input
               id="switch_default"
               type="checkbox"
               className="switch_default"
               checked={isDark}
               onChange={toggleTheme}
-            />
+            /> */}
             <label htmlFor="switch_default" className="toggleBtn"></label>
           </div>
         </div>
