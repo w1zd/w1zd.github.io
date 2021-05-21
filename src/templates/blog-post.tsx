@@ -46,6 +46,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         {post.frontmatter.toc && <TOC></TOC>}
 
         <article className="post-wrap">
+          <a href="/posts" className="goback-posts"><i className={`iconfont icon-blog`}></i></a>
           <header className="post-header">
             <h1 className="post-title">{post.frontmatter.title}</h1>
             <div className="post-meta">
@@ -142,6 +143,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </section> */}
 
           <section className="post-comment" id="gitalk-container"></section>
+
         </article>
       </div>
     </Layout>
