@@ -1,42 +1,71 @@
 // post structure
-.post-wrap
-  p
-    font-size 1em
-    margin 1em 0 1em 0
-  .post-header h1
-    text-align center
-    font-weight normal
-    margin 50px 0 0 0 !important
+.post-wrap {
+  p {
+    font-size: 1em;
+    margin: 1em 0 1em 0;
+  }
 
-  .post-title
-    font-size 2em
-    line-height 1.5em
+  .post-header {
+    margin: 50px 0;
+    position: relative;
+  }
 
-  .post-meta
-    color rgba(85, 85, 85, 0.52941) !important
-    
-    .post-author
-    .post-time
-      color #3e3e3e
-      font-size 0.8em
-      display block
-      text-align center
-    .post-author
-      margin-top 1em
-      font-size 1em
-    .dark-theme &
-      color $dark-font-secondary-color !important
+  .post-header h1 {
+    text-align: center;
+    font-weight: normal;
+    margin: 50px 0 0 0 !important;
+  }
 
-    a
-      color $light-post-link-color
-      .dark-theme &
-        color $dark-post-link-color
+  .post-header:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: -2px;
+    width: 50%;
+    height: 1px;
+    background-color: #000;
+  }
 
-      &:hover
-        color $light-post-link-hover-color
-        .dark-theme &
-          color $dark-post-link-hover-color
-        
-      
-    
-  
+  .post-title {
+    font-size: 2em;
+    line-height: 1.5em;
+  }
+
+  .post-meta {
+    color: rgba(85, 85, 85, 0.52941) !important;
+
+    .post-author, .post-time {
+      color: #3e3e3e;
+      font-size: 0.8em;
+      display: block;
+      text-align: center;
+    }
+
+    .post-author {
+      margin-top: 3em;
+      font-size: 1em;
+    }
+
+    .dark-theme & {
+      color: $dark-font-secondary-color !important;
+    }
+
+    a {
+      color: $light-post-link-color;
+
+      .dark-theme & {
+        color: $dark-post-link-color;
+      }
+
+      &:hover {
+        color: $light-post-link-hover-color;
+
+        .dark-theme & {
+          color: $dark-post-link-hover-color;
+        }
+      }
+    }
+  }
+}

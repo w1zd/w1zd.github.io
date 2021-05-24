@@ -34,7 +34,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   }, [location.pathname])
 
   return (
-    <Layout isFocus={true} title={siteTitle}>
+    <Layout isFocus={false} title={siteTitle}>
       <SEO title={post.frontmatter.title}></SEO>
       <Helmet>
         <script
@@ -46,7 +46,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         {post.frontmatter.toc && <TOC></TOC>}
 
         <article className="post-wrap">
-          <a href="/posts" className="goback-posts"><i className={`iconfont icon-blog`}></i></a>
+          {/* <a href="/posts" className="goback-posts"><i className={`iconfont icon-blog`}></i></a> */}
           <header className="post-header">
             <h1 className="post-title">{post.frontmatter.title}</h1>
             <div className="post-meta">
