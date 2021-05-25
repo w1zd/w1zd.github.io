@@ -9,7 +9,7 @@ module.exports = {
     description: `Enjoy life && Enjoy Coding`,
     siteUrl: `https://agg.me`,
     social: {
-      twitter: `https://twitter.com/ryan__pan`,
+      twitter: `https://twitter.com/aggdotme`,
       github: `https://github.com/a-gg`,
       wechat: `/wechat.jpg`,
       qq: `http://wpa.qq.com/msgrd?v=3&uin=5472965&site=qq&menu=yes`,
