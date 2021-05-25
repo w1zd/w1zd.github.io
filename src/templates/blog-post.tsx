@@ -22,7 +22,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   useEffect(() => {
     const gitalk = new Gitalk({
       clientID: "b2d64df9d83b1b54c039",
-      clientSecret: "0696af88afb5cf1c7ee3732d34c78464092faab8",
+      clientSecret: "2813b8e2ca90421bd2546896e5319489f1f3f69c",
       repo: "A-GG.github.io",
       owner: "A-GG",
       admin: ["a-gg"],
