@@ -3,7 +3,7 @@ module.exports = {
     title: `AGG`,
     author: {
       name: `AGG`,
-      summary: `🤪 Aha! Go Gaga! 🤪 `,
+      summary: `🤪 AGG! Not EGG! 🤪 `,
     },
     postCopyright: true,
     description: `Enjoy life && Enjoy Coding`,
