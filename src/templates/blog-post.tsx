@@ -9,9 +9,10 @@ import Gitalk from "gitalk"
 import "gitalk/dist/gitalk.css"
 import md5 from "blueimp-md5"
 import { Helmet } from "react-helmet"
+import { MDXRenderer } from "gatsby-plugin-mdx"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
-  const post = data.markdownRemark
+  const post = data.mdx
   const {
     title: siteTitle,
     postCopyright,
@@ -68,10 +69,12 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             </div>
           </header>
 
-          <div
+          {/* <div
             className="post-content"
             dangerouslySetInnerHTML={{ __html: post.html }}
-          ></div>
+          ></div> */}
+          <div className="post-content"><MDXRenderer>{post.body}</MDXRenderer></div>
+          
           {/* {postCopyright && (
             <section className="post-copyright">
               <p className="copyright-item">
@@ -164,10 +167,10 @@ export const pageQuery = graphql`
         }
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
-      html
+      body
       fields {
         slug
       }

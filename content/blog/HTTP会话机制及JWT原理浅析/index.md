@@ -44,11 +44,11 @@ sequenceDiagram
     服务器->服务器: ② 验证用户名和密码
     服务器->Session: ③ 通过校验后，将用户信息存储到Session中
     Session->服务器: ④ 获取到存储在Session中的信息对应的SessionId
-    服务器->客户端: ⑤ 在响应头中使用Set-Cookie<br>让客户端将Session存储到Cookie中
+    服务器->客户端: ⑤ 在响应头中使用Set-Cookie<br />让客户端将Session存储到Cookie中
     客户端->Cookie: ⑥ 将SessionId存储到Cookie
-    Cookie->客户端: ⑥ 所有的请求会自动将Cookie中的<br>SessionId携带到服务器
+    Cookie->客户端: ⑥ 所有的请求会自动将Cookie中的<br />SessionId携带到服务器
     客户端->服务器: ⑦ 后续包含SessionId的请求
-    服务器->Session: ⑧ 服务器拿到SessionId之后<br>去Session中查找对应的信息<br>找到就证明登录了，找不到就让用户重新登录
+    服务器->Session: ⑧ 服务器拿到SessionId之后<br />去Session中查找对应的信息<br />找到就证明登录了，找不到就让用户重新登录
 ```
 </div>
 

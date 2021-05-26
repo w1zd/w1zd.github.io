@@ -8,13 +8,13 @@ import PostsList from '../components/postslist'
 
 const Posts = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.nodes
+  const posts = data.allMdx.nodes
   
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <PostsList posts={posts}></PostsList>
-      <Paginator {...data.allMarkdownRemark.pageInfo} url="/posts"></Paginator>
+      <Paginator {...data.allMdx.pageInfo} url="/posts"></Paginator>
     </Layout>
   )
 }
@@ -28,7 +28,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(
+    allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip

@@ -11,7 +11,7 @@ const Categories = ({ data }) => {
         <div className="post-wrap categories">
           <h2 className="post-title">-&nbsp;Categories&nbsp;-</h2>
           <div className="categories-card">
-            {data.allMarkdownRemark.group.map(item => (
+            {data.allMdx.group.map(item => (
               <div className="card-item" key={item.fieldValue}>
                 <div className="categories">
                   <a href={`/category/${item.fieldValue}`}>
@@ -59,7 +59,7 @@ export default Categories
 
 export const pageQuery = graphql`
   query categoriesQuery {
-    allMarkdownRemark {
+    allMdx {
       group(field: frontmatter___categories) {
         nodes {
           frontmatter {

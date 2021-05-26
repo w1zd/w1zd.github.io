@@ -13,7 +13,7 @@ const Tags = ({ data }) => {
 
             <div className="tag-cloud-tags">
               {
-                data.allMarkdownRemark.group.map(item => (
+                data.allMdx.group.map(item => (
                   <Link to={`/tag/${item.fieldValue}`} key={item.fieldValue}>{item.fieldValue}<small>({item.nodes.length})</small></Link>
                 ))
               }
@@ -28,7 +28,7 @@ export default Tags
 
 export const pageQuery = graphql`
   query TagsQuery {
-    allMarkdownRemark {
+    allMdx {
       group(field: frontmatter___tags) {
         nodes {
           id
