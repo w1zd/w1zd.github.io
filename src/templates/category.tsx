@@ -19,9 +19,9 @@ const Category = ({ data }) => {
             -&nbsp;Categories&nbsp;·&nbsp;{cate}-
           </h2>
         </div>
-        <PostsList posts={data.allMarkdownRemark.nodes}></PostsList>
+        <PostsList posts={data.allMdx.nodes}></PostsList>
         <Paginator
-          {...data.allMarkdownRemark.pageInfo}
+          {...data.allMdx.pageInfo}
           url="/category"
         ></Paginator>
       </div>
@@ -32,7 +32,7 @@ const Category = ({ data }) => {
 export default Category
 export const pageQuery = graphql`
   query categoryQuery($limit: Int!, $skip: Int!, $category: String!) {
-    allMarkdownRemark(
+    allMdx(
       sort: { fields: [frontmatter___date], order: DESC }
       limit: $limit
       skip: $skip

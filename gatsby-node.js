@@ -8,7 +8,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const result = await graphql(
     `
       {
-        allMarkdownRemark(
+        allMdx(
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
         ) {
@@ -32,7 +32,7 @@ exports.createPages = async ({ graphql, actions }) => {
   }
 
   // Create blog posts pages.
-  const posts = result.data.allMarkdownRemark.edges
+  const posts = result.data.allMdx.edges
 
   posts.forEach((post, index) => {
     const previous = index === posts.length - 1 ? null : posts[index + 1].node
@@ -69,7 +69,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const categories = await graphql(
     `
       query categoryQuery {
-        allMarkdownRemark(filter: {}) {
+        allMdx(filter: {}) {
           group(field: frontmatter___categories) {
             fieldValue
             nodes {
@@ -81,7 +81,7 @@ exports.createPages = async ({ graphql, actions }) => {
     `
   )
 
-  categories.data.allMarkdownRemark.group.forEach(item => {
+  categories.data.allMdx.group.forEach(item => {
     const numPagesOfTag = Math.ceil(item.nodes.length / postsPerPage)
     Array.from({ length: numPagesOfTag }).forEach((_, i) => {
       createPage({
@@ -100,7 +100,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const tags = await graphql(
     `
       query tagQuery {
-        allMarkdownRemark(filter: {}) {
+        allMdx(filter: {}) {
           group(field: frontmatter___tags) {
             fieldValue
             nodes {
@@ -112,7 +112,7 @@ exports.createPages = async ({ graphql, actions }) => {
     `
   )
 
-  tags.data.allMarkdownRemark.group.forEach(item => {
+  tags.data.allMdx.group.forEach(item => {
     const numPagesOfTag = Math.ceil(item.nodes.length / postsPerPage)
     Array.from({ length: numPagesOfTag }).forEach((_, i) => {
       createPage({
@@ -131,7 +131,7 @@ exports.createPages = async ({ graphql, actions }) => {
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
-  if (node.internal.type === `MarkdownRemark`) {
+  if (node.internal.type === `Mdx`) {
     const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,

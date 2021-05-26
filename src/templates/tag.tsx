@@ -19,9 +19,9 @@ const Tag = ({ data }) => {
             -&nbsp;Tag&nbsp;·&nbsp;{tag}-
           </h2>
         </div>
-        <PostsList posts={data.allMarkdownRemark.nodes}></PostsList>
+        <PostsList posts={data.allMdx.nodes}></PostsList>
         <Paginator
-          {...data.allMarkdownRemark.pageInfo}
+          {...data.allMdx.pageInfo}
           url="/category"
         ></Paginator>
       </div>
@@ -32,7 +32,7 @@ const Tag = ({ data }) => {
 export default Tag
 export const pageQuery = graphql`
   query tagsQuery($limit: Int!, $skip: Int!, $tag: String!) {
-    allMarkdownRemark(limit: $limit, skip: $skip, filter: {frontmatter: {tags: {glob: $tag}}}, sort: {fields: frontmatter___date}) {
+    allMdx(limit: $limit, skip: $skip, filter: {frontmatter: {tags: {glob: $tag}}}, sort: {fields: frontmatter___date}) {
       pageInfo {
         currentPage
         pageCount
