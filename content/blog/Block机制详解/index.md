@@ -18,7 +18,7 @@ description: 我们知道在Block使用中，Block内部能够读取外部局部
 
 我们把以下代码通过 clang -rewrite-objc 源代码文件名重写：
 
-```objective-c
+```objc
 int main(int argc, const char * argv[]) {
         @autoreleasepool {
             int val = 10;
@@ -33,7 +33,7 @@ int main(int argc, const char * argv[]) {
 
 可得到如下代码：
 
-```obj-c
+```objc
 struct __Block_byref_val_0 {
      void *__isa;
      __Block_byref_val_0 *__forwarding;
@@ -81,7 +81,7 @@ int main(int argc, const char * argv[]) {
 
 我们发现由`__block`修饰的变量变成了一个`__Block_byref_val_0`结构体类型的实例。该结构体的声明如下：
 
-```obj-c
+```objc
 struct __Block_byref_val_0 {
      void *__isa;
      __Block_byref_val_0 *__forwarding;
@@ -95,7 +95,7 @@ struct __Block_byref_val_0 {
 我们从上述被转化的代码中可以看出 Block 本身也一样被转换成了`__main_block_impl_0`结构体实例，该实例持有`__Block_byref_val_0`结构体实例的指针。
 我们再看一下赋值和执行部分代码被转化后的结果：
 
-```obj-c
+```objc
 static void __main_block_func_0 (struct __main_block_impl_0 *__cself) {
   __Block_byref_val_0 *val = __cself->val; // bound by ref
   (val->__forwarding->val) = 1;
@@ -123,7 +123,7 @@ Block还有另外两个与之相似的类:
 
 当我们把Block作为全局变量使用时，对应生成的Block将被设为`_NSConcreteGlobalBlock`，如:
 
-```obj-c
+```objc
 void (^block)(void) = ^{NSLog(@"This is a Global Block");};
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -135,7 +135,7 @@ int main(int argc, const char * argv[]) {
 
 该代码转换后的代码中，Block结构体的成员变量isa的初始化如下:
 
-```obj-c
+```objc
 impl.isa = &_NSConcreteGlobalBlock;
 ```
 
@@ -147,7 +147,7 @@ impl.isa = &_NSConcreteGlobalBlock;
 
 复制到堆上的Block，它的结构体成员变量`isa`将变为:
 
-```obj-c
+```objc
 impl.isa = &_NSConcreteMallocBlock;
 ```
 
@@ -158,14 +158,14 @@ impl.isa = &_NSConcreteMallocBlock;
 当一个Block被复制到堆上时，与之相关的`__block`变量也会被复制到堆上，此时堆上的Block持有相应堆上的`__block`变量。当堆上的`__block`变量没有持有者时，它才会被废弃。(这里的思考方式和objc引用计数内存管理完全相同。)
 而在栈上的`__block`变量被复制到堆上之后，会将成员变量`__forwarding`的值替换为堆上的`__block`变量的地址。这个时候我们可以通过以下代码访问:
 
-```obj-c
+```objc
 val.__forwarding->val
 ```
 
 **`__block`变量和循环引用问题**
 `__block`修饰符可以指定任何类型的局部变量，上面的转换代码中，有如下代码:
 
-```obj-c
+```objc
 static void __main_block_copy_0 (struct __main_block_impl_0*dst, struct __main_block_impl_0*src) {
     _Block_object_assign((void*)&dst->val, (void*)src->val, 8/*BLOCK_FIELD_IS_BYREF*/);
 }
@@ -178,7 +178,7 @@ static void __main_block_dispose_0 (struct __main_block_impl_0*src)     {
 
 由上文描述可知，我们可以使用下述代码解除Block循环引用的问题:
 
-```obj-c
+```objc
 void(^block)(void) = ^{
     tmp = nil;
 };
