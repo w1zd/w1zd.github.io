@@ -28,7 +28,7 @@ toc: true
 
 ## 没用的方案
 下面列出来比较多见的一种做法：
-```cs
+```csharp
 this.SetStyle(ControlStyles.OptimizedDoubleBuffer | 　　
                   ControlStyles.ResizeRedraw |
                   ControlStyles.AllPaintingInWmPaint, true);
@@ -43,7 +43,7 @@ this.SetStyle(ControlStyles.OptimizedDoubleBuffer | 　　
 那具体怎么操作呢？
 
 在主窗体的任意位置重写CreateParams，便能大幅改善闪烁的状况，代码如下：
-```cs
+```csharp
 protected override CreateParams CreateParams
 {
     get
