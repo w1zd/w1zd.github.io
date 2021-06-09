@@ -3,12 +3,11 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import TOC from "../components/toc"
 import SEO from "../components/seo"
-// import { rhythm, scale } from "../utils/typography"
 import { useEffect } from "react"
 import Gitalk from "gitalk"
 import "gitalk/dist/gitalk.css"
+import "katex/dist/katex.min.css"
 import md5 from "blueimp-md5"
-import { Helmet } from "react-helmet"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
@@ -37,12 +36,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   return (
     <Layout isFocus={false} title={siteTitle}>
       <SEO title={post.frontmatter.title}></SEO>
-      <Helmet>
-        <script
-          src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
-          async
-        ></script>
-      </Helmet>
       <div className="container">
         {post.frontmatter.toc && <TOC></TOC>}
 
