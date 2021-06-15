@@ -77,6 +77,15 @@ module.exports = {
         icon: `content/assets/gatsby-icon.png`,
       },
     },
-    `gatsby-plugin-react-helmet`
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-baidu-analytics`,
+      options: {
+          // baidu analytics siteId
+        siteId: "ca705473dc433c6a2c265605c5775017",
+        // Put analytics script in the head instead of the body [default:false]
+        head: false,
+      },
+    },
   ],
 }
