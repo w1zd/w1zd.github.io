@@ -9,22 +9,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v1
-      - name: Deploy To Github Pages
-        uses: enriikke/gatsby-gh-pages-action@v2
-        with:
-          access-token: ${{ secrets.ACCESS_TOKEN }}
-          deploy-branch: page
-      - name: Deploy to Server        
-        uses: easingthemes/ssh-deploy@v2.1.1        
-        env:   
-          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_KEY }}          
-          ARGS: "-rltgoDzvO --delete"          
-          REMOTE_USER: ${{ secrets.DEPLOY_USER }} 
-          REMOTE_HOST: ${{ secrets.DEPLOY_HOST }}          
-          SOURCE: "public/"          
-          TARGET: "/home/nginx/blog"
+#       - name: Checkout Code
+#         uses: actions/checkout@v1
+#       - name: Deploy To Github Pages
+#         uses: enriikke/gatsby-gh-pages-action@v2
+#         with:
+#           access-token: ${{ secrets.ACCESS_TOKEN }}
+#           deploy-branch: page
+#       - name: Deploy to Server        
+#         uses: easingthemes/ssh-deploy@v2.1.1        
+#         env:   
+#           SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_KEY }}          
+#           ARGS: "-rltgoDzvO --delete"          
+#           REMOTE_USER: ${{ secrets.DEPLOY_USER }} 
+#           REMOTE_HOST: ${{ secrets.DEPLOY_HOST }}          
+#           SOURCE: "public/"          
+#           TARGET: "/home/nginx/blog"
       - name: Trigger Profile Update
         run: |-
           curl -i -u a-gg:${{secrets.ACCESS_TOKEN}}  \                                                                                                                         0 (1.235s) < 18:03:40
