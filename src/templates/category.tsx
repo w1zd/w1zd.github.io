@@ -12,7 +12,7 @@ const Category = ({ data }) => {
   }
   return (
     <Layout>
-      <SEO title={cate}></SEO>
+      <SEO title={cate} description={cate}></SEO>
       <div className="container">
         <div className="post-wrap categories">
           <h2 className="post-title">
