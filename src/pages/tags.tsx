@@ -5,7 +5,7 @@ import SEO from "../components/seo"
 const Tags = ({ data }) => {
   return (
     <Layout>
-      <SEO title="Tags"></SEO>
+      <SEO title="Tags" description="All Tags"></SEO>
 
       <div className="container">
         <div className="post-wrap tags">

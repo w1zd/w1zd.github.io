@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 const Categories = ({ data }) => {
   return (
     <Layout>
-      <SEO title="Categories"></SEO>
+      <SEO title="Categories" description="All Posts Categories"></SEO>
       <div className="container">
         <div className="post-wrap categories">
           <h2 className="post-title">-&nbsp;Categories&nbsp;-</h2>

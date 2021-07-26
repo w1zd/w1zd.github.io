@@ -4,11 +4,12 @@ import Layout from "../components/layout"
 import TOC from "../components/toc"
 import SEO from "../components/seo"
 import { useEffect } from "react"
-import Gitalk from "gitalk"
+// import Gitalk from "gitalk"
 import "gitalk/dist/gitalk.css"
 import "katex/dist/katex.min.css"
 import md5 from "blueimp-md5"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import Giscus from "react-giscus"
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
@@ -19,23 +20,23 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
     siteUrl,
   } = data.site.siteMetadata
   const { previous, next } = pageContext
-  useEffect(() => {
-    const gitalk = new Gitalk({
-      clientID: "b2d64df9d83b1b54c039",
-      clientSecret: "2813b8e2ca90421bd2546896e5319489f1f3f69c",
-      repo: "A-GG.github.io",
-      owner: "A-GG",
-      admin: ["a-gg"],
-      id: md5(location.pathname), // Ensure uniqueness and length less than 50
-      distractionFreeMode: false, // Facebook-like distraction free mode
-    })
+  // useEffect(() => {
+  //   const gitalk = new Gitalk({
+  //     clientID: "b2d64df9d83b1b54c039",
+  //     clientSecret: "2813b8e2ca90421bd2546896e5319489f1f3f69c",
+  //     repo: "A-GG.github.io",
+  //     owner: "A-GG",
+  //     admin: ["a-gg"],
+  //     id: md5(location.pathname), // Ensure uniqueness and length less than 50
+  //     distractionFreeMode: false, // Facebook-like distraction free mode
+  //   })
 
-    gitalk.render("gitalk-container")
-  }, [location.pathname])
+  //   gitalk.render("gitalk-container")
+  // }, [location.pathname])
 
   return (
     <Layout isFocus={false} title={siteTitle}>
-      <SEO title={post.frontmatter.title}></SEO>
+      <SEO title={post.frontmatter.title} description={post.frontmatter.description}></SEO>
       <div className="container">
         {post.frontmatter.toc && <TOC></TOC>}
 
@@ -44,7 +45,9 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           <header className="post-header">
             <h1 className="post-title">{post.frontmatter.title}</h1>
             <div className="post-meta">
-              <span className="post-author">{data.site.siteMetadata.author.name}</span>
+              <span className="post-author">
+                {data.site.siteMetadata.author.name}
+              </span>
               <span className="post-time">{post.frontmatter.date}</span>
               &nbsp;
               {/* {post.frontmatter.categories.length !== 0 && (
@@ -66,8 +69,10 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             className="post-content"
             dangerouslySetInnerHTML={{ __html: post.html }}
           ></div> */}
-          <div className="post-content"><MDXRenderer>{post.body}</MDXRenderer></div>
-          
+          <div className="post-content">
+            <MDXRenderer>{post.body}</MDXRenderer>
+          </div>
+
           {/* {postCopyright && (
             <section className="post-copyright">
               <p className="copyright-item">
@@ -138,8 +143,16 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             )}
           </section> */}
 
-          <section className="post-comment" id="gitalk-container"></section>
-
+          {/* <section className="post-comment" id="gitalk-container"></section> */}
+          <Giscus
+            repo="A-GG/a-gg.github.io"
+            repoId="MDEwOlJlcG9zaXRvcnkyODg3MTA5NjA="
+            category="Announcements"
+            categoryId="MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMzMDE1OTcy"
+            mapping="og:title"
+            theme="light"
+            reactionsEnabled="1"
+          />
         </article>
       </div>
     </Layout>
