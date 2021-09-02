@@ -109,3 +109,12 @@ http {
 1. 通过 yum 安装 Nginx（推荐）[可以参考之前的文章](https://agg.me/CentOS7%E5%AE%89%E8%A3%85Nginx/)
 2. 自行下载编译 Nginx 
 ...
+
+还可能会遇到
+```
+nginx: [emerg] unknown directive "stream" in /etc/nginx/nginx.conf:18
+```
+只需要
+```
+yum install nginx-mod-stream.x86_64
+```
