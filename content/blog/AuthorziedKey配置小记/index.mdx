@@ -1,0 +1,36 @@
+---
+title: AuthorziedKey配置小记
+date: "2021-07-17T16:54:17.284Z"
+tags:
+- CentOS
+- Linux
+categories: 
+- Linux
+description: authorized_keys 配置之后，依然无法实现免密登录，让人摸不着头脑。
+---
+
+早上起床发现 VPS 突然无法访问了，后来在 TG 群里了解到是因为厂商做母鸡迁移导致文件损坏，可以提工单等待修复。工作需要使用外网，而小作坊的工单处理速度可想而知，考虑到反正服务器内存储的内容并不是很多，且都有备份，就着手直接重装。
+
+当一切都准备就绪之后，发现配置了 authorized_keys 之后，免密访问依然无法使用，在进行一系列的问题探究之后，发现很可能是创建 authorized_keys 文件的姿势不对。
+
+使用 touch 创建的文件，默认权限是 644 如下：
+```
+$ls -al
+-rw-r--r--. 1 root root    0 Jul  16 07:49 authorized_keys
+```
+但是 ssh 要求的权限为 600, 故需要对其进行修改
+```
+$chmod 600 .ssh/authorized_keys
+$ls -al
+-rw-------. 1 root root    0 Jul  16 07:50 authorized_keys
+```
+
+这样操作之后，免密登录就完全正常了。
+
+### SCP 命令直接追加 authorized_keys 
+
+有朋友问怎么能直接一步到位把公钥添加到 authorized_keys 里去，特别简单。
+
+```bash
+ssh user@hostname 'cat >> .ssh/authorized_keys' < ~/.ssh/id_rsa.pub
+```
