@@ -7,6 +7,7 @@ categories:
 - 译文
 - 安全
 description:  当凯撒大帝要给自己的将军们传递信息的时候， 他并不相信自己的信使。所以他就把信中所有的字母都向后移动 3 位， A 替换成了 D，B 替换成了 E， 以此类推。 只有知道字母需要“偏移 3 位”这个规则的人，才能解密他的信息。
+toc: true
 ---
 
 > 原文链接 [http://www.pgpi.org/doc/pgpintro](http://www.pgpi.org/doc/pgpintro)
