@@ -1,17 +1,17 @@
 const remarkMath = require(`remark-math`)
 module.exports = {
   siteMetadata: {
-    title: `AGG`,
+    title: `Ryan's Playground`,
     author: {
-      name: `AGG`,
-      summary: `🤪 AGG! Not EGG! 🤪 `,
+      name: `Ryan`,
+      summary: `🤪 A Genius! 🤪 `,
     },
     postCopyright: true,
     description: `Enjoy life && Enjoy Coding`,
-    siteUrl: `https://agg.me`,
+    siteUrl: `https://ryan.pub`,
     social: {
       twitter: `https://twitter.com/aggdotme`,
-      github: `https://github.com/a-gg`,
+      github: `https://github.com/gemryan`,
       wechat: `/wechat.jpg`,
       qq: `http://wpa.qq.com/msgrd?v=3&uin=5472965&site=qq&menu=yes`,
     },
@@ -68,8 +68,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `AGG's Blog`,
-        short_name: `AGG`,
+        name: `Ryan's Playground`,
+        short_name: `Ryan`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
