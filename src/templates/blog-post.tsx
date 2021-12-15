@@ -150,7 +150,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
           {/* <section className="post-comment" id="gitalk-container"></section> */}
           <Giscus
-            repo="A-GG/a-gg.github.io"
+            repo="gemryan/gemryan.github.io"
             repoId="MDEwOlJlcG9zaXRvcnkyODg3MTA5NjA="
             category="Announcements"
             categoryId="MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMzMDE1OTcy"
