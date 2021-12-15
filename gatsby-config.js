@@ -1,7 +1,7 @@
 const remarkMath = require(`remark-math`)
 module.exports = {
   siteMetadata: {
-    title: `Ryan's Playground`,
+    title: `Ryan's Pub`,
     author: {
       name: `Ryan`,
       summary: `🤪 A Genius! 🤪 `,
@@ -68,7 +68,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Ryan's Playground`,
+        name: `Ryan's Pub`,
         short_name: `Ryan`,
         start_url: `/`,
         background_color: `#ffffff`,
