@@ -36,7 +36,7 @@ export const EventBus = new Vue();
 
 在组件 A 中使用 `$on` 方法向 `EventBus` 注册事件
 
-```vue
+```html
 <template>
   <div>{{ count }}</div>
 </template>
@@ -65,7 +65,7 @@ export default {
 
 在组件 D 中使用 `$emit` 方法触发注册在 `EventBus` 上的事件
 
-```vue
+```html
 <template>
   <div>
     <button @click="clickHandler">+1</button>
@@ -92,7 +92,7 @@ export default {
 
 在组件 A 的 `beforeDestory` 钩子函数中使用 `$off` 方法取消已注册的事件
 
-```vue
+```html
 <template>
   <div>{{ count }}</div>
 </template>
