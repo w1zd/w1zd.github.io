@@ -1,0 +1,196 @@
+---
+title: Vue2 中的 Global Event Bus
+date: "2022-03-12T11:27:32.284Z"
+tags: 
+- FrontEnd 
+- Vue
+categories:
+- Vue
+description: 全局事件总线（Global Event Bus）一般用于远距离（非父子）组件之间的数据通信，是 Vue 中全局状态管理方案的一种。
+toc: true
+---
+
+## 适用场景
+
+全局事件总线（Global Event Bus）一般用于远距离（非父子）组件之间的数据通信，是 Vue 中全局状态管理方案的一种。
+
+下图中的组件 B 和 组件 D 之间进行通信，则可以通过 Global Event Bus 来实现。
+
+![image-20220312110814797](comps.png)
+
+## 基本原理
+
+全局事件总线（Global Event Bus）本质上是通过在全局创建一个空的 Vue 实例，当前项目内所有的组件皆可向该实例上注册事件，相应的，在项目内任意组件内触发该事件，即可实现组件之间的通讯。
+
+## 使用方法
+
+### 第一步：创建实例
+
+创建一个空的 Vue 实例
+
+```js
+export const EventBus = new Vue();
+```
+
+### 第二步：注册事件
+
+在组件 A 中使用 `$on` 方法向 `EventBus` 注册事件
+
+```vue
+<template>
+  <div>{{ count }}</div>
+</template>
+
+<script>
+import { EventBus } from "../eventbus";
+export default {
+  data() {
+    return {
+      count: 0,
+    };
+  },
+  methods: {
+    increaseCount() {
+      this.count++;
+    },
+  },
+  created() {
+    EventBus.$on("increase-count", this.increaseCount);
+  },
+};
+</script>
+```
+
+### 第三步： 触发事件
+
+在组件 D 中使用 `$emit` 方法触发注册在 `EventBus` 上的事件
+
+```vue
+<template>
+  <div>
+    <button @click="clickHandler">+1</button>
+  </div>
+</template>
+
+<script>
+import { EventBus } from "../eventbus";
+export default {
+  methods: {
+    clickHandler() {
+      EventBus.$emit("increase-count");
+    },
+  },
+};
+</script>
+```
+
+
+
+### 第四步：解绑事件
+
+经过上面三步之后，我们已经可以实现组件 A 和组件 D 之间的通信啦！但是要注意，我们注册给 `EventBus` 的事件，需要在组件 A 销毁的时候取消注册
+
+在组件 A 的 `beforeDestory` 钩子函数中使用 `$off` 方法取消已注册的事件
+
+```vue
+<template>
+  <div>{{ count }}</div>
+</template>
+
+<script>
+import { EventBus } from "../eventbus";
+export default {
+  data() {
+    return {
+      count: 0,
+    };
+  },
+  methods: {
+    increaseCount() {
+      this.count++;
+    },
+  },
+  created() {
+    EventBus.$on("increase-count", this.increaseCount);
+  },
+  beforeDestory() {
+    EventBus.$off('increase-count', this.increaseCount);
+  }
+};
+</script>
+```
+
+## 核心 API 
+
+### `$on`
+
+**参数**：
+`{string} event`  命名需要使用 Kebab Case
+`{Function} callback`
+
+**用法**：
+监听当前实例上的自定义事件。事件可以由 vm.$emit 触发。回调函数会接收所有传入事件触发函数的额外参数。
+
+**示例**：
+
+```js
+vm.$on('test', function (msg) {
+  console.log(msg)
+})
+vm.$emit('test', 'hi')
+// => "hi"
+```
+
+
+### `$emit`
+
+**参数**：
+
+`{string} eventName`
+`[...args]`
+触发当前实例上的事件。附加参数都会传给监听器回调。
+
+**示例**：
+
+只配合一个事件名使用 `$emit`：
+
+```js
+vm.$emit('事件名')
+```
+
+传递额外的参数使用 `$emit`:
+
+```js
+const foo = (bar) => console.log(bar);
+vm.$on('trigger-foo', foo)
+vm.$emit('trigger-foo', 'Hello world')
+```
+
+
+
+### `$off`
+
+**参数**：
+
+`{string | Array<string>} event` (只在 2.2.2+ 支持数组)
+`{Function} [callback]`
+
+**用法**：
+
+移除自定义事件监听器。
+
+- 如果没有提供参数，则移除所有的事件监听器 `$emit()`
+- 如果只提供了事件，则移除该事件所有的监听器 `$emit('事件名称')`
+- 如果同时提供了事件与回调，则只移除这个回调的监听器 `$emit('事件名称', 事件处理函数)`
+
+## 总结
+
+借助 Vue 提供的相关 API，使用全局事件总线可以非常方便的实现非父子组件之间的通信。
+
+全局事件总线这种方案实际开发中使用的较少，几乎用不到，Vue3 中已经将其弃用，因为其存在如下问题：
+
+1. 破坏了项目数据流，会让项目后续维护困难
+2. 所有的事件都注册在同一对象上，无法做模块划分，且事件命名易产生冲突
+3. 使用`$off`取消注册事件需要和`$on`成对出现，但是经常会被忘记
+
+VueX 以及 Pinia 等工具提供了更为清晰完善的全局状态管理方案，若项目中遇到较为复杂的组件通信场景，首先考虑这些工具，而不是使用 Global Event Bus。
