@@ -38,8 +38,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
     <Layout isFocus={false} title={siteTitle}>
       <SEO title={post.frontmatter.title} description={post.frontmatter.description}></SEO>
       <div className="container">
-        {post.frontmatter.toc && <TOC></TOC>}
-
         <article className="post-wrap">
           {/* <a href="/posts" className="goback-posts"><i className={`iconfont icon-blog`}></i></a> */}
           <header className="post-header">
@@ -159,6 +157,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             reactionsEnabled="1"
           />
         </article>
+        {post.frontmatter.toc && <TOC></TOC>}
       </div>
     </Layout>
   )
