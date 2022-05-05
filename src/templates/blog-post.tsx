@@ -156,8 +156,8 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             theme="light"
             reactionsEnabled="1"
           />
+          {post.frontmatter.toc && <TOC></TOC>}
         </article>
-        {post.frontmatter.toc && <TOC></TOC>}
       </div>
     </Layout>
   )
