@@ -76,7 +76,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             <MDXRenderer>{post.body}</MDXRenderer>
           </div>
 
-          {/* {postCopyright && (
+          {postCopyright && (
             <section className="post-copyright">
               <p className="copyright-item">
                 <span>Author:&nbsp;</span>
@@ -104,9 +104,9 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                 </span>
               </p>
             </section>
-          )} */}
+          )}
 
-          {/* <section className="post-tags">
+          <section className="post-tags">
             <div>
               <span>Tag(s):</span>
               <span className="tag">
@@ -114,7 +114,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                   post.frontmatter.tags.map(item => {
                     return (
                       <a key={item} href={`/tag/${item}`}>
-                        {item}
+                        #{item}
                       </a>
                     )
                   })}
@@ -132,7 +132,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               <span>· </span>
               <a href={data.site.siteMetadata.siteUrl}>home</a>
             </div>
-          </section> */}
+          </section>
           {/* <section className="post-nav">
             {previous && (
               <a className="prev" rel="prev" href={previous.fields.slug}>

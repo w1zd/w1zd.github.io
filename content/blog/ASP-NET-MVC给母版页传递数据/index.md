@@ -3,7 +3,7 @@ title: ASP.NET MVC给母版页传递数据
 date: "2014-03-31T14:38:42.284Z"
 tags:
 - .NET
-- C#
+- CSharp
 - ASP.NET
 categories:
 - ASP.NET MVC
