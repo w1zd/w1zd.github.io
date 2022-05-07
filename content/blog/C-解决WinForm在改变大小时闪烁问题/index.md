@@ -2,7 +2,7 @@
 title: 'C#解决WinForm在改变大小时闪烁问题'
 date: "2014-04-01T14:17:44.284Z"
 tags: 
-- C#
+- CSharp
 - .NET
 - WinForm
 categories: 

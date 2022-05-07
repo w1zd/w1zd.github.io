@@ -2,7 +2,7 @@
 title: 'C#根据属性名称获取属性值'
 date: "2014-04-25T21:16:31.284Z"
 tags: 
-- C# 
+- CSharp
 - .NET
 categories: 
 - .NET
