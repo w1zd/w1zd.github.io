@@ -106,7 +106,7 @@ http {
 这里要注意一下，可能是不同方式安装的 Nginx 版本不一致的问题，可能会导致安装之后 `ngx_stream_ssl_preread_module` 模块找不到的问题。
 
 可以通过以下两种方式解决：
-1. 通过 yum 安装 Nginx（推荐）[可以参考之前的文章](https://agg.me/CentOS7%E5%AE%89%E8%A3%85Nginx/)
+1. 通过 yum 安装 Nginx（推荐）[可以参考之前的文章](https://w1zd.xyz/CentOS7%E5%AE%89%E8%A3%85Nginx/)
 2. 自行下载编译 Nginx 
 ...
 
