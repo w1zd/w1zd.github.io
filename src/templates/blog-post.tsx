@@ -11,6 +11,10 @@ import md5 from "blueimp-md5"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Giscus from "react-giscus"
 
+const GiscusMemo = React.memo(Giscus, (props, nextProps) => {
+  return props.giscusId === nextProps.giscusId
+})
+
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
   const {
@@ -33,7 +37,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
   //   gitalk.render("gitalk-container")
   // }, [location.pathname])
-
   return (
     <Layout isFocus={false} title={siteTitle}>
       <SEO title={post.frontmatter.title} description={post.frontmatter.description}></SEO>
@@ -147,7 +150,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </section> */}
 
           {/* <section className="post-comment" id="gitalk-container"></section> */}
-          <Giscus
+          <GiscusMemo
             repo="w1zd/w1zd.github.io"
             repoId="MDEwOlJlcG9zaXRvcnkyODg3MTA5NjA="
             category="Announcements"
