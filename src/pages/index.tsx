@@ -42,7 +42,7 @@ export default BlogIndex
 
 export const pageQuery = graphql`
 query ProfileQuery {
-  avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+  avatar: file(absolutePath: { regex: "/profile-pic.webp/" }) {
     childImageSharp {
       fixed(width: 500, height: 500) {
         ...GatsbyImageSharpFixed
