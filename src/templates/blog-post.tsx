@@ -12,7 +12,8 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import Giscus from "react-giscus"
 
 const GiscusMemo = React.memo(Giscus, (props, nextProps) => {
-  return props.giscusId === nextProps.giscusId
+  debugger
+  return props.repoId === nextProps.repoId
 })
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
