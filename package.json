@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "w1zd-lair",
   "private": true,
   "description": "A starter for a blog powered by Gatsby and Markdown",
   "version": "0.1.0",
@@ -17,6 +17,7 @@
     "gatsby-cli": "^4.13.0",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-baidu-analytics": "^2.2.0",
+    "gatsby-plugin-feed": "^4.13.0",
     "gatsby-plugin-image": "^2.13.0",
     "gatsby-plugin-manifest": "^4.13.0",
     "gatsby-plugin-mdx": "^3.13.0",
