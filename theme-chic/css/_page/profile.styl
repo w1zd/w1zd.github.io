@@ -5,32 +5,38 @@
   text-align center
   .avatar
     padding 10px
-    img
-      width 128px
-      height auto
-      display inline-block
-      -webkit-border-radius 100%
-      border-radius 100%
-      -webkit-box-shadow 0 0 0 0.3618em rgba(0, 0, 0, 0.05)
-      box-shadow 0 0 0 0.3618em rgba(0, 0, 0, 0.05)
-      margin 0 auto
+    .avatar-container
       -webkit-transition all ease 0.4s
       -moz-transition all ease 0.4s
       -o-transition all ease 0.4s
       transition all ease 0.4s
-      cursor pointer
+      margin 0 auto
+      -webkit-border-radius 100%
+      border-radius 100%
+      box-shadow 0 0 5px 0.3618em rgba(0, 0, 0, 0.05)
+      -webkit-box-shadow 0 0 5px 0.3618em rgba(0, 0, 0, 0.05)
       &:hover
-        position relative
-        -webkit-transform translateY(-0.75em)
-        -moz-transform translateY(-0.75em)
-        -ms-transform translateY(-0.75em)
-        -o-transform translateY(-0.75em)
-        transform translateY(-0.75em)
+          position relative
+          -webkit-transform translateY(-0.75em)
+          -moz-transform translateY(-0.75em)
+          -ms-transform translateY(-0.75em)
+          -o-transform translateY(-0.75em)
+          transform translateY(-0.75em)
+          -webkit-box-shadow 0 0 5px 0.3618em rgba(0, 0, 0, 0.05)
+          box-shadow 0 0 5px 0.3618em rgba(0, 0, 0, 0.05)
+          cursor pointer
+      img
+        width 128px
+        height auto
+        display inline-block
+        margin 0 auto
         cursor pointer
+        
 
 .nickname
   font-size 2em
   font-weight normal
+  margin-top 20px
 
 .links
   a

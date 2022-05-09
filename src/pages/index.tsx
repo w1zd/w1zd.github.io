@@ -1,5 +1,6 @@
 import * as React from "react"
 import { useStaticQuery, Link, graphql } from "gatsby"
+import { GatsbyImage } from "gatsby-plugin-image"
 import "../../theme-chic/css/_page/profile.styl"
 
 import Layout from "../components/layout"
@@ -14,9 +15,11 @@ const BlogIndex = ({data}) => {
         <div className="intro">
           <div className="avatar">
             <a href="/posts">
-              <img
-                src={data.avatar.childImageSharp.fixed.src}
+              <GatsbyImage
+                image={data.avatar.childImageSharp.gatsbyImageData}
+                loading='lazy'
                 alt={author.name}
+                className='avatar-container'
               />
             </a>
           </div>
@@ -44,9 +47,7 @@ export const pageQuery = graphql`
 query ProfileQuery {
   avatar: file(absolutePath: { regex: "/profile-pic.webp/" }) {
     childImageSharp {
-      fixed(width: 500, height: 500) {
-        ...GatsbyImageSharpFixed
-      }
+        gatsbyImageData(layout: FIXED, width: 128, height: 128) 
     }
   }
   site {

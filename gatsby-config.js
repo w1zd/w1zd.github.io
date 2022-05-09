@@ -1,4 +1,4 @@
-const remarkMath = require(`remark-math`)
+const remarkMath = import(`remark-math`)
 module.exports = {
   siteMetadata: {
     title: `Wizard's Lair`,
@@ -63,8 +63,9 @@ module.exports = {
         ],
       },
     },
-    `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
