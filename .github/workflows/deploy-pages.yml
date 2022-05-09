@@ -27,4 +27,4 @@ jobs:
           TARGET: "/home/nginx/blog"
       - name: Trigger Profile Update
         run: |-
-          curl -i -u gemryan:${{secrets.ACCESS_TOKEN}} -X POST -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/gemryan/gemryan/actions/workflows/update-pofile.yml/dispatches -d '{"ref":"main"}'
+          curl -i -u gemryan:${{secrets.ACCESS_TOKEN}} -X POST -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/w1zd/w1zd/actions/workflows/update-pofile.yml/dispatches -d '{"ref":"main"}'
