@@ -3,7 +3,7 @@ module.exports = {
   siteMetadata: {
     title: `Wizard's Lair`,
     author: {
-      name: `W1zd`,
+      name: `w1zd`,
       summary: `🤪 A Genius! 🤪 `,
     },
     postCopyright: true,
@@ -69,7 +69,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Wizard's Lair`,
-        short_name: `W1zd`,
+        short_name: `w1zd`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
