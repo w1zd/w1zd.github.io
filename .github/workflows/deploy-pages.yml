@@ -16,15 +16,15 @@ jobs:
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }}
           deploy-branch: page
-      - name: Deploy to Server        
-        uses: easingthemes/ssh-deploy@v2.1.1        
-        env:   
-          SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_KEY }}          
-          ARGS: "-rltgoDzvO --delete"          
-          REMOTE_USER: ${{ secrets.DEPLOY_USER }} 
-          REMOTE_HOST: ${{ secrets.DEPLOY_HOST }}          
-          SOURCE: "public/"          
-          TARGET: "/home/nginx/blog"
+      # - name: Deploy to Server        
+      #   uses: easingthemes/ssh-deploy@v2.1.1        
+      #   env:   
+      #     SSH_PRIVATE_KEY: ${{ secrets.DEPLOY_SSH_KEY }}          
+      #     ARGS: "-rltgoDzvO --delete"          
+      #     REMOTE_USER: ${{ secrets.DEPLOY_USER }} 
+      #     REMOTE_HOST: ${{ secrets.DEPLOY_HOST }}          
+      #     SOURCE: "public/"          
+      #     TARGET: "/home/nginx/blog"
       - name: Trigger Profile Update
         run: |-
           curl -i -u gemryan:${{secrets.ACCESS_TOKEN}} -X POST -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/w1zd/w1zd/actions/workflows/update-pofile.yml/dispatches -d '{"ref":"main"}'
