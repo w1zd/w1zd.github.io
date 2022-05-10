@@ -10,6 +10,7 @@ import "katex/dist/katex.min.css"
 import md5 from "blueimp-md5"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Giscus from "react-giscus"
+import mediumZoom from 'medium-zoom'
 
 const GiscusMemo = React.memo(Giscus, (props, nextProps) => {
   debugger
@@ -38,6 +39,9 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
   //   gitalk.render("gitalk-container")
   // }, [location.pathname])
+  useEffect(() => {
+    mediumZoom('.post-content img')
+  }, [])
   return (
     <Layout isFocus={false} title={siteTitle}>
       <SEO title={post.frontmatter.title} description={post.frontmatter.description}></SEO>
