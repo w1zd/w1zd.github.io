@@ -4,9 +4,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 const Tags = ({ data }) => {
   return (
-    <Layout>
-      <SEO title="Tags" description="All Tags"></SEO>
-
+    <Layout title="Tags" description="All Tags">
       <div className="container">
         <div className="post-wrap tags">
             <h2 className="post-title">-&nbsp;Tag Cloud&nbsp;-</h2>

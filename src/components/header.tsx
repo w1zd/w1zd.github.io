@@ -16,7 +16,7 @@ const Header = () => {
       }
     }
   `)
-  let w = {localStorage: {getItem(){},setItem(){}}};
+  let w = {localStorage: {getItem(key: string): string{return ''},setItem(key: string, value: string){}}};
   if(typeof window != "undefined"){
     w = window
   }
