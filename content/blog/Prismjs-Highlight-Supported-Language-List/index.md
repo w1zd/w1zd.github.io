@@ -3,8 +3,8 @@ title: Prismjs 代码高亮支持语言列表
 date: "2021-04-14T16:38:29.284Z"
 tags:
 - gatsby
-categories: 
-- javascript
+categories:
+- 技术文章
 description: 本站使用的是 Gatsby.js，其中使用了 Prismjs 的代码高亮，这里对支持的语言做一个简单的记录，以备查询。 
 ---
 

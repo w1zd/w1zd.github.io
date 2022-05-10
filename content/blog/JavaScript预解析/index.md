@@ -4,7 +4,7 @@ date: "2016-09-19T17:31:28.284Z"
 tags: 
 - JavaScript
 categories:
-- JavaScript
+- 技术文章
 description: 本文主要记录JavaScript中的预解析机制，以及在预解析机制中，需要注意的一些问题。
 toc: true
 ---

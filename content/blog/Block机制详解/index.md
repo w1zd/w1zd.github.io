@@ -5,7 +5,7 @@ tags:
 - Obj-C
 - iOS
 categories:
-- Obj-C
+- 技术文章
 description: 我们知道在Block使用中，Block内部能够读取外部局部变量的值。但我们需要改变这个变量的值时，我们需要给它附加上`__block`修饰符。
 ---
 ## Block机制详解

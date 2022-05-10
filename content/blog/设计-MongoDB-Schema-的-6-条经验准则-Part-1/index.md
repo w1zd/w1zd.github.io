@@ -4,7 +4,7 @@ date: "2020-07-17T11:14:08.284Z"
 tags:
 - mongodb
 categories:
-- 译文
+- 技术文章
 description: MongoDB 是一款非常不错的 NoSQL 数据库，但是大部分用惯的了 SQL 的程序员在使用 MongoDB 的时候，都是带着 SQL 的思维方式在使用 MongoDB，这样使用其实并不能发挥 MongoDB 的自身优势，而且在网络上关于如何使用 MongoDB 的文章大部分都只是讲 CRUD 操作，关于如何进行 Schema 设计的文章少之又少。本文将解决你在设计 MongoDB Schema 时的疑惑。
 ---
 ![](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-41-46-d2582e9ef5586bc819fec7cc1df972bf-mongodb-91c09c.jpeg)

@@ -5,7 +5,7 @@ tags:
 - NetWork
 - OpenWRT
 categories:
-- NetWork
+- 技术文章
 description: 之前由于各种问题，导致家里的网络用着各种不得劲，所以周末把家里的网络环境简单的折腾了一下，这里写篇博客做个简单的记录
 toc: false
 ---

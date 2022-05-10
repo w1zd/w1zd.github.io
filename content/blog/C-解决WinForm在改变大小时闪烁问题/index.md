@@ -5,8 +5,8 @@ tags:
 - CSharp
 - .NET
 - WinForm
-categories: 
-- .NET
+categories:
+- 技术文章
 description: 最近写WinForm程序的时候遇见一个问题，就是在拖动窗体改变大小的时候，窗体闪烁会非常严重。
 toc: true
 ---

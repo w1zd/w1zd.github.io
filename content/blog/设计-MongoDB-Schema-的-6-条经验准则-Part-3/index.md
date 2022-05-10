@@ -4,7 +4,7 @@ date: "2020-07-22T17:45:10.284Z"
 tags:
 - mongodb
 categories:
-- 译文
+- 技术文章
 description: 设计 MongoDB Schema 的 6 条经验准则第三部分。
 ---
 ![](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-39-37-bcdc910ae36e1e705a6de04aade00f6c-mongodb-b61c9d.jpg)

@@ -5,7 +5,7 @@ tags:
 - CentOS
 - Linux
 categories:
-- CentOS
+- 技术文章
 description: 在使用ssh连接CentOS的时候，发现终端中出现中文乱码的问题，记录一下解决方案
 toc: true
 ---

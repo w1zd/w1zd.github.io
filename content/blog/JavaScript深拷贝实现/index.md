@@ -5,7 +5,7 @@ tags:
 - JavaScript
 - 前端
 categories:
-- JavaScript
+- 技术文章
 description: 深拷贝和浅拷贝在很多语言中都会涉及到，在JavaScript当中，没有现成的可以直接实现深拷贝的方法，虽然我们可以使用jQuery当中提供的`extend`方法，但是这个方法有一定的局限性，所以本文主要研究JavaScript当中深拷贝的实现。
 toc: true
 ---

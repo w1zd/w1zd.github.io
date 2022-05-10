@@ -6,7 +6,7 @@ tags:
     - node
     - JavaScript
 categories:
-    - JavaScript
+- 技术文章
 description: 在使用node.js编写命令行工具的时候，想要写一个命令行的工具条，然后需要对当前行进行清除操作，在反复查阅资料后发现，在终端内进行清屏等操作可以利用向终端输出特殊字符来实现。
 toc: true
 ---

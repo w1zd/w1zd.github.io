@@ -4,8 +4,8 @@ date: "2014-04-25T21:16:31.284Z"
 tags: 
 - CSharp
 - .NET
-categories: 
-- .NET
+categories:
+- 技术文章
 ---
 
 有的时候我们会遇到这样的问题：  
