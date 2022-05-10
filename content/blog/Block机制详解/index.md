@@ -20,74 +20,76 @@ description: 我们知道在Block使用中，Block内部能够读取外部局部
 
 ```objc
 int main(int argc, const char * argv[]) {
-        @autoreleasepool {
-            int val = 10;
-            void (^block)(void) = ^{
-                NSLog(@"%d", val);
-            };
-            block();
-        }
-    return 0;
+    @autoreleasepool {
+      int val = 10;
+      void (^block)(void) = ^{
+        NSLog(@"%d", val);
+      };
+      block();
+    }
+  return 0;
 }
 ```
 
 可得到如下代码：
 
 ```objc
-struct __Block_byref_val_0 {
-     void *__isa;
-     __Block_byref_val_0 *__forwarding;
-     int __flags;
-     int __size;
-     NSInteger val;
+struct __Block_byref_val_0 {
+   void *__isa;
+   __Block_byref_val_0 *__forwarding;
+   int __flags;
+   int __size;
+   NSInteger val;
 };
-struct __main_block_impl_0 {
-      struct __block_impl impl;
-      struct __main_block_desc_0* Desc;
-      __Block_byref_val_0 *val; // by ref
-      __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, __Block_byref_val_0 *_val, int flags=0) : val(_val->__forwarding) {
-        impl.isa = &_NSConcreteStackBlock;
-        impl.Flags = flags;
-        impl.FuncPtr = fp;
-        Desc = desc;
-      }
+struct __main_block_impl_0 {
+    struct __block_impl impl;
+    struct __main_block_desc_0* Desc;
+    __Block_byref_val_0 *val; // by ref
+    __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, __Block_byref_val_0 *_val, int flags=0) : val(_val->__forwarding) {
+    impl.isa = &_NSConcreteStackBlock;
+    impl.Flags = flags;
+    impl.FuncPtr = fp;
+    Desc = desc;
+    }
 };
-static void __main_block_func_0 (struct __main_block_impl_0 *__cself) {
-  __Block_byref_val_0 *val = __cself->val; // bound by ref
-  (val->__forwarding->val) = 1;
+static void __main_block_func_0 (struct __main_block_impl_0 *__cself) {
+  __Block_byref_val_0 *val = __cself->val; // bound by ref
+  (val->__forwarding->val) = 1;
 }
-static void __main_block_copy_0 (struct __main_block_impl_0*dst, struct __main_block_impl_0*src) {
-    _Block_object_assign((void*)&dst->val, (void*)src->val, 8/*BLOCK_FIELD_IS_BYREF*/);
+static void __main_block_copy_0 (struct __main_block_impl_0*dst, struct __main_block_impl_0*src) {
+  _Block_object_assign((void*)&dst->val, (void*)src->val, 8/*BLOCK_FIELD_IS_BYREF*/);
 }
-static void __main_block_dispose_0 (struct __main_block_impl_0*src)     {
-    _Block_object_dispose((void*)src->val, 8/*BLOCK_FIELD_IS_BYREF*/);
+static void __main_block_dispose_0 (struct __main_block_impl_0*src)   {
+  _Block_object_dispose((void*)src->val, 8/*BLOCK_FIELD_IS_BYREF*/);
 }
-static struct __main_block_desc_0 {
-  size_t reserved;
-  size_t Block_size;
-  void (*copy)(struct __main_block_impl_0*, struct __main_block_impl_0*);
-  void (*dispose)(struct __main_block_impl_0*);
-} __main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0), __main_block_copy_0, __main_block_dispose_0};
-int main(int argc, const char * argv[]) {
-    {   __AtAutoreleasePool __autoreleasepool; 
-        __attribute__((__blocks__(byref))) __Block_byref_val_0 val = {(void*)0,(__Block_byref_val_0 *)&val, 0, sizeof(__Block_byref_val_0), 0};
-        void (*block)(void) = (void (*)())&__main_block_impl_0((void *)__main_block_func_0, &__main_block_desc_0_DATA, (__Block_byref_val_0 *)&val, 570425344);
-        ((void (*)(__block_impl *))((__block_impl *)block)->FuncPtr)((__block_impl *)block);
-        NSLog((NSString *)&__NSConstantStringImpl__val_folders_gm_0jk35cwn1d3326x0061qym280000gn_T_main_d7fc4b_mi_0, (val.__forwarding->val));
-    }
-    return 0;
+static struct __main_block_desc_0 {
+  size_t reserved;
+  size_t Block_size;
+  void (*copy)(struct __main_block_impl_0*, struct __main_block_impl_0*);
+  void (*dispose)(struct __main_block_impl_0*);
+} 
+__main_block_desc_0_DATA = { 0, sizeof(struct __main_block_impl_0), __main_block_copy_0, __main_block_dispose_0};
+int main(int argc, const char * argv[]) {
+  {   
+    __AtAutoreleasePool __autoreleasepool; 
+    __attribute__((__blocks__(byref))) __Block_byref_val_0 val = {(void*)0,(__Block_byref_val_0 *)&val, 0, sizeof(__Block_byref_val_0), 0};
+    void (*block)(void) = (void (*)())&__main_block_impl_0((void *)__main_block_func_0, &__main_block_desc_0_DATA, (__Block_byref_val_0 *)&val, 570425344);
+    ((void (*)(__block_impl *))((__block_impl *)block)->FuncPtr)((__block_impl *)block);
+    NSLog((NSString *)&__NSConstantStringImpl__val_folders_gm_0jk35cwn1d3326x0061qym280000gn_T_main_d7fc4b_mi_0, (val.__forwarding->val));
+  }
+  return 0;
 }
 ```
 
 我们发现由`__block`修饰的变量变成了一个`__Block_byref_val_0`结构体类型的实例。该结构体的声明如下：
 
 ```objc
-struct __Block_byref_val_0 {
-     void *__isa;
-     __Block_byref_val_0 *__forwarding;
-     int __flags;
-     int __size;
-     NSInteger val;
+struct __Block_byref_val_0 {
+   void *__isa;
+   __Block_byref_val_0 *__forwarding;
+   int __flags;
+   int __size;
+   NSInteger val;
 };
 ```
 
@@ -96,11 +98,11 @@ struct __Block_byref_val_0 {
 我们再看一下赋值和执行部分代码被转化后的结果：
 
 ```objc
-static void __main_block_func_0 (struct __main_block_impl_0 *__cself) {
-  __Block_byref_val_0 *val = __cself->val; // bound by ref
-  (val->__forwarding->val) = 1;
+static void __main_block_func_0 (struct __main_block_impl_0 *__cself) {
+  __Block_byref_val_0 *val = __cself->val; // bound by ref
+  (val->__forwarding->val) = 1;
 }
-((void (*)(__block_impl *))((__block_impl *)block)->FuncPtr)((__block_impl *)block);
+((void (*)(__block_impl *))((__block_impl *)block)->FuncPtr)((__block_impl *)block);
 ```
 
 我们从`__cself`找到`__Block_byref_val_0`结构体实例，然后通过该实例的`__forwarding`访问成员变量`val`。成员变量`val`是该实例自身持有的变量，指向的是原来的局部变量。
@@ -124,19 +126,19 @@ Block还有另外两个与之相似的类:
 当我们把Block作为全局变量使用时，对应生成的Block将被设为`_NSConcreteGlobalBlock`，如:
 
 ```objc
-void (^block)(void) = ^{NSLog(@"This is a Global Block");};
-int main(int argc, const char * argv[]) {
-    @autoreleasepool {
-        block();
-    }
-    return 0;
+void (^block)(void) = ^{NSLog(@"This is a Global Block");};
+int main(int argc, const char * argv[]) {
+  @autoreleasepool {
+    block();
+  }
+  return 0;
 }
 ```
 
 该代码转换后的代码中，Block结构体的成员变量isa的初始化如下:
 
 ```objc
-impl.isa = &_NSConcreteGlobalBlock;
+impl.isa = &_NSConcreteGlobalBlock;
 ```
 
 **那么_NSConcreteMallocBlock在什么时候被使用呢？**
@@ -167,10 +169,10 @@ val.__forwarding->val
 
 ```objc
 static void __main_block_copy_0 (struct __main_block_impl_0*dst, struct __main_block_impl_0*src) {
-    _Block_object_assign((void*)&dst->val, (void*)src->val, 8/*BLOCK_FIELD_IS_BYREF*/);
+  _Block_object_assign((void*)&dst->val, (void*)src->val, 8/*BLOCK_FIELD_IS_BYREF*/);
 }
-static void __main_block_dispose_0 (struct __main_block_impl_0*src)     {
-    _Block_object_dispose((void*)src->val, 8/*BLOCK_FIELD_IS_BYREF*/);
+static void __main_block_dispose_0 (struct __main_block_impl_0*src)   {
+  _Block_object_dispose((void*)src->val, 8/*BLOCK_FIELD_IS_BYREF*/);
 }
 ```
 
@@ -180,7 +182,7 @@ static void __main_block_dispose_0 (struct __main_block_impl_0*src)     {
 
 ```objc
 void(^block)(void) = ^{
-    tmp = nil;
+  tmp = nil;
 };
 block();
 ```
