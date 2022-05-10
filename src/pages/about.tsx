@@ -7,8 +7,8 @@ const Tags = ({ data }) => {
     <Layout title='About Me'>
       <div className="container">
         <div className="post-wrap categories">
-          <h1>🚧 🚧 🚧 Building ...  </h1>
-          <h2>Coming Soon</h2>
+          <h1>🚧 🚧 🚧</h1>
+          <h2>Coming Soon ...  </h2>
         </div>
       </div>
     </Layout>
