@@ -111,12 +111,12 @@ CONFIG_PACKAGE_trojan=y
 
 将修改后的代码，push 到 github，会自动出发 github action 的编译工作。
 
-![github action](./01.png)
+![](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-43-00-8841460d4fa6eb07ece4ce1bf737b46f-01-4473b6.png)
 
 ### 下载固件
 
 等待编译完成之后就可以在 Github Action 里面下载编译好的固件了，这里要提醒一下，不要用下载工具下载，因为下载链接有权限校验，下载工具下载不下来。
 
-![github action](./02.png)
+![](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-43-24-cf8198ac0dc928863a8c2a8b6bf824fd-02-9e7d75.png)
 
 <font color="red">到这里我们就已经获取到要用的固件了，下一篇我会告诉大家如何进行固件安装，敬请期待</font>

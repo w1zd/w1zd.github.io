@@ -9,7 +9,7 @@ categories:
 toc: true
 ---
 
-![jwt](./jwt.jpg)
+![jwt](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-55-34-77f83fc49b81e4f8377846d66fa014ad-jwt-a0a11c.jpg)
 
 ## HTTP 协议无状态的说明（马什么梅？什么冬梅？）
 
@@ -33,7 +33,7 @@ HTTP 协议属于无状态协议，在客户端使用 HTTP 协议与服务端通
 
 用户正常的登录操作将会如下图所示：
 
-![cookie-session](./cookie-session.jpg)
+![cookie-session](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-55-56-9142b0e1e226be2566e792ecedc6291f-cookie-session-754c2e.jpg)
 <div style='display: none'>
 ```mermaid
 sequenceDiagram
@@ -157,11 +157,11 @@ HMACSHA256(
 
 在获取到签名字符串之后，我们将其和之前的两部分放在一起，组成最终的 JWT。
 
-![encoded-jwt3.png](./encoded-jwt3.png)
+![encoded-jwt3.png](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-56-08-7eff2d69391c0683d058e0f5dc9049bb-encoded-jwt3-5de3fb.png)
 
 
 ### JWT 请求流程
-![jwt-sequence](./jwt-sequence.png)
+![jwt-sequence](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-55-41-6f08165be2cc0e587243f29b5202a0fb-jwt-sequence-8a9509.png)
 
 
 ### JWT 优势

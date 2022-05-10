@@ -10,7 +10,7 @@ description: Cron 是类 Unix 系统中用于执行定时任务的工具，我�
 toc: false
 ---
 
-![cron](cover-cron.png)
+![](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-45-00-28024130c0135066048c989955be90e4-cover-cron-fb63c9.png)
 
 ## Cron 简介
 

@@ -40,7 +40,7 @@ MySQL安装完毕之后会自动设置一个默认密码，我们需要找到默
 ```bash
 grep 'temporary password' /var/log/mysqld.log
 ```
-![获取临时密码](./temppass.png)
+![获取临时密码](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/13-44-43-da1c6d37edca4c602896f45b0d640436-temppass-071067.png)
 
 ## 第五步：连接到MySQL数据库，修改密码
 
@@ -55,7 +55,7 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY 'root123';
 ```
 
 如果密码过于简单，比如我上面的密码，就很简单，会提示如下的错误：
-![密码安全策略错误提示](./passplicy.png)
+![密码安全策略错误提示](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/13-44-54-de4733f62ba63683ed5f5e81e90b386f-passplicy-4ae126.png)
 
 这里网上有很多教程，让设置如下两个变量（**你先往下看，别着急去执行这两条命令**）：
 ```bash
@@ -75,7 +75,7 @@ set global validate_password_length=1;
 ```
 
 上面这步可能会出错(出错信息如下)：
-![设置变量错误提示](./errorinfo.png)
+![设置变量错误提示](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/13-45-02-1b6535acccae5d289c55f8d5113d1479-errorinfo-5ec88c.png)
 
 出错原因，是因为少密码校验的插件，给他装上就好了
 ```
