@@ -21,23 +21,23 @@ const Header = () => {
     w = window
   }
   const [isMenuActive, setisMenuActive] = useState(false)
-  const currentTheme = w.localStorage && w.localStorage.getItem('theme');
-  const [isDark, setisDark] = useState(currentTheme == 'dark' ? true : false);
-  const [theme, setTheme] = useState(isDark ? 'Dark': "Light");
-  useEffect(() => {
-    w.localStorage.setItem("theme", isDark ? 'dark' : 'light');
-    if(isDark){
-      setTheme('Dark')
-      document.getElementsByTagName('body')[0].classList.add('dark-theme');
-    }else{
-      setTheme('Light')
-      document.getElementsByTagName('body')[0].classList.remove('dark-theme');
-    }
-  }, [isDark])
+  // const currentTheme = w.localStorage && w.localStorage.getItem('theme');
+  // const [isDark, setisDark] = useState(currentTheme == 'dark' ? true : false);
+  // const [theme, setTheme] = useState(isDark ? 'Dark': "Light");
+  // useEffect(() => {
+  //   w.localStorage.setItem("theme", isDark ? 'dark' : 'light');
+  //   if(isDark){
+  //     setTheme('Dark')
+  //     document.getElementsByTagName('body')[0].classList.add('dark-theme');
+  //   }else{
+  //     setTheme('Light')
+  //     document.getElementsByTagName('body')[0].classList.remove('dark-theme');
+  //   }
+  // }, [isDark])
   const { nav, siteUrl, title } = data.site.siteMetadata
-  const toggleTheme = () => {
-    setisDark(!isDark);
-  }
+  // const toggleTheme = () => {
+  //   setisDark(!isDark);
+  // }
 
   return (
     <header>
@@ -68,7 +68,7 @@ const Header = () => {
           <div className="navbar-header">
             <div>
               <a href="/">{title}</a>
-            <a id="mobile-toggle-theme" onClick={toggleTheme}>·&nbsp;{theme}</a>
+            {/* <a id="mobile-toggle-theme" onClick={toggleTheme}>·&nbsp;{theme}</a> */}
             </div>
             <div className={`menu-toggle ${isMenuActive? "active": ""}`} onClick={() => {setisMenuActive(!isMenuActive)}}>&#9776; Menu</div>
           </div>
