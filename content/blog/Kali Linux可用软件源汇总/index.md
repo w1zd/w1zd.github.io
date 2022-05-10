@@ -4,7 +4,7 @@ date: "2019-02-24T01:11:47.284Z"
 tags:
 - Vue
 categories:
-- Kali
+- 技术文章
 description: 本文记录Kali Linux可用软件源汇总
 ---
 

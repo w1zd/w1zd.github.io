@@ -6,7 +6,7 @@ tags:
 - CSharp
 - ASP.NET
 categories:
-- ASP.NET MVC
+- 技术文章
 description: 如果在当前页和母版页之间相互传递数据呢？本篇主要讲解如何在母版页内给其他页面传递数据！	
 toc: true
 ---

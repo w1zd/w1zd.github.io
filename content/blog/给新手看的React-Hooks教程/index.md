@@ -4,7 +4,7 @@ date: "2019-11-27T15:24:47.284Z"
 tags:
 - React Hooks
 categories:
-- React
+- 技术文章
 description: Hooks 到底是个啥玩意儿？？？
 ---
 ![](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-42-11-0f76f4f01901829907f9af90ae1aa770-reacthooks-586d4b.png)

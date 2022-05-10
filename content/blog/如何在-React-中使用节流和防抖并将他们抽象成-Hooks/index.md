@@ -3,9 +3,9 @@ title: 如何在 React 中使用节流和防抖并将他们抽象成 Hooks
 date: "2019-12-01T01:24:47.284Z"
 tags:
 - React Hooks
-categories:
-- React
 - 译文
+categories:
+- 技术文章
 description: “防抖”和“节流”是我们前端开发中很常用的两个功能，那么如何在 React 中使用节流和防抖并将他们抽象成 React Hooks 呢？这篇文章将为大家揭晓。
 ---
 

@@ -6,7 +6,7 @@ tags:
 - JavaScript
 - Ajax
 categories:
-- JavaScript
+- 技术文章
 description: 本文主要讲述如何是用原生JavaScript实现ajax，jsonp以及DOM加载完成事件！		
 ---
 ## JS原生Ajax

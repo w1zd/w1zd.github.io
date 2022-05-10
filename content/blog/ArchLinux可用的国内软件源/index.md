@@ -3,8 +3,8 @@ title: ArchLinux Arm 可用的国内软件源
 date: "2020-03-23T23:46:17.284Z"
 tags:
 - Arch
-categories: 
-- Arch
+categories:
+- 技术文章
 description:
 ---
 

@@ -4,7 +4,7 @@ date: "2015-01-08T00:29:49.284Z"
 tags:
 - JavaScript
 categories:
-- JavaScript
+- 技术文章
 description: 在开发中经常会遇到需要进行URLEnCode和URLDeCode的状况，在类似于PHP、.NET、Python的一些web开发语言中对URL En/DeCode都有很好的实现。JavaScript中也可以通过 encodeURI, encodeURIComponent 实现UTF-8编码的 URL En/DeCode。
 ---
 在开发中经常会遇到需要进行URLEnCode和URLDeCode的状况，在类似于PHP、.NET、Python的一些web开发语言中对URL En/DeCode都有很好的实现。

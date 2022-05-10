@@ -8,11 +8,10 @@ import SEO from "../components/seo"
 const Tag = ({ data }) => {
   let tag = "";
   if (typeof window !== `undefined`) {
-    tag = window.location.pathname.replace("/tag/", "");
+    tag = decodeURIComponent(window.location.pathname.replace("/tag/", ""));
   }
   return (
-    <Layout>
-      <SEO title={tag}></SEO>
+    <Layout title={tag} description={tag}>
       <div className="container">
         <div className="post-wrap categories">
           <h2 className="post-title">

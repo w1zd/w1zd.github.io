@@ -5,7 +5,7 @@ tags:
   - DevOps
   - Github
 categories:
-  - DevOps
+- 技术文章
 description: 借助 GitHub Actions，可以直接从 GitHub 构建、测试和部署代码，轻松实现所有软件工作流程的自动化。
 ---
 ![github-actions](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/13-43-12-ff8131d6e5212fdddaddb1f20be4e03e-github-actions-fd25c1.png)

@@ -8,7 +8,7 @@ import SEO from "../components/seo"
 const Category = ({ data }) => {
   let cate = ""
   if (typeof window !== `undefined`) {
-    cate = window.location.pathname.replace("/category/", "");
+    cate = decodeURIComponent(window.location.pathname.replace("/category/", ""));
   }
   return (
     <Layout title={cate} description={cate}>

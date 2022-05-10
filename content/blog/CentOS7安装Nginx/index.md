@@ -5,7 +5,7 @@ tags:
 - Linux
 - CentOS
 categories:
-- CentOS
+- 技术文章
 description: CentOS7安装Nginx
 toc: true
 ---

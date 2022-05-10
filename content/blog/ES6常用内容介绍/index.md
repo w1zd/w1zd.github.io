@@ -5,7 +5,7 @@ tags:
 - JavaScript
 - ES6
 categories:
-- JavaScript
+- 技术文章
 description: ES6的普及度越来越高，本文主要介绍ES6中最常见的内容及其使用方式。
 ---
 

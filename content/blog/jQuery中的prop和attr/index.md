@@ -5,7 +5,7 @@ tags:
 - 前端
 - jQuery
 categories:
-- jQuery
+- 技术文章
 ---
 在JQuery中，对CheckBox的操作分两个阶段，一个是JQuery1.6之前的版本，一个是1.6之后的版本
 

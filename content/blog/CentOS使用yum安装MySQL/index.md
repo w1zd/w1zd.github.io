@@ -6,7 +6,7 @@ tags:
 - Linux
 - CentOS
 categories:
-- CentOS
+- 技术文章
 description: "CentOS中默认没有MySQL的yum源，直接使用yum install mysql-community-server会报错，本文介绍如何使用yum安装MySQL"
 toc: true
 ---

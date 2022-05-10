@@ -5,8 +5,7 @@ tags:
 - Linux
 - 路由器
 categories:
-- Linux
-- 路由器
+- 技术文章
 description: 最近这几天连着好几个晚上一直在折腾OpenWrt，好累，这里把方法，和遇到的坑，都记录一下。
 toc: true
 ---

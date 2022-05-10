@@ -5,8 +5,8 @@ tags:
 - Trojan
 - Linux
 - Nginx
-categories: 
-- VPN
+categories:
+- 技术文章
 description: Trojan 是目前比较便捷且可靠的扶墙工具， 但是其本身工作方式会导致在使用 Trojan 的同时， 多 HTTPS 域名部署会是一个小问题， 本文带你解决这个问题。
 ---
 

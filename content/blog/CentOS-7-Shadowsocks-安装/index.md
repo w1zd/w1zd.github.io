@@ -6,7 +6,7 @@ tags:
 - CentOS
 - ShadowSocks
 categories:
-- CentOS
+- 技术文章
 description: 之前使用OpenVPN失败，之后又尝试了OpenVPN+Obfs，还是失败，这次我们来试试ShadowSocks!!!
 toc: true
 ---

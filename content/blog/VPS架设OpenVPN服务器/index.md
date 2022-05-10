@@ -5,7 +5,7 @@ tags:
 - Linux 
 - OpenVPN
 categories:
-- VPN
+- 技术文章
 description: 本文主要讲述如何在Linux中架设OpenVPN服务器
 toc: true
 ---

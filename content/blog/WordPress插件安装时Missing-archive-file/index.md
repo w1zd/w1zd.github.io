@@ -4,7 +4,7 @@ date: "2014-03-21T19:59:55.284Z"
 tags:
 - WordPress
 categories:
-- WordPress
+- 技术文章
 ---
 
 打开wordpress根目录下的wp-config.php文件

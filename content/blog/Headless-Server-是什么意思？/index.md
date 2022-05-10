@@ -4,7 +4,7 @@ date: "2020-11-10T13:10:23.284Z"
 tags: 
 - Linux
 categories:
-- Linux
+- 技术文章
 description: 无头服务器（Headless Server），是指没有显示器、键盘、鼠标等其他外设的电脑。
 toc: true
 ---

@@ -6,7 +6,7 @@ tags:
 - Linux
 - Gogs
 categories:
-- CentOS
+- 技术文章
 description: "简单的介绍一款极易搭建的自助 Git 服务: Gogs的安装和使用"
 toc: true
 ---

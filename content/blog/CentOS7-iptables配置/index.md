@@ -3,8 +3,8 @@ title: CentOS7 iptables配置
 date: "2016-09-18T17:49:39.284Z"
 tags: 
 - CentOS
-categories: 
-- CentOS
+categories:
+- 技术文章
 description: CentOS7使用的防火墙默认为firewalle,本篇文章主要讲述如何在CentOS7中安装和使用iptables防火墙。
 ---
 

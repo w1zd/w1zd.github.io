@@ -5,7 +5,7 @@ tags:
 - Linux
 - CentOS
 categories:
-- CentOS
+- 技术文章
 description: 今天尝试着在CentOS7下安装Node.js，本想省事儿，直接使用了yum安装，但是后来发现使用yum安装的Node.js版本太低了，所以经历了一番波折。记录一下。
 toc: true
 ---
