@@ -7,12 +7,10 @@ import Paginator from '../components/paginator'
 import PostsList from '../components/postslist'
 
 const Posts = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title
   const posts = data.allMdx.nodes
   
   return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
+    <Layout location={location} title="All posts">
       <PostsList posts={posts}></PostsList>
       <Paginator {...data.allMdx.pageInfo} url="/posts"></Paginator>
     </Layout>

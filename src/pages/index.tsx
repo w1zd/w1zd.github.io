@@ -4,13 +4,14 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import "../../theme-chic/css/_page/profile.styl"
 
 import Layout from "../components/layout"
+import SEO from '../components/seo'
 
 const BlogIndex = ({data}) => {
   // const  = useStaticQuery()
 
   const { author, social,description } = data.site.siteMetadata
   return (
-    <Layout title={data.site.siteMetadata.title}>
+    <Layout>
       <div className="container">
         <div className="intro">
           <div className="avatar">

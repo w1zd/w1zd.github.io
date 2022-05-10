@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 
 const Tags = ({ data }) => {
   return (
-    <Layout>
+    <Layout title='About Me'>
       <div className="container">
         <div className="post-wrap categories">
           <h1>🚧 🚧 🚧 Building ...  </h1>

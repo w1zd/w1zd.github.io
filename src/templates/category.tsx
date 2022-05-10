@@ -11,8 +11,7 @@ const Category = ({ data }) => {
     cate = window.location.pathname.replace("/category/", "");
   }
   return (
-    <Layout>
-      <SEO title={cate} description={cate}></SEO>
+    <Layout title={cate} description={cate}>
       <div className="container">
         <div className="post-wrap categories">
           <h2 className="post-title">
