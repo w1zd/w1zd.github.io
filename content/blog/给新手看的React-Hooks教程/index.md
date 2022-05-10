@@ -7,7 +7,7 @@ categories:
 - React
 description: Hooks 到底是个啥玩意儿？？？
 ---
-![React Hooks](./reacthooks.png)
+![](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-42-11-0f76f4f01901829907f9af90ae1aa770-reacthooks-586d4b.png)
 "Hooks 到底是个啥玩意儿？？？"
 
 你是不是有这样的疑惑？在你自认为已经了解了差不多 React 所有的内容的时候，Hooks 就这么出现了。

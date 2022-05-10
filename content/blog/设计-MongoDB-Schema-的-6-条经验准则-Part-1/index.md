@@ -7,7 +7,7 @@ categories:
 - 译文
 description: MongoDB 是一款非常不错的 NoSQL 数据库，但是大部分用惯的了 SQL 的程序员在使用 MongoDB 的时候，都是带着 SQL 的思维方式在使用 MongoDB，这样使用其实并不能发挥 MongoDB 的自身优势，而且在网络上关于如何使用 MongoDB 的文章大部分都只是讲 CRUD 操作，关于如何进行 Schema 设计的文章少之又少。本文将解决你在设计 MongoDB Schema 时的疑惑。
 ---
-![](mongodb.jpeg)
+![](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-41-46-d2582e9ef5586bc819fec7cc1df972bf-mongodb-91c09c.jpeg)
 作者：MongoDB 首席技术支持工程师 William Zola
 
 “我用SQL很长时间了, 但是 MongoDB 对我而言算是一个新东西。在 MongoDB 里面我该怎么处理___一对多___的关系呢？”这是我在 MongoDB 工作期间，用户问的最多的一个问题。

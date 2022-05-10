@@ -14,7 +14,7 @@ description: Trojan 是目前比较便捷且可靠的扶墙工具， 但是其�
 
 最简单来讲， Trojan 是通过 HTTPS 的方式进行穿墙操作的， 也就是所有的请求， 先通过 Trojan 客户端加工之后， 以正常 HTTPS 请求的方式发往墙外服务器， 然后在 Trojan 服务端， 对请求内容进行解析后， 将原请求转发给目标服务器，再将目标服务器返回的数据包装成正常的 HTTPS 响应包返回给 Trojan 客户端。
 
-![Trojan 数据流](./TrojanDataFlow.png)
+![](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-47-23-9a16a4b0495228a521a9d199a5726835-TrojanDataFlow-a4e62d.png)
 
 ## Trojan 和 Nginx 的配合模式
 
@@ -22,7 +22,7 @@ description: Trojan 是目前比较便捷且可靠的扶墙工具， 但是其�
 
 我们可以通过一张图来看一下 Trojan 和 Nginx 的配合模式。
 
-![Trojan-Nginx](./trojan-nginx.png)
+![](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-47-02-f7ba184481751dd1b336a655ffdc0d1d-trojan-nginx-cff97a.png)
 
 单看图，是不是觉得挺好啊，Trojan 这不是能识别 Trojan 请求和非 Trojan 请求么？ 那其他需要托管的站点通过浏览器访问的时候，不都应该是正常的么？ 想法是美好的，当然如果你不在乎是不是 HTTPS，现实也很美好。
 
@@ -38,7 +38,7 @@ Trojan 只能为一个域名配置 HTTPS，而它本身又独占了 443 端口�
 
 我们把处理流程进行一下更改，其实就能是实现我们的需求了。 如图:
 
-![Nginx In Front](./nginxinfront.png)
+![](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-47-14-071491d6e3b416d08e1f717e6efeebdc-nginxinfront-a56ad6.png)
 
 这样的话，我们就把 443 端口从 Trojan 中解放出来交还给了 Nginx。 所有请求先到达 Nginx， Nginx 中进行处理， 如果请求的是为 Trojan 配置的域名， 那么就将请求转发给 Trojan， 如果不是则由 Nginx 自行处理。
 

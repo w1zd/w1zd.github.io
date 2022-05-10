@@ -10,7 +10,7 @@ toc: true
 ---
 
 
-![HeadLess Server](headless-server.jpg)
+![HeadLess Server](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-55-10-44ff2797badb0260eb1af5ec9efbde4b-headless-server-f5065c.jpg)
 
 无头服务器（Headless Server），是指没有显示器、键盘、鼠标等其他外设的电脑。无头电脑一般是通过网络进行控制的。举个例子，你可以想象一下数据中心中放在服务器支架上提供 web 服务的刀片服务器，它们就是所谓的无头服务器。
 

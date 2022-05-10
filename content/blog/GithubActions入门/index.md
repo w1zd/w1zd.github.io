@@ -8,7 +8,7 @@ categories:
   - DevOps
 description: 借助 GitHub Actions，可以直接从 GitHub 构建、测试和部署代码，轻松实现所有软件工作流程的自动化。
 ---
-![github-actions](./github-actions.png)
+![github-actions](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/13-43-12-ff8131d6e5212fdddaddb1f20be4e03e-github-actions-fd25c1.png)
 
 这个博客站是我自己用 Gatsby 随便拼凑了一下造出来的，前几天发现好久都没有更新博客了，心里还是很愧疚的 🤣，那就更新一篇吧。
 
@@ -26,7 +26,7 @@ description: 借助 GitHub Actions，可以直接从 GitHub 构建、测试和�
 
 Github Actions 可以粗略的理解为集成在 Github 中的 CI/CD 服务， 和 Jenkins、Travis CI 等类似。
 
-![ci/cd](./cicd.png)
+![ci/cd](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/13-43-29-98b9955a8eb015e58811a8ac81a195d3-cicd-749ce1.png)
 
 Github Actions 目前可以用来做以下这些事情：
 
@@ -326,7 +326,7 @@ jobs:
 
 在上面的 `steps` 第二步中，我们用到了一个 `${{ secrets.ACCESS_TOKEN }}`， 这是由于该 `action` 需要将构件好的静态页面 `push` 到我们的 `page` 分支，所以需要 Github 的访问权限，我们需要[自己生成 `Access_Token`](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)，并在项目设置页面中提供。
 
-![access_token](./access_token.png)
+![access_token](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/13-43-36-677e12d2d7b9db2aaab9fb3070b7329d-access_token-aba4e5.png)
 
 ## 总结
 

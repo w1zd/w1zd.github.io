@@ -8,7 +8,7 @@ categories:
 description: 设计 MongoDB Schema 的 6 条经验准则第二部分。
 ---
 
-![](mongodb.jpeg)
+![](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-39-52-56f9d07a30d9bfc238f9ab56db7fd345-mongodb-3e2fab.jpeg)
 作者：MongoDB 首席技术支持工程师 William Zola
 
 这是我们[在 MongoDB 中建立“一对多”关系](/2020/07/17/设计-MongoDB-Schema-的-6-条经验准则：Part-1/)的第二站。在上一部分中，我们介绍了三种基本的 Schema 设计：嵌入、子引用、父引用。我们还介绍了选择这三种模式的两种因素：

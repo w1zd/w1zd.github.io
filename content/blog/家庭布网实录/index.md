@@ -14,7 +14,7 @@ toc: false
 
 首先对家里的基础设施做一个简单介绍，没有特别奢侈，所以用的是电信的 500M 宽带 + IPTV，光纤入户，一共三个小房间加一个客厅，没个房间都预埋有一根六类线。家里需要接入有线网络的设备有2台 PC，一个电视盒子，一台电视机，一个无线路由器。
 
-![户型图](./WeCom20211129-1519462x.png)
+![](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-43-49-7732caeed4034d97eaf5ac57f75b6911-WeCom20211129-1519462x-bde290.png)
 
 ## 存在的问题
 
@@ -38,13 +38,13 @@ toc: false
 
 为此我买了两台 TPLINK 的 8 口网管交换机，做了如下的 VLAN 设计。
 
-![两个交换机](./Untitled.png)
+![](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-44-30-ada10129d284866ddd96f195806f2b21-Untitled-df3d4e.png)
 
-![网络设计（不专业，别吐槽）](./Untitled1.png)
+![](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-44-20-c145ec960661cbb6700709b0582454de-Untitled1-e6e14a.png)
 
 两台交换机的 1 号端口，划分到同一 VLAN 中，PVID 配置为 2，供 IPTV 使用； 2 号端口，划分到同一 VLAN 中，PVID 配置为 4， 供软路由的 WAN 口使用； 8 号端口作为 trunk 口，PVID 配置为 1，供两台交换机连接使用；其余各口划分到同一 VLAN 中，PVID 配置为 6，供家里各种终端设备接入 LAN 使用。这样通过 VLAN 共用同一根预埋线，就实现了 IPTV 与 INTERNET 的相互隔离。
 
-![交换机的具体设置，两台交换机一样](./Untitled2.png)
+![](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-44-03-1700b5a1c72964d4fdc258d61cde3a9a-Untitled2-33d9d6.png)
 
 网络这样部署之后，将光猫设置为桥接模式，软路由的 WAN 口与光猫链接，软路由负责拨号，然后通过交换机的 3 - 7 口将 LAN 共享给家里各个终端设备（软路由的 LAN 口随便插到交换机 3-7 某个口，其余房间的网线接到弱电箱内交换机的 3-7 口）。
 

@@ -9,7 +9,7 @@ description: '本系列文章详细介绍了Vue.js源代码，对其中的JavaSc
 toc: true
 ---
 
-![Vue Constructor](./vue-constructor.png)
+![](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-42-38-5f75fb98c1e274b008e1820cfe81599d-vue-constructor-fdc04a.png)
 
 本系列文章详细介绍了Vue.js源代码，对其中的JavaScript代码进行了详细的说明。 并且尝试将概念分解为JavaScript初学者可以理解的水平。
 
