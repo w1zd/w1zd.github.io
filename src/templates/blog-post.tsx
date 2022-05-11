@@ -13,7 +13,6 @@ import Giscus from "react-giscus"
 import mediumZoom from 'medium-zoom'
 
 const GiscusMemo = React.memo(Giscus, (props, nextProps) => {
-  debugger
   return props.repoId === nextProps.repoId
 })
 
