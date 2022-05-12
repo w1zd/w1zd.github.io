@@ -1,0 +1,100 @@
+---
+title: 在-Gatsby-MDX-中使用- LaTeX
+date: "2022-05-12T11:84:17.284Z"
+tags:
+- Gatsby
+categories:
+- 技术文章
+description: 在 Gatsby 中使用 MDX 提供了极强的扩展性，但是如果使用 gatsby-plugin-mdx 的话 gatsby-remark-katex 插件就无法使用了，那如何在 MDX 中处理 LaTeX 内容呢？本文将做简要说明。
+---
+
+$$
+\huge{\LaTeX}
+$$
+
+年初把博客更新了成用 [gatsby-plugin-mdx](https://www.npmjs.com/package/gatsby-plugin-mdx) 处理 [mdx 文件](https://mdxjs.com/)来生成页面。在更新钱，解析 Markdown 文件中的 $\LaTeX{}$ 公式使用的是 [gatsby-remark-katex](https://www.npmjs.com/package/gatsby-remark-katex) 插件，这个插件和 [gatsby-transformer-remark](https://www.npmjs.com/package/gatsby-transformer-remark) 配合挺好用的，但是当我更新成 MDX 之后就没法正常工作了，所以本文简单记录下解决方案。
+
+## 用到的插件
+* [remark-math@v3](https://www.npmjs.com/package/remark-math)
+* [rehype-katex@v3](https://www.npmjs.com/package/rehype-katex)
+
+这里我标注了插件版本，大家在使用的时候需要下载相应版本，版本过高会导致插件不起作用，粗略探索了一下，大致是因为 `gatsby-plugin-mdx` 依赖的 `mdx-js` 版本比较低导致的。
+
+```shell
+yarn add remark-math@v3 rehype-katex@v3
+```
+
+## 配置方式
+
+1. 在 gatsby-config.js 中配置插件
+```javascript
+//gatsby-config.js
+
+// 插件版本过高的话，这里也会提示不让用require引用，需要使用import
+const remarkMath = require('remark-math')
+const rehypeKatex = require('rehype-katex')
+
+module.exports = {
+  // ...
+  plugins: [
+    // ...
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [`.mdx`, `.md`],
+        remarkPlugins: [remarkMath],
+        rehypePlugins: [rehypeKatex],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 960,
+              quality: 90,
+              linkImagesToOriginal: false,
+            },
+          },
+        ],
+      },
+    },
+   ],
+}
+```
+2. 在 gatsby-browser.js 中引用 Katex 的 css 样式
+
+因为上面两个插件只是单纯的帮我们将 LaTeX 公式转成了相应的 HTML 元素，我们需要使用 Katex 的样式，这样 LaTeX 公式才能正常 render。
+
+```javascript
+// gatsby-browser.js
+// ...
+import "katex/dist/katex.min.css"
+// ...
+```
+
+## 示例
+进行配置之后，我们就可以在 mdx 文件中书写相应的 LaTeX 内容了，插件可以解析行内和块两种写法。
+
+### 行内写法示例
+```markdown
+这是一个行内 $\LaTeX$ 公式, $ i\hbar\frac{\partial \varphi } {\partial {t}} = \frac{-\hbar^2}{2m} 
+\left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + 
+\frac{\partial^2}{\partial z^2} \right) \varphi  + V \varphi $
+```
+这是一个行内 $\LaTeX$ 公式, $ i\hbar\frac{\partial \varphi } {\partial {t}} = \frac{-\hbar^2}{2m} 
+\left( \frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + 
+\frac{\partial^2}{\partial z^2} \right) \varphi  + V \varphi $
+
+### 块写法示例
+```markdown
+下面是一个 $\LaTeX$ 公式块:
+
+$$
+\int_{x^2 + y^2 \leq R^2}   f(x,y) dx dy = 
+\int_{\theta=0}^{2\pi}    \int_{r=0}^R    f(r\cos\theta,r\sin\theta) r dr d\theta
+$$
+```
+
+下面是一个 $\LaTeX$ 公式块:
+$$
+\int_{x^2 + y^2 \leq R^2}   f(x,y) dx dy = 
+\int_{\theta=0}^{2\pi}    \int_{r=0}^R    f(r\cos\theta,r\sin\theta) r dr d\theta
+$$
