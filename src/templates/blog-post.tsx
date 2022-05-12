@@ -4,10 +4,6 @@ import Layout from "../components/layout"
 import TOC from "../components/toc"
 import SEO from "../components/seo"
 import { useEffect } from "react"
-// import Gitalk from "gitalk"
-import "gitalk/dist/gitalk.css"
-import "katex/dist/katex.min.css"
-import md5 from "blueimp-md5"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Giscus from "react-giscus"
 import mediumZoom from 'medium-zoom'
@@ -25,25 +21,11 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
     siteUrl,
   } = data.site.siteMetadata
   const { previous, next } = pageContext
-  // useEffect(() => {
-  //   const gitalk = new Gitalk({
-  //     clientID: "b2d64df9d83b1b54c039",
-  //     clientSecret: "",
-  //     repo: "A-GG.github.io",
-  //     owner: "A-GG",
-  //     admin: ["a-gg"],
-  //     id: md5(location.pathname), // Ensure uniqueness and length less than 50
-  //     distractionFreeMode: false, // Facebook-like distraction free mode
-  //   })
-
-  //   gitalk.render("gitalk-container")
-  // }, [location.pathname])
   useEffect(() => {
     mediumZoom('.post-content img')
   }, [])
   return (
-    <Layout isFocus={false} title={siteTitle}>
-      <SEO title={post.frontmatter.title} description={post.frontmatter.description}></SEO>
+    <Layout isFocus={false} title={post.frontmatter.title} description={post.frontmatter.description}>
       <div className="container">
         <article className="post-wrap">
           {/* <a href="/posts" className="goback-posts"><i className={`iconfont icon-blog`}></i></a> */}
@@ -75,10 +57,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             </div>
           </header>
 
-          {/* <div
-            className="post-content"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          ></div> */}
           <div className="post-content">
             <MDXRenderer>{post.body}</MDXRenderer>
           </div>

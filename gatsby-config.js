@@ -1,4 +1,3 @@
-const remarkMath = import(`remark-math`)
 module.exports = {
   siteMetadata: {
     title: `Wizard's Lair`,
@@ -42,9 +41,11 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.md`, `.mdx`],
-        remarkPlugins: [remarkMath],
+        remarkPlugins: [require(`remark-math`)],
+        rehypePlugins: [
+          require("rehype-katex")
+        ],
         gatsbyRemarkPlugins: [
-          `gatsby-remark-katex`,
           {
             resolve: `gatsby-remark-images`,
             options: {
