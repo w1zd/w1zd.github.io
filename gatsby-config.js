@@ -7,7 +7,7 @@ module.exports = {
     },
     postCopyright: true,
     description: `Enjoy life && Enjoy Coding`,
-    siteUrl: `https://w1zd.xyz`,
+    siteUrl: `https://wizd.dev`,
     social: {
       twitter: `https://twitter.com/wzdryan`,
       github: `https://github.com/w1zd`,
