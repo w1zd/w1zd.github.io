@@ -1,6 +1,11 @@
 .header-logo a
   padding 0
 
+.navbar,.navbar-mobile 
+  .menu 
+    display flex
+    align-items center
+
 .navbar .menu a
   padding 0 8px
 
@@ -14,6 +19,66 @@
 
 .navbar-header a:hover, .navbar .menu a:hover
   background-color transparent
+
+.navbar,.navbar-mobile 
+  .menu .search
+    position relative
+    display flex
+    flex-direction column
+    align-items center
+    width 20px
+    height 28px
+    padding 0
+    transition: all 0.3s ease-in-out
+    &:hover
+      width 180px
+      input
+        width 160px
+        box-shadow:inset 0 0 5px 2px rgba(0, 0, 0, 0.2)
+        border-radius: 2px
+        padding 5px
+      .search-result
+        display flex
+        flex-direction column
+    .search-form
+      display flex
+      align-items center
+    .search-icon
+      display: inline-block
+      width 20px
+      height 20px
+      background-image url(../image/search.png)
+      background-size cover
+      -webkit-filter grayscale(100%) 
+      -moz-filter grayscale(100%) 
+      -ms-filter grayscale(100%) 
+      -o-filter grayscale(100%) 
+      filter grayscale(100%) 
+      filter gray 
+    input 
+      transition: all 0.3s ease-in-out
+      width 0
+      height 28px
+      border none
+      padding 0
+      box-sizing border-box
+      &:focus
+        outline none
+    .search-result
+      display: none
+      position absolute
+      width 400px
+      border-radius 4px
+      box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2)
+      top 100%
+      right 0
+      text-align left
+      line-height: 1.5
+      padding 1rem
+      max-height 600px
+      overflow-y scroll
+header 
+  z-index 9
 
 header label
   margin-left 15px

@@ -1,5 +1,5 @@
 /* mobile phone and smart portable devices */
-@media screen and (max-width: 479px) 
+@media screen and (max-width: 580px) 
   .main
     // padding-top 20pt
     // padding-bottom 20pt
@@ -92,8 +92,7 @@
         text-align: center
         background: #ffffff
         border-top: 1px solid #000000
-        padding-top: 1em
-        padding-bottom: 1em
+        padding: 1em
         display: none
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1), 0px 4px 8px rgba(0, 0, 0, 0.1)
         a 
@@ -101,14 +100,13 @@
 
           //changed
           display inline-block
-          margin 0 1em
 
           line-height: 2.5em
         
 
         &.active 
-          display: block
-          //changed
+          display flex
+          justify-content space-between
           white-space nowrap
           box-sizing border-box
           overflow-x auto

@@ -1,6 +1,7 @@
 import React from "react"
 import { useState, useEffect } from "react"
-import { useStaticQuery, graphql } from "gatsby"
+// import { useFlexSearch } from 'react-use-flexsearch'
+import { useStaticQuery, graphql, Link } from "gatsby"
 const Header = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -16,29 +17,11 @@ const Header = () => {
       }
     }
   `)
-  let w = {localStorage: {getItem(key: string): string{return ''},setItem(key: string, value: string){}}};
-  if(typeof window != "undefined"){
-    w = window
-  }
   const [isMenuActive, setisMenuActive] = useState(false)
-  // const currentTheme = w.localStorage && w.localStorage.getItem('theme');
-  // const [isDark, setisDark] = useState(currentTheme == 'dark' ? true : false);
-  // const [theme, setTheme] = useState(isDark ? 'Dark': "Light");
-  // useEffect(() => {
-  //   w.localStorage.setItem("theme", isDark ? 'dark' : 'light');
-  //   if(isDark){
-  //     setTheme('Dark')
-  //     document.getElementsByTagName('body')[0].classList.add('dark-theme');
-  //   }else{
-  //     setTheme('Light')
-  //     document.getElementsByTagName('body')[0].classList.remove('dark-theme');
-  //   }
-  // }, [isDark])
+  // const [query, setQuery] = useState('')
   const { nav, siteUrl, title } = data.site.siteMetadata
-  // const toggleTheme = () => {
-  //   setisDark(!isDark);
-  // }
-
+  // const { publicStoreURL, publicIndexURL,index, store } = data.localSearchPages
+  // const results = useFlexSearch(query, index, store);
   return (
     <header>
       <nav className="navbar">
@@ -52,14 +35,16 @@ const Header = () => {
                 {item.name}
               </a>
             ))}
-            {/* <input
-              id="switch_default"
-              type="checkbox"
-              className="switch_default"
-              checked={isDark}
-              onChange={toggleTheme}
-            /> */}
-            <label htmlFor="switch_default" className="toggleBtn"></label>
+            {/* <div className='menu-item search'>
+              <div className='search-form'>
+                <input type="text" value={query} onChange={e=>setQuery(e.target.value)}/>
+                <div className='search-icon'></div>
+              </div>
+              {
+                results.length > 0 && 
+                <div className='search-result'>{results.map(v => <Link key={v.id} to={`${siteUrl}/${v.slug}`}>{v.title}</Link>)}</div>
+              }
+            </div> */}
           </div>
         </div>
       </nav>
@@ -68,7 +53,6 @@ const Header = () => {
           <div className="navbar-header">
             <div>
               <a href="/">{title}</a>
-            {/* <a id="mobile-toggle-theme" onClick={toggleTheme}>·&nbsp;{theme}</a> */}
             </div>
             <div className={`menu-toggle ${isMenuActive? "active": ""}`} onClick={() => {setisMenuActive(!isMenuActive)}}>&#9776; Menu</div>
           </div>
@@ -78,6 +62,7 @@ const Header = () => {
                 {item.name}
               </a>
             ))}
+            {/* <a className='menu-item search-btn'></a> */}
           </div>
         </div>
       </nav>
