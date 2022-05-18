@@ -12,7 +12,7 @@ $$
 \huge{\LaTeX}
 $$
 
-年初把博客更新了成用 [gatsby-plugin-mdx](https://www.npmjs.com/package/gatsby-plugin-mdx) 处理 [mdx 文件](https://mdxjs.com/)来生成页面。在更新钱，解析 Markdown 文件中的 $\LaTeX{}$ 公式使用的是 [gatsby-remark-katex](https://www.npmjs.com/package/gatsby-remark-katex) 插件，这个插件和 [gatsby-transformer-remark](https://www.npmjs.com/package/gatsby-transformer-remark) 配合挺好用的，但是当我更新成 MDX 之后就没法正常工作了，所以本文简单记录下解决方案。
+年初把博客更新了成用 [gatsby-plugin-mdx](https://www.npmjs.com/package/gatsby-plugin-mdx) 处理 [mdx 文件](https://mdxjs.com/)来生成页面。在更新前，解析 Markdown 文件中的 $\LaTeX{}$ 公式使用的是 [gatsby-remark-katex](https://www.npmjs.com/package/gatsby-remark-katex) 插件，这个插件和 [gatsby-transformer-remark](https://www.npmjs.com/package/gatsby-transformer-remark) 配合挺好用的，但是当我更新成 MDX 之后就没法正常工作了，所以本文简单记录下解决方案。
 
 ## 用到的插件
 * [remark-math@v3](https://www.npmjs.com/package/remark-math)

@@ -105,7 +105,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                   })}
               </span>
             </div>
-            <div>
+            {/* <div>
               <a
                 href="#/"
                 onClick={() => {
@@ -114,9 +114,9 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               >
                 back
               </a>
-              <span>· </span>
+              <span> · </span>
               <a href={data.site.siteMetadata.siteUrl}>home</a>
-            </div>
+            </div> */}
           </section>
           {/* <section className="post-nav">
             {previous && (
