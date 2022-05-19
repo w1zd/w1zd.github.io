@@ -11,7 +11,7 @@ const BlogIndex = ({data}) => {
 
   const { author, social,description } = data.site.siteMetadata
   return (
-    <Layout>
+    <Layout title=''>
       <div className="container">
         <div className="intro">
           <div className="avatar">
