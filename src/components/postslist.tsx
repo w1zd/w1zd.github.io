@@ -5,7 +5,7 @@ const PostsList = ({posts, catOrTagname}) => {
   return (
     <div className="post-wrap archive">
       <h2 className="post-title">
-        -&nbsp;Categories&nbsp;·&nbsp;{catOrTagname}-
+        -&nbsp;{catOrTagname}&nbsp;-
       </h2>
       {posts.map( (node ) => {
         const title = node.frontmatter.title || node.fields.slug
