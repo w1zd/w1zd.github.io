@@ -1,9 +1,12 @@
 import React from "react"
 import moment from 'moment'
-const PostsList = ({posts}) => {
+const PostsList = ({posts, catOrTagname}) => {
   let lastYear
   return (
     <div className="post-wrap archive">
+      <h2 className="post-title">
+        -&nbsp;Categories&nbsp;·&nbsp;{catOrTagname}-
+      </h2>
       {posts.map( (node ) => {
         const title = node.frontmatter.title || node.fields.slug
         let curYear = moment(new Date(node.frontmatter.date)).year()

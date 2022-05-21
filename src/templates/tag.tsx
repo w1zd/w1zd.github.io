@@ -13,12 +13,7 @@ const Tag = ({ data }) => {
   return (
     <Layout title={tag} description={tag}>
       <div className="container">
-        <div className="post-wrap categories">
-          <h2 className="post-title">
-            -&nbsp;Tag&nbsp;·&nbsp;{tag}-
-          </h2>
-        </div>
-        <PostsList posts={data.allMdx.nodes}></PostsList>
+        <PostsList posts={data.allMdx.nodes} catOrTagname={tag}></PostsList>
         <Paginator
           {...data.allMdx.pageInfo}
           url="/category"

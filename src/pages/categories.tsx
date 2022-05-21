@@ -7,7 +7,7 @@ const Categories = ({ data }) => {
   return (
     <Layout title="Categories" description="All Posts Categories">
       <div className="container">
-        <div className="post-wrap categories">
+        <div className="post-wrap archive">
           <h2 className="post-title">-&nbsp;Categories&nbsp;-</h2>
           <div className="categories-card">
             {data.allMdx.group.map(item => (

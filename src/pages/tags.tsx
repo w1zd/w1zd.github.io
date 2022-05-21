@@ -6,7 +6,7 @@ const Tags = ({ data }) => {
   return (
     <Layout title="Tags" description="All Tags">
       <div className="container">
-        <div className="post-wrap tags">
+        <div className="post-wrap archive">
             <h2 className="post-title">-&nbsp;Tag Cloud&nbsp;-</h2>
 
             <div className="tag-cloud-tags">
