@@ -10,8 +10,8 @@ const Posts = ({ data, location }) => {
   const posts = data.allMdx.nodes
   
   return (
-    <Layout location={location} title="All posts">
-      <PostsList posts={posts}></PostsList>
+    <Layout title="All posts">
+      <PostsList posts={posts} catOrTagname={"All Posts"}></PostsList>
       <Paginator {...data.allMdx.pageInfo} url="/posts"></Paginator>
     </Layout>
   )
