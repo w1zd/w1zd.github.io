@@ -1,9 +1,11 @@
 .post-nav 
-
-  &:before,
-  &:after 
-    content: " "
-    display: table
+  display flex
+  flex-wrap nowrap
+  justify-content space-between
+  // &:before,
+  // &:after 
+  //   content: " "
+  //   display: table
   
 
   & a.prev,
@@ -16,10 +18,8 @@
     transition-duration: 0.3s
   
 
-  & a.prev 
-    float: left
   
-  & a.prev::before 
+  & .prev::before 
     content "<"
     margin-right .5em
   
@@ -27,11 +27,7 @@
   & a.prev:hover 
     transform: translateX(-4px)
   
-
-  & a.next 
-    float: right
-  
-  & a.next::after 
+  & .next::after 
     content ">"
     margin-left .5em
   

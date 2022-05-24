@@ -3,12 +3,11 @@ import Paginator from "../components/paginator"
 import PostsList from "../components/postslist"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
 
 const Category = ({ data }) => {
   let cate = ""
   if (typeof window !== `undefined`) {
-    cate = decodeURIComponent(window.location.pathname.replace("/category/", ""));
+    cate = decodeURIComponent(window.location.pathname.replace(/\/category\/(.*)\//, "$1"));
   }
   return (
     <Layout title={cate} description={cate}>

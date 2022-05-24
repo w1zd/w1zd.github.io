@@ -1,7 +1,21 @@
 .tag-cloud-tags 
+  display flex
+  flex-wrap wrap
   margin: 10px 0
   padding-top 2em
+  justify-content center
+  a[data-size="1"] { --size: 1; }
+  a[data-size="2"] { --size: 2; }
+  a[data-size="3"] { --size: 3; }
+  a[data-size="4"] { --size: 4; }
+  a[data-size="5"] { --size: 5; }
+  a[data-size="6"] { --size: 6; }
+  a[data-size="7"] { --size: 7; }
+  a[data-size="8"] { --size: 8; }
+  a[data-size="9"] { --size: 9; }
+  a[data-size="10"] { --size: 10; }
   a 
+    font-size: calc(var(--size) * 0.4rem + 0.5rem);
     display: inline-block
     position: relative
     margin: 5px 10px

@@ -1,7 +1,6 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
 
 const Categories = ({ data }) => {
   return (
@@ -23,7 +22,7 @@ const Categories = ({ data }) => {
                     </h3>
                   </a>
                   {item.nodes.map((node, index) => {
-                    if (index <= 4) {
+                    if (index <= 9) {
                       return (
                         <article className="archive-item" key={node.id}>
                           <Link
@@ -36,12 +35,12 @@ const Categories = ({ data }) => {
                       )
                     }
                   })}
-                  {item.nodes.length > 5 && (
+                  {item.nodes.length > 10 && (
                     <Link
                       className="more-post-link"
                       to={`/category/${item.fieldValue}`}
                     >
-                      More >>
+                      More &gt;&gt;
                     </Link>
                   )}
                 </div>
@@ -58,7 +57,7 @@ export default Categories
 
 export const pageQuery = graphql`
   query categoriesQuery {
-    allMdx {
+    allMdx(sort: {fields: frontmatter___date, order: DESC}) {
       group(field: frontmatter___categories) {
         nodes {
           frontmatter {

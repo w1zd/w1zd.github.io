@@ -105,7 +105,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                   })}
               </span>
             </div>
-            {/* <div>
+            <div>
               <a
                 href="#/"
                 onClick={() => {
@@ -116,22 +116,21 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               </a>
               <span> · </span>
               <a href={data.site.siteMetadata.siteUrl}>home</a>
-            </div> */}
+            </div>
           </section>
-          {/* <section className="post-nav">
-            {previous && (
+          <section className="post-nav">
+            {previous ? (
               <a className="prev" rel="prev" href={previous.fields.slug}>
                 {previous.frontmatter.title}
               </a>
-            )}
-            {next && (
+            ):<span className="prev">No More</span>}
+            {next ? (
               <a className="next" rel="next" href={next.fields.slug}>
                 {next.frontmatter.title}
               </a>
-            )}
-          </section> */}
+            ): <span className="next">No More</span>}
+          </section>
 
-          {/* <section className="post-comment" id="gitalk-container"></section> */}
           <GiscusMemo
             repo="w1zd/w1zd.github.io"
             repoId="MDEwOlJlcG9zaXRvcnkyODg3MTA5NjA="
