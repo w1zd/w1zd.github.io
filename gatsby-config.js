@@ -132,7 +132,8 @@ module.exports = {
           },
         ],
       },
-    }
+    }, 
+    "gatsby-plugin-sitemap",
     // {
     //   resolve: `gatsby-plugin-baidu-analytics`,
     //   options: {
