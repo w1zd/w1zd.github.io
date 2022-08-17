@@ -5,7 +5,7 @@ import TOC from "../components/toc"
 import SEO from "../components/seo"
 import { useEffect } from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
-import Giscus from "react-giscus"
+import Giscus from "@giscus/react"
 import mediumZoom from 'medium-zoom'
 
 const GiscusMemo = React.memo(Giscus, (props, nextProps) => {
