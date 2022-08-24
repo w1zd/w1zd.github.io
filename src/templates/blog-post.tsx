@@ -22,7 +22,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   } = data.site.siteMetadata
   const { previous, next } = pageContext
   useEffect(() => {
-    mediumZoom('.post-content img')
+    mediumZoom('.post-content img', {background: "#292a2d"})
   }, [])
   return (
     <Layout isFocus={false} title={post.frontmatter.title} description={post.frontmatter.description}>
