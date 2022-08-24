@@ -132,12 +132,13 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </section>
 
           <GiscusMemo
+            id='comment'
             repo="w1zd/w1zd.github.io"
             repoId="MDEwOlJlcG9zaXRvcnkyODg3MTA5NjA="
             category="Announcements"
             categoryId="MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMzMDE1OTcy"
             mapping="og:title"
-            theme="dark"
+            theme="transparent_dark"
             reactionsEnabled="1"
           />
           {post.frontmatter.toc && <TOC></TOC>}
