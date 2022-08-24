@@ -37,6 +37,7 @@ const SEO = ({ description, lang, meta, title }) => {
       defaultTitle = {site.siteMetadata.title}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
+      bodyAttributes={{class: 'dark-theme'}}
       meta={[
         {
           name: `description`,
