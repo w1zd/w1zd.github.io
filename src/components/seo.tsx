@@ -76,7 +76,10 @@ const SEO = ({ description, lang, meta, title }) => {
           content: `width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0`
         }
       ].concat(meta)}
-    />
+    >
+      <script data-goatcounter="https://wizd.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+    </Helmet>
   )
 }
 
