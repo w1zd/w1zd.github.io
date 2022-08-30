@@ -28,7 +28,7 @@ const SEO = ({ description, lang, meta, title }) => {
   )
 
   const metaDescription = description || site.siteMetadata.description
-
+  
   return (
     <Helmet
       htmlAttributes={{
@@ -37,7 +37,6 @@ const SEO = ({ description, lang, meta, title }) => {
       defaultTitle = {site.siteMetadata.title}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
-      bodyAttributes={{class: 'dark-theme'}}
       meta={[
         {
           name: `description`,

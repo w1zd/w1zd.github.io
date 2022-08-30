@@ -16,8 +16,8 @@ const PostsList = ({posts, catOrTagname}) => {
             {lastYear !== (lastYear = curYear) ? <h3>{curYear}</h3> : ""}
             <a className="archive-item-link" href={`${node.fields.slug}`}>
               {title}
+              <span className="archive-item-date">{node.frontmatter.date}</span>
             </a>
-            <span className="archive-item-date">{node.frontmatter.date}</span>
           </article>
         )
       })}

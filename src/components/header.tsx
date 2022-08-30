@@ -1,5 +1,6 @@
 import React from "react"
 import { useState, useEffect } from "react"
+import { useSelector, useDispatch } from 'react-redux'
 // import { useFlexSearch } from 'react-use-flexsearch'
 import { useStaticQuery, graphql, Link } from "gatsby"
 const Header = () => {
@@ -22,6 +23,21 @@ const Header = () => {
   const { nav, siteUrl, title } = data.site.siteMetadata
   // const { publicStoreURL, publicIndexURL,index, store } = data.localSearchPages
   // const results = useFlexSearch(query, index, store);
+  const theme = useSelector(state => state.theme)
+  const dispatch = useDispatch()
+  const toggleTheme = (e) => {
+    if(e.target.checked){
+      document.body.classList.add('dark-theme');
+    }else{
+      document.body.classList.remove('dark-theme');
+    }
+    dispatch({type: "SET_THEME", payload: e.target.checked? 'Dark': 'Light'})
+  }
+  useEffect(()=>{
+    if(theme == 'Dark' && !document.body.classList.contains('dark-theme')){
+      document.body.classList.add('dark-theme');
+    }
+  }, [])
   return (
     <header>
       <nav className="navbar">
@@ -35,6 +51,14 @@ const Header = () => {
                 {item.name}
               </a>
             ))}
+            <input
+              id="switch_default"
+              type="checkbox"
+              className="switch_default"
+              checked={theme == 'Dark'}
+              onChange={toggleTheme}
+            />
+            <label htmlFor="switch_default" className="toggleBtn"></label>
             {/* <div className='menu-item search'>
               <div className='search-form'>
                 <input type="text" value={query} onChange={e=>setQuery(e.target.value)}/>
@@ -53,6 +77,7 @@ const Header = () => {
           <div className="navbar-header">
             <div>
               <a href="/">{title}</a>
+              <a id="mobile-toggle-theme" onClick={toggleTheme}>&nbsp;·&nbsp;{theme == 'Dark' ? "Light" : "Dark"}</a>
             </div>
             <div className={`menu-toggle ${isMenuActive? "active": ""}`} onClick={() => {setisMenuActive(!isMenuActive)}}>&#9776; Menu</div>
           </div>

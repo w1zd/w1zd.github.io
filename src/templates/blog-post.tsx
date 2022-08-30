@@ -1,16 +1,16 @@
 import React from "react"
+import { useSelector } from 'react-redux'
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import TOC from "../components/toc"
-import SEO from "../components/seo"
 import { useEffect } from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Giscus from "@giscus/react"
 import mediumZoom from 'medium-zoom'
 
-const GiscusMemo = React.memo(Giscus, (props, nextProps) => {
-  return props.repoId === nextProps.repoId
-})
+// const GiscusMemo = React.memo(Giscus, (props, nextProps) => {
+//   return props.repoId === nextProps.repoId
+// })
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.mdx
@@ -21,6 +21,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
     siteUrl,
   } = data.site.siteMetadata
   const { previous, next } = pageContext
+  const theme = useSelector(state => state.theme)
   useEffect(() => {
     mediumZoom('.post-content img', {background: "#292a2d"})
   }, [])
@@ -131,14 +132,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             ): <span className="next">No More</span>}
           </section>
 
-          <GiscusMemo
+          <Giscus
             id='comment'
             repo="w1zd/w1zd.github.io"
             repoId="MDEwOlJlcG9zaXRvcnkyODg3MTA5NjA="
             category="Announcements"
             categoryId="MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMzMDE1OTcy"
             mapping="og:title"
-            theme="transparent_dark"
+            theme={theme == 'Dark' ? 'transparent_dark': 'light'}
             reactionsEnabled="1"
           />
           {post.frontmatter.toc && <TOC></TOC>}
