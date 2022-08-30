@@ -21,7 +21,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
     siteUrl,
   } = data.site.siteMetadata
   const { previous, next } = pageContext
-  const theme = useSelector(state => state.theme)
+  const isDarkMode = useSelector(state => state.isDarkMode)
   useEffect(() => {
     mediumZoom('.post-content img', {background: "#292a2d"})
   }, [])
@@ -139,7 +139,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             category="Announcements"
             categoryId="MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMzMDE1OTcy"
             mapping="og:title"
-            theme={theme == 'Dark' ? 'transparent_dark': 'light'}
+            theme={isDarkMode ? 'transparent_dark': 'light'}
             reactionsEnabled="1"
           />
           {post.frontmatter.toc && <TOC></TOC>}

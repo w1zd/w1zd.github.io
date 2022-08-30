@@ -134,14 +134,14 @@ module.exports = {
       },
     }, 
     "gatsby-plugin-sitemap",
-    // {
-    //   resolve: `gatsby-plugin-baidu-analytics`,
-    //   options: {
-    //       // baidu analytics siteId
-    //     siteId: "ca705473dc433c6a2c265605c5775017",
-    //     // Put analytics script in the head instead of the body [default:false]
-    //     head: false,
-    //   },
-    // },
+    {
+      resolve: 'gatsby-plugin-use-dark-mode',
+      options: {
+        classNameDark: 'dark-theme',
+        classNameLight: 'light-theme',
+        storageKey: 'theme',
+        minify: true,
+      },
+    },
   ],
 }
