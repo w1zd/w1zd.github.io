@@ -26,7 +26,7 @@ const Header = () => {
   // const results = useFlexSearch(query, index, store);
   const dispatch = useDispatch()
 
-  const darkMode = useDarkMode(false)
+  const darkMode = useDarkMode()
 
   // const toggleTheme = () => {
   //   darkMode.toggle();
