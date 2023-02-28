@@ -139,7 +139,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             category="Announcements"
             categoryId="MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMzMDE1OTcy"
             mapping="og:title"
-            theme={`http://localhost:8000/giscus-themes/${isDarkMode ? 'dark' : 'light'}.css`}
+            theme={`https://wizd.dev/giscus-themes/${isDarkMode ? 'dark' : 'light'}.css`}
             reactionsEnabled="1"
             loading="lazy"
           />
