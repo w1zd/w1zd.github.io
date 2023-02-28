@@ -139,8 +139,9 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             category="Announcements"
             categoryId="MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMzMDE1OTcy"
             mapping="og:title"
-            theme={isDarkMode ? 'transparent_dark': 'light'}
+            theme={`http://localhost:8000/giscus-themes/${isDarkMode ? 'dark' : 'light'}.css`}
             reactionsEnabled="1"
+            loading="lazy"
           />
           {post.frontmatter.toc && <TOC></TOC>}
         </article>

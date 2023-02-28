@@ -137,8 +137,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-use-dark-mode',
       options: {
-        classNameDark: 'dark-theme',
-        classNameLight: 'light-theme',
+        classNameDark: 'dark-mode',
+        classNameLight: 'light-mode',
         storageKey: 'theme',
         minify: true,
       },
