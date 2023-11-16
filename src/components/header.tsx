@@ -50,26 +50,26 @@ const Header = () => {
                 {item.name}
               </a>
             ))}
-            <input
+            {/* <input
               id="switch_default"
               type="checkbox"
               className="switch_default"
               checked={darkMode.value}
               onChange={darkMode.toggle}
             />
-            <label htmlFor="switch_default" className="toggleBtn"></label>
+            <label htmlFor="switch_default" className="toggleBtn"></label> */}
           </div>
         </div>
       </nav>
       <nav className="navbar-mobile" id="nav-mobile">
         <div className="container">
-          <div className="navbar-header">
+          {/* <div className="navbar-header">
             <div>
               <a href="/">{title}</a>
               <a id="mobile-toggle-theme" onClick={darkMode.toggle}>&nbsp;·&nbsp;{darkMode.value ? "Dark" : "Light"}</a>
             </div>
             <div className={`menu-toggle ${isMenuActive? "active": ""}`} onClick={() => {setisMenuActive(!isMenuActive)}}>&#9776; Menu</div>
-          </div>
+          </div> */}
           <div className={`menu ${isMenuActive? "active": ""}`}>
             {nav.map(item => (
               <a className="menu-item" href={item.url} key={item.name}>
