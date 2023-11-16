@@ -70,3 +70,6 @@ yarn-error.log
 
 # VSCode
 .vscode/
+
+# Obsidian
+.obsidian/
