@@ -60,7 +60,13 @@ module.exports = {
               theme: 'one-dark'
             }
           },
-          `gatsby-remark-copy-linked-files`
+          `gatsby-remark-copy-linked-files`,
+          {
+            resolve: 'gatsby-remark-obsidian',
+            options: {
+                titleToURL: (title) => `/${title}`,
+            },
+          },
         ],
       },
     },
@@ -80,6 +86,12 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-catch-links`,
+      options: {
+        excludePattern: /(excluded-link|external)/,
+      },
+    },
     {
       resolve: `gatsby-plugin-feed`,
       options: {

@@ -119,4 +119,4 @@ Thu Apr 29 11:11:01 CST 2021
 
 ## 总结
 
-`Cron` 可以非常方便的帮我们在 Linux 系统中执行定时任务，还有很多其他有周期任务需求的系统中也都支持 `Cron` 语法，比如我前面写过的 [GitHub Action 入门](/GithubActions入门/) ，如果你想定时执行你的 Github Action 就可以使用 `Cron`。
+`Cron` 可以非常方便的帮我们在 Linux 系统中执行定时任务，还有很多其他有周期任务需求的系统中也都支持 `Cron` 语法，比如我前面写过的[[GithubActions入门]]，如果你想定时执行你的 Github Action 就可以使用 `Cron`。
