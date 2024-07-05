@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkw1zd_lair=self.webpackChunkw1zd_lair||[]).push([[49],{2766:function(e,t,a){a.r(t);var n=a(7294),l=a(3691);t.default=function(e){e.data;return n.createElement(l.Z,{title:"About Me"},n.createElement("div",{className:"container"},n.createElement("div",{className:"post-wrap categories"},n.createElement("h1",null,"🚧 🚧 🚧"),n.createElement("h2",null,"Coming Soon ...  "))))}}}]);
+//# sourceMappingURL=component---src-pages-about-tsx-cf897bc7ab6df78a2d42.js.map
