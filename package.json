@@ -16,7 +16,7 @@
     "gatsby": "^4.13.1",
     "gatsby-cli": "^4.13.0",
     "gatsby-image": "^3.11.0",
-    "gatsby-plugin-catch-links": "^5.12.0",
+    "gatsby-plugin-catch-links": "^4.25.0",
     "gatsby-plugin-feed": "^4.13.0",
     "gatsby-plugin-image": "^2.13.0",
     "gatsby-plugin-manifest": "^4.13.0",
@@ -28,9 +28,9 @@
     "gatsby-plugin-use-dark-mode": "^1.5.0",
     "gatsby-remark-autolink-headers": "^5.13.0",
     "gatsby-remark-copy-linked-files": "^5.13.0",
-    "gatsby-remark-highlight-code": "^3.2.0",
     "gatsby-remark-images": "^6.13.0",
     "gatsby-remark-obsidian": "^0.5.0",
+    "gatsby-remark-prismjs": "^6.22.0",
     "gatsby-source-filesystem": "^4.13.0",
     "gatsby-transformer-sharp": "^4.13.0",
     "lxgw-wenkai-lite-webfont": "^1.6.0",
@@ -43,8 +43,7 @@
     "redux": "^4.2.0",
     "rehype-katex": "^3.1.0",
     "remark-math": "^3.0.1",
-    "tocbot": "^4.18.2",
-    "use-dark-mode": "^2.3.1"
+    "tocbot": "^4.18.2"
   },
   "devDependencies": {
     "prettier": "2.6.2"

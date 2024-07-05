@@ -15,14 +15,14 @@ description: Fish 是"the friendly interactive shell"的简称，以方便易用
 
 OSX 中的软件管理神器 [HomeBrew](https://brew.sh/) 大家肯定不陌生，陌生的话就熟悉一下
 
-```bash
+```shell{promptUser: w1zd}{promptHost: localhost}{outputLines:1}
 # 使用 brew 安装 fish
 brew install fish     
 ```
 
 如果感兴趣的话，还可以了解一下 [Oh-My-Fish](https://github.com/oh-my-fish/oh-my-fish)。
 
-```bash
+```shell{promptUser: w1zd}{promptHost: localhost}{outputLines:1,3}
 # 安装 Oh My Fish
 curl -L https://get.oh-my.fish > install
 # 这里的 path 和 config 你可以自定义
@@ -33,7 +33,7 @@ fish install --path=~/.local/share/omf --config=~/.config/omf
 
 由于 fish 不是标准 shell，我们需要将 fish 添加到 /etc/shells 中去，否则修改默认 shell 的时候会报错。
 
-```bash
+```shell{promptUser: w1zd}{promptHost: localhost}{outputLines:3-19}
 # 编辑 /etc/shells
 sudo vi /etc/shells
 
@@ -55,7 +55,7 @@ sudo vi /etc/shells
 
 设置 fish 为默认 shell
 
-```bash
+```shell{promptUser: w1zd}{promptHost: localhost}{outputLines:3}
 chsh -s /usr/local/bin/fish
 
 # 可以通过下面的命令修改回 bash
@@ -64,31 +64,31 @@ chsh -s /bin/bash
 
 ## 安装主题
 
-```bash
+```shell{promptUser: w1zd}{promptHost: localhost}
 omf install lambda
 ```
 
 ## 安装插件管理工具 fisher（可选）
 
-```bash
+```shell{promptUser: w1zd}{promptHost: localhost}
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 ```
 
 ## fish 中设置环境变量
 
-```bash
+```shell{promptUser: w1zd}{promptHost: localhost}
 set -Ux KEY VALUE
 ```
 
 添加 PATH
 
-```bash
+```shell{promptUser: w1zd}{promptHost: localhost}
 fish_add_path ~/xxxx/bin/
 ```
 
 ## fish 设置 vi-mode
 
-```bash
+```shell{promptUser: w1zd}{promptHost: localhost}
 sudo echo fish_vi_key_bindings >> ~/.config/fish/config.fish
 ```
 

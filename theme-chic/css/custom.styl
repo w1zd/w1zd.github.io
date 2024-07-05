@@ -2,10 +2,6 @@
 // Custom style
 // ==============================
 // Also You can override the variables in variable.styl to customize the style
-.deckgo-highlight-code-carbon.deckgo-highlight-code-theme-one-light.hydrated {
-  font-size: 12px;
-}
-
 .goback-posts {
   display: block;
   text-align: center;
@@ -44,28 +40,33 @@ h1,h2{
   font-weight: 400;
 }
 
-deckgo-highlight-code
-  display block
-  width 100%
-  position relative
-  // &::after
-  //   content attr(language)
-  //   display block
-  //   clear both
-  //   position absolute
-  //   top -8px
-  //   right 10px
-  //   background-color #f5b345
-  //   padding 0 10px
-  //   font-size 0.8em
-  //   line-height 180%
-  //   border-radius 0 0 5px 5px
-  //   box-shadow 0 1px 5px rgba(0,0,0,0.2)
-
 .katex-display
   overflow-x scroll
   overflow-y hidden
   
-.katex-display::-webkit-scrollbar {
-  display: none;
-}
+.katex-display::-webkit-scrollbar 
+  display none
+
+
+:not(pre) > code[class*="language-"], pre[class*="language-"]
+  background none
+  box-shadow 0px 0px 2px rgba(0, 0, 0, 0.2)
+  border-radius 3px
+
+.gatsby-highlight-code-line 
+  background-color #feb
+  display block
+  margin-right -1em
+  margin-left -1em
+  padding-right 1em
+  padding-left 0.75em
+  border-left 0.25em solid #f99
+
+
+.gatsby-highlight pre[class*="language-"].line-numbers 
+  padding-left 2.8em
+
+.gatsby-highlight pre[class*="language-"].line-numbers 
+  padding 0
+  padding-left 2.8em
+  overflow initial

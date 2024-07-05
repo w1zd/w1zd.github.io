@@ -1,8 +1,8 @@
 import React from "react"
 import { useState, useEffect } from "react"
-import { useDispatch } from 'react-redux'
+import { useDispatch } from "react-redux"
 import { useStaticQuery, graphql } from "gatsby"
-import useDarkMode from 'use-dark-mode'
+// import useDarkMode from 'use-dark-mode'
 
 const Header = () => {
   const data = useStaticQuery(graphql`
@@ -24,18 +24,18 @@ const Header = () => {
   const { nav, title } = data.site.siteMetadata
   // const { publicStoreURL, publicIndexURL,index, store } = data.localSearchPages
   // const results = useFlexSearch(query, index, store);
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
-  const darkMode = useDarkMode()
+  // const darkMode = useDarkMode()
 
   // const toggleTheme = () => {
   //   darkMode.toggle();
-   
+
   // }
 
-  useEffect(()=>{
-    dispatch({type: "SET_THEME", payload: darkMode.value})
-  }, [darkMode.value])
+  // useEffect(()=>{
+  //   dispatch({type: "SET_THEME", payload: darkMode.value})
+  // }, [darkMode.value])
 
   return (
     <header>
@@ -70,7 +70,7 @@ const Header = () => {
             </div>
             <div className={`menu-toggle ${isMenuActive? "active": ""}`} onClick={() => {setisMenuActive(!isMenuActive)}}>&#9776; Menu</div>
           </div> */}
-          <div className={`menu ${isMenuActive? "active": ""}`}>
+          <div className={`menu ${isMenuActive ? "active" : ""}`}>
             {nav.map(item => (
               <a className="menu-item" href={item.url} key={item.name}>
                 {item.name}

@@ -166,16 +166,14 @@ Y &=a\oplus b\\
 $$
 ![](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/18/16-18-48-145a55345ab36b1cb39652e8ff9fa102-XOR-GATE-4-9e85a7.png)
 
-```nand2tetris-hdl
+```nand2tetris-hdl{9}{numberLines: true}
 /**
  * Xor gate:
  * out = a xor b
  */
-
 CHIP Xor {
   IN a, b;
   OUT out;
-
   PARTS:
   // Put your code here:
   Nand(a = a, b = b, out = nandAB);
