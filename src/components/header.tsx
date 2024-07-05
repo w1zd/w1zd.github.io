@@ -1,7 +1,7 @@
 import React from "react"
-import { useState, useEffect } from "react"
-import { useDispatch } from "react-redux"
+import { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import { ThemeToggler } from "gatsby-plugin-dark-mode"
 
 const Header = () => {
   const data = useStaticQuery(graphql`
@@ -34,26 +34,49 @@ const Header = () => {
                 {item.name}
               </a>
             ))}
-            {/* <input
-              id="switch_default"
-              type="checkbox"
-              className="switch_default"
-              checked={darkMode.value}
-              onChange={darkMode.toggle}
-            />
-            <label htmlFor="switch_default" className="toggleBtn"></label> */}
+            <ThemeToggler>
+              {({ theme, toggleTheme }) => (
+                <>
+                  <input
+                    id="switch_default"
+                    type="checkbox"
+                    className="switch_default"
+                    checked={theme === "dark-mode"}
+                    onChange={e =>
+                      toggleTheme(e.target.checked ? "dark-mode" : "light-mode")
+                    }
+                  />
+                  <label htmlFor="switch_default" className="toggleBtn"></label>
+                </>
+              )}
+            </ThemeToggler>
           </div>
         </div>
       </nav>
       <nav className="navbar-mobile" id="nav-mobile">
         <div className="container">
-          {/* <div className="navbar-header">
+          <div className="navbar-header">
             <div>
               <a href="/">{title}</a>
-              <a id="mobile-toggle-theme" onClick={darkMode.toggle}>&nbsp;·&nbsp;{darkMode.value ? "Dark" : "Light"}</a>
+              <ThemeToggler>
+                {({ theme, toggleTheme }) => (
+                  <a id="mobile-toggle-theme" onClick={() => {
+                    toggleTheme(theme === "dark-mode"? "light-mode": "dark-mode")
+                  }}>
+                    &nbsp;·&nbsp;{theme === "dark-mode" ? "Dark" : "Light"}
+                  </a>
+                )}
+              </ThemeToggler>
             </div>
-            <div className={`menu-toggle ${isMenuActive? "active": ""}`} onClick={() => {setisMenuActive(!isMenuActive)}}>&#9776; Menu</div>
-          </div> */}
+            <div
+              className={`menu-toggle ${isMenuActive ? "active" : ""}`}
+              onClick={() => {
+                setisMenuActive(!isMenuActive)
+              }}
+            >
+              &#9776; Menu
+            </div>
+          </div>
           <div className={`menu ${isMenuActive ? "active" : ""}`}>
             {nav.map(item => (
               <a className="menu-item" href={item.url} key={item.name}>
