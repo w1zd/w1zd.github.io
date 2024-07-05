@@ -2,7 +2,6 @@ import React from "react"
 import { useState, useEffect } from "react"
 import { useDispatch } from "react-redux"
 import { useStaticQuery, graphql } from "gatsby"
-// import useDarkMode from 'use-dark-mode'
 
 const Header = () => {
   const data = useStaticQuery(graphql`
@@ -20,22 +19,7 @@ const Header = () => {
     }
   `)
   const [isMenuActive, setisMenuActive] = useState(false)
-  // const [query, setQuery] = useState('')
   const { nav, title } = data.site.siteMetadata
-  // const { publicStoreURL, publicIndexURL,index, store } = data.localSearchPages
-  // const results = useFlexSearch(query, index, store);
-  // const dispatch = useDispatch()
-
-  // const darkMode = useDarkMode()
-
-  // const toggleTheme = () => {
-  //   darkMode.toggle();
-
-  // }
-
-  // useEffect(()=>{
-  //   dispatch({type: "SET_THEME", payload: darkMode.value})
-  // }, [darkMode.value])
 
   return (
     <header>
