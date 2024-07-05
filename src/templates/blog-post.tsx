@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { useSelector } from "react-redux"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
@@ -22,6 +22,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
     siteUrl,
   } = data.site.siteMetadata
   const { previous, next } = pageContext
+  const isDarkmode = useSelector(state => state.isDarkMode)
   useEffect(() => {
     mediumZoom(".post-content img", { background: "#292a2d" })
   }, [])
@@ -139,24 +140,19 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               <span className="next">No More</span>
             )}
           </section>
-
-          <ThemeToggler>
-            {({ theme }) => (
-              <Giscus
-                id="comment"
-                repo="w1zd/w1zd.github.io"
-                repoId="MDEwOlJlcG9zaXRvcnkyODg3MTA5NjA="
-                category="Announcements"
-                categoryId="MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMzMDE1OTcy"
-                mapping="og:title"
-                theme={`https://wizd.dev/giscus-themes/${
-                  theme === "dark-mode" ? "dark" : "light"
-                }.css`}
-                reactionsEnabled="1"
-                loading="lazy"
-              />
-            )}
-          </ThemeToggler>
+          <Giscus
+            id="comment"
+            repo="w1zd/w1zd.github.io"
+            repoId="MDEwOlJlcG9zaXRvcnkyODg3MTA5NjA="
+            category="Announcements"
+            categoryId="MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMzMDE1OTcy"
+            mapping="og:title"
+            theme={`https://wizd.dev/giscus-themes/${
+              isDarkmode ? "dark" : "light"
+            }.css`}
+            reactionsEnabled="1"
+            loading="lazy"
+          />
 
           {post.frontmatter.toc && <TOC></TOC>}
         </article>

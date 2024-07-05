@@ -1,6 +1,7 @@
 import { createStore as reduxCreateStore } from "redux"
 
 const reducer = (state, action) => {
+
   if (action.type === `SET_THEME`) {
     return Object.assign({}, state, {
       isDarkMode: action.payload,
