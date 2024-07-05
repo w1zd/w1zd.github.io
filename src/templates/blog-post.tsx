@@ -1,12 +1,13 @@
 import React from "react"
-import { useSelector } from 'react-redux'
+import { useSelector } from "react-redux"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import TOC from "../components/toc"
 import { useEffect } from "react"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import Giscus from "@giscus/react"
-import mediumZoom from 'medium-zoom'
+import mediumZoom from "medium-zoom"
+import { ThemeToggler } from "gatsby-plugin-dark-mode"
 
 // const GiscusMemo = React.memo(Giscus, (props, nextProps) => {
 //   return props.repoId === nextProps.repoId
@@ -22,17 +23,21 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   } = data.site.siteMetadata
   const { previous, next } = pageContext
   useEffect(() => {
-    mediumZoom('.post-content img', {background: "#292a2d"})
+    mediumZoom(".post-content img", { background: "#292a2d" })
   }, [])
   return (
-    <Layout isFocus={false} title={post.frontmatter.title} description={post.frontmatter.description}>
+    <Layout
+      isFocus={false}
+      title={post.frontmatter.title}
+      description={post.frontmatter.description}
+    >
       <div className="container">
         <article className="post-wrap">
           {/* <a href="/posts" className="goback-posts"><i className={`iconfont icon-blog`}></i></a> */}
           <header className="post-header">
             <h1 className="post-title">{post.frontmatter.title}</h1>
             <div className="post-meta">
-            {/* Author:
+              {/* Author:
               <a itemProp="author" rel="author" href="/">
                 {data.site.siteMetadata.author.name}
               </a>
@@ -123,25 +128,36 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               <a className="prev" rel="prev" href={previous.fields.slug}>
                 {previous.frontmatter.title}
               </a>
-            ):<span className="prev">No More</span>}
+            ) : (
+              <span className="prev">No More</span>
+            )}
             {next ? (
               <a className="next" rel="next" href={next.fields.slug}>
                 {next.frontmatter.title}
               </a>
-            ): <span className="next">No More</span>}
+            ) : (
+              <span className="next">No More</span>
+            )}
           </section>
 
-          <Giscus
-            id='comment'
-            repo="w1zd/w1zd.github.io"
-            repoId="MDEwOlJlcG9zaXRvcnkyODg3MTA5NjA="
-            category="Announcements"
-            categoryId="MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMzMDE1OTcy"
-            mapping="og:title"
-            theme={`https://wizd.dev/giscus-themes/light.css`}
-            reactionsEnabled="1"
-            loading="lazy"
-          />
+          <ThemeToggler>
+            {({ theme }) => (
+              <Giscus
+                id="comment"
+                repo="w1zd/w1zd.github.io"
+                repoId="MDEwOlJlcG9zaXRvcnkyODg3MTA5NjA="
+                category="Announcements"
+                categoryId="MDE4OkRpc2N1c3Npb25DYXRlZ29yeTMzMDE1OTcy"
+                mapping="og:title"
+                theme={`https://wizd.dev/giscus-themes/${
+                  theme === "dark-mode" ? "dark" : "light"
+                }.css`}
+                reactionsEnabled="1"
+                loading="lazy"
+              />
+            )}
+          </ThemeToggler>
+
           {post.frontmatter.toc && <TOC></TOC>}
         </article>
       </div>
