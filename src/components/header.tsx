@@ -66,7 +66,7 @@ const Header = () => {
                         )
                       }}
                     >
-                      &nbsp;·&nbsp;{theme === "dark-mode" ? "Dark" : "Light"}
+                      &nbsp;·&nbsp;{theme === "dark-mode" ? "Light" : "Dark"}
                     </a>
                   </div>
                   <div
