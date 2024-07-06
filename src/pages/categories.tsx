@@ -12,7 +12,7 @@ const Categories = ({ data }) => {
             {data.allMdx.group.map(item => (
               <div className="card-item" key={item.fieldValue}>
                 <div className="categories">
-                  <a href={`/category/${item.fieldValue}`}>
+                  <a href={`/category/${item.fieldValue}/`}>
                     <h3>
                       <i
                         className="iconfont icon-category"

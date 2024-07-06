@@ -11,7 +11,7 @@ const Posts = ({ data, location }) => {
   
   return (
     <Layout title="All posts">
-      <PostsList posts={posts} catOrTagname={"All Posts"}></PostsList>
+      <PostsList posts={posts}></PostsList>
       <Paginator {...data.allMdx.pageInfo} url="/posts"></Paginator>
     </Layout>
   )

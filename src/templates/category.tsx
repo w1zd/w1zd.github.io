@@ -7,7 +7,7 @@ import Layout from "../components/layout"
 const Category = ({ data }) => {
   let cate = ""
   if (typeof window !== `undefined`) {
-    cate = decodeURIComponent(window.location.pathname.replace(/\/category\/(.*)\//, "$1"));
+    cate = decodeURIComponent(window.location.pathname.replace(/\/category\/(.*)\/.*/, "$1"));
   }
   return (
     <Layout title={cate} description={cate}>
@@ -15,7 +15,7 @@ const Category = ({ data }) => {
         <PostsList posts={data.allMdx.nodes} catOrTagname={cate}></PostsList>
         <Paginator
           {...data.allMdx.pageInfo}
-          url="/category"
+          url={`/category/${cate}`}
         ></Paginator>
       </div>
     </Layout>

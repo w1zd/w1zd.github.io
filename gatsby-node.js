@@ -66,35 +66,35 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   // create Category page
-  const categories = await graphql(
-    `
-      query categoryQuery {
-        allMdx(filter: {}) {
-          group(field: frontmatter___categories) {
-            fieldValue
-            nodes {
-              id
-            }
-          }
-        }
-      }
-    `
-  )
+  // const categories = await graphql(
+  //   `
+  //     query categoryQuery {
+  //       allMdx(filter: {}) {
+  //         group(field: frontmatter___categories) {
+  //           fieldValue
+  //           nodes {
+  //             id
+  //           }
+  //         }
+  //       }
+  //     }
+  //   `
+  // )
 
-  categories.data.allMdx.group.forEach(item => {
-    const numPagesOfTag = Math.ceil(item.nodes.length / postsPerPage)
-    Array.from({ length: numPagesOfTag }).forEach((_, i) => {
-      createPage({
-        path: i === 0 ? `/category/${item.fieldValue}` : `/category/${item.fieldValue}/${i + 1}`,
-        component: path.resolve("./src/templates/category.tsx"),
-        context: {
-          limit: postsPerPage,
-          skip: i * postsPerPage,
-          category: item.fieldValue
-        },
-      })
-    })
-  })
+  // categories.data.allMdx.group.forEach(item => {
+  //   const numPagesOfTag = Math.ceil(item.nodes.length / postsPerPage)
+  //   Array.from({ length: numPagesOfTag }).forEach((_, i) => {
+  //     createPage({
+  //       path: i === 0 ? `/category/${item.fieldValue}` : `/category/${item.fieldValue}/${i + 1}`,
+  //       component: path.resolve("./src/templates/category.tsx"),
+  //       context: {
+  //         limit: postsPerPage,
+  //         skip: i * postsPerPage,
+  //         category: item.fieldValue
+  //       },
+  //     })
+  //   })
+  // })
 
   // create Tag Page
   const tags = await graphql(

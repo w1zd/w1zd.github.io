@@ -38,17 +38,19 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           <header className="post-header">
             <h1 className="post-title">{post.frontmatter.title}</h1>
             <div className="post-meta">
-              {/* Author:
-              <a itemProp="author" rel="author" href="/">
+              {/* Author: */}
+              {/* <a itemProp="author" rel="author" href="/"> */}
                 {data.site.siteMetadata.author.name}
-              </a>
-              &nbsp; */}
+              {/* </a> */}
+              &nbsp; / &nbsp;
               <span className="post-time">
-                Date:
-                <a href="#/">{post.frontmatter.date}</a>
+                {/* Date: */}
+                {/* <a href="#/"> */}
+                {post.frontmatter.date}
+                {/* </a> */}
               </span>
               &nbsp;
-              {post.frontmatter.categories.length !== 0 && (
+              {/* {post.frontmatter.categories.length !== 0 && (
                 <span className="post-category">
                   Category:
                   {post.frontmatter.categories.map(item => {
@@ -59,7 +61,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
                     )
                   })}
                 </span>
-              )}
+              )} */}
             </div>
           </header>
 
