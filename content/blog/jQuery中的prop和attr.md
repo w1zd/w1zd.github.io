@@ -2,7 +2,7 @@
 title: jQuery中的prop和attr
 date: "2014-09-11T21:16:50.284Z"
 tags:
-- 前端
+- Front-end
 - jQuery
 categories:
 - 技术文章

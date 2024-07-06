@@ -40,7 +40,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             <div className="post-meta">
               {/* Author: */}
               {/* <a itemProp="author" rel="author" href="/"> */}
-                {data.site.siteMetadata.author.name}
+              {data.site.siteMetadata.author.name}
               {/* </a> */}
               &nbsp; / &nbsp;
               <span className="post-time">
@@ -89,11 +89,9 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               <p className="copyright-item">
                 <span>License:&nbsp;</span>
                 <span>
-                  本博客所有文章除特别声明外，均采用{" "}
                   <a href="http://creativecommons.org/licenses/by-nc/4.0/">
                     CC-BY-NC-4.0
-                  </a>{" "}
-                  许可协议。转载请注明出处！
+                  </a>
                 </span>
               </p>
             </section>

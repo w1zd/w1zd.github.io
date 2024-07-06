@@ -2,7 +2,7 @@
 title: LeetCode刷题系列-两数之和
 date: "2019-07-23T20:14:49.284Z"
 tags: 
-  - 算法
+  - Algorithm
   - LeetCode
   - JavaScript
 categories:

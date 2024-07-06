@@ -2,7 +2,7 @@
 title: 原生JS实现AJAX、JSONP及DOM加载完成事件
 date: "2015-01-07T18:20:33.284Z"
 tags:
-- 前端
+- Front-end
 - JavaScript
 - Ajax
 categories:
