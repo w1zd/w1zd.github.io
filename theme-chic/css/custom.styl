@@ -88,3 +88,34 @@ code[class*="language-"], pre[class*="language-"]
 
 .gatsby-highlight-code-line
   margin-left -0.5em
+
+
+.post-wrap.gallery
+  display flex
+  flex-wrap wrap
+  width 100%
+  justify-content space-between
+  .gallery-item
+    display flex
+    overflow hidden
+    justify-content center
+    align-items center
+    height 160px
+    width 32%
+    margin 10px 0
+    img
+      width 100%
+      object-fit cover
+
+.medium-zoom-overlay
+  z-index 10
+
+.medium-zoom-image--opened
+  z-index 11
+
+@media screen and (max-width: 580px) 
+  .post-wrap.gallery
+    justify-content space-between
+    .gallery-item
+      img
+        width 100%
