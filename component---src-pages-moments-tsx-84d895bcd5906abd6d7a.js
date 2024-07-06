@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkw1zd_lair=self.webpackChunkw1zd_lair||[]).push([[282],{7108:function(e,t,a){a.r(t);var l=a(6540),n=a(7334);t.default=e=>{let{data:t}=e;return l.createElement(n.A,{title:"About Me"},l.createElement("div",{className:"container"},l.createElement("div",{className:"post-wrap categories"},l.createElement("h1",null,"🚧 🚧 🚧"),l.createElement("h2",null,"Coming Soon ...  "))))}}}]);
+//# sourceMappingURL=component---src-pages-moments-tsx-84d895bcd5906abd6d7a.js.map
