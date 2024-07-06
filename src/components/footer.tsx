@@ -18,14 +18,7 @@ const Footer = () => {
     <footer id="footer" className="footer">
       <div className="copyright">
         <span>
-          © {author.name} | Powered by{" "}
-          <a href="https://www.gatsbyjs.com/" target="_blank">
-            Gatsby
-          </a>{" "}
-          &{" "}
-          <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">
-            Chic
-          </a>
+          © {author.name}
         </span>
       </div>
     </footer>
