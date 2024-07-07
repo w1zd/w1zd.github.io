@@ -4,27 +4,18 @@ import Layout from "../components/layout"
 import Zoom from "react-medium-image-zoom"
 
 const loadGallery = async () => {
-  return await fetch(
-    "https://api.github.com/repos/w1zd/image-hosting/contents/gallery",
-    {
-      method: "get",
-      headers: {
-        Authorization:
-          "Bearer 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",
-      },
-    }
-  )
+  return await fetch("https://a.agg.workers.dev/")
 }
 
 const Moments = ({ data }) => {
   const [gallery, setGallery] = useState([])
   useEffect(() => {
-    (async () => {
+    ;(async () => {
       try {
         const res = await loadGallery()
         setGallery(await res.json())
       } catch (error) {}
-    })();
+    })()
   }, [])
 
   return (
