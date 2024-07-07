@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkw1zd_lair=self.webpackChunkw1zd_lair||[]).push([[970],{4748:function(e,t,a){a.r(t);var l=a(6540),n=a(220);t.default=e=>{let{data:t}=e;return l.createElement(n.A,{title:"About Me"},l.createElement("div",{className:"container"},l.createElement("div",{className:"post-wrap categories"},l.createElement("h1",null,"🚧 🚧 🚧"),l.createElement("h2",null,"Coming Soon ...  "))))}}}]);
+//# sourceMappingURL=component---src-pages-about-tsx-3050a75e7ae596861e2a.js.map
