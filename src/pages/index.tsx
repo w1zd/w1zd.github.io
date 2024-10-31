@@ -61,9 +61,6 @@ query ProfileQuery {
       }
       social {
         github
-        twitter
-        wechat
-        qq
       }
     }
   }
