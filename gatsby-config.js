@@ -9,10 +9,10 @@ module.exports = {
     description: `Enjoy life && Enjoy Coding`,
     siteUrl: `https://wizd.dev`,
     social: {
-      twitter: `https://twitter.com/wzdryan`,
+      // twitter: `https://twitter.com/wzdryan`,
       github: `https://github.com/w1zd`,
-      wechat: `/wechat.jpg`,
-      qq: `http://wpa.qq.com/msgrd?v=3&uin=5472965&site=qq&menu=yes`,
+      // wechat: `/wechat.jpg`,
+      // qq: `http://wpa.qq.com/msgrd?v=3&uin=5472965&site=qq&menu=yes`,
     },
     nav: [
       { name: "Posts", url: "/posts" },
