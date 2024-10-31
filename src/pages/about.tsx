@@ -10,7 +10,6 @@ const Tags = ({ data }) => {
           <p>
             Email: <a href="mailto:me@wizd.dev">me@wizd.dev</a>
           </p>
-          <h2>Summary</h2>
           <p>
             Front-End Developer with over nine years of experience in creating
             effective and innovative web solutions. Skilled in a wide range of
