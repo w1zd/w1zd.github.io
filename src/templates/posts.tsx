@@ -3,15 +3,15 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Paginator from '../components/paginator'
-import PostsList from '../components/postslist'
+import Paginator from "../components/paginator"
+import PostsList from "../components/postslist"
 
 const Posts = ({ data, location }) => {
   const posts = data.allMdx.nodes
-  
+
   return (
     <Layout title="All posts">
-      <PostsList posts={posts}></PostsList>
+      <PostsList posts={posts} catOrTagname={null}></PostsList>
       <Paginator {...data.allMdx.pageInfo} url="/posts"></Paginator>
     </Layout>
   )
@@ -20,17 +20,13 @@ const Posts = ({ data, location }) => {
 export default Posts
 
 export const pageQuery = graphql`
-  query($skip: Int!, $limit: Int!) {
+  query ($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
       }
     }
-    allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: $limit
-      skip: $skip
-    ) {
+    allMdx(sort: { frontmatter: { date: DESC } }, limit: $limit, skip: $skip) {
       pageInfo {
         currentPage
         hasNextPage
@@ -52,7 +48,6 @@ export const pageQuery = graphql`
           slug
         }
       }
-     
     }
   }
 `

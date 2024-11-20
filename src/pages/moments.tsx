@@ -19,7 +19,7 @@ const Moments = ({ data }) => {
   }, [])
 
   return (
-    <Layout title="About Me">
+    <Layout title="Moments">
       <div className="container">
         <div className="post-wrap gallery">
           {gallery.map(v => {

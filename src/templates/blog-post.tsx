@@ -4,16 +4,11 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import TOC from "../components/toc"
 import { useEffect } from "react"
-import { MDXRenderer } from "gatsby-plugin-mdx"
+import { MDXProvider } from "@mdx-js/react"
 import Giscus from "@giscus/react"
 import mediumZoom from "medium-zoom"
-import { ThemeToggler } from "gatsby-plugin-dark-mode"
 
-// const GiscusMemo = React.memo(Giscus, (props, nextProps) => {
-//   return props.repoId === nextProps.repoId
-// })
-
-const BlogPostTemplate = ({ data, pageContext, location }) => {
+const BlogPostTemplate = ({ data, pageContext, children }) => {
   const post = data.mdx
   const {
     title: siteTitle,
@@ -66,7 +61,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </header>
 
           <div className="post-content">
-            <MDXRenderer>{post.body}</MDXRenderer>
+            <MDXProvider>{children}</MDXProvider>
           </div>
 
           {postCopyright && (

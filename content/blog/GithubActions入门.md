@@ -5,9 +5,10 @@ tags:
   - DevOps
   - Github
 categories:
-- 技术文章
+  - 技术文章
 description: 借助 GitHub Actions，可以直接从 GitHub 构建、测试和部署代码，轻松实现所有软件工作流程的自动化。
 ---
+
 ![github-actions](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/13-43-12-ff8131d6e5212fdddaddb1f20be4e03e-github-actions-fd25c1.png)
 
 这个博客站是我自己用 Gatsby 随便拼凑了一下造出来的，前几天发现好久都没有更新博客了，心里还是很愧疚的 🤣，那就更新一篇吧。
@@ -181,15 +182,14 @@ jobs:
 
 目前 Github 能提供的环境如下：
 
-| Virtual environment | YAML workflow label |
-|--|--|
-| Windows Server 2019 | windows-latest or windows-2019 |
-| Ubuntu 20.04 | ubuntu-latest or ubuntu-20.04 |
-| Ubuntu 18.04 | ubuntu-18.04 |
-| Ubuntu 16.04 | ubuntu-16.04 |
-| macOS Big Sur 11.0 | macos-11.0 |
-| macOS Catalina 10.15 | macos-latest or macos-10.15 |
-
+| Virtual environment  | YAML workflow label            |
+| -------------------- | ------------------------------ |
+| Windows Server 2019  | windows-latest or windows-2019 |
+| Ubuntu 20.04         | ubuntu-latest or ubuntu-20.04  |
+| Ubuntu 18.04         | ubuntu-18.04                   |
+| Ubuntu 16.04         | ubuntu-16.04                   |
+| macOS Big Sur 11.0   | macos-11.0                     |
+| macOS Catalina 10.15 | macos-latest or macos-10.15    |
 
 有的时候需要在不同环境下测试一套代码，有同学可能会想，那我是不是要来多个 `job` 来在不同的环境中进行操作。其实不需要，Github Action 帮我们解决了这个问题，使用 `strategy`，就可以让当前 `job` 在不同环境中运行。
 
@@ -221,9 +221,10 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-2016]
         node-version: [12.x, 14.x]
-    steps: 
-    - name: Print a greeting
+    steps:
+      - name: Print a greeting
 ```
+
 `step` 中最关键的是 `run`，用来执行具体的命令。
 
 ```yaml
@@ -235,10 +236,10 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-2016]
         node-version: [12.x, 14.x]
-    steps: 
-    - name: Print a greeting
-      run: |
-        echo Hello World.
+    steps:
+      - name: Print a greeting
+        run: |
+          echo Hello World.
 ```
 
 `step` 中还可以添加环境变量 `env`，这样在执行的命令中可以使用这些环境变量，就像下面这样。
@@ -252,19 +253,18 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-2016]
         node-version: [12.x, 14.x]
-    steps: 
-    - name: Print a greeting
-      env:
-        MY_VAR: Hi there! My name is
-        FIRST_NAME: Mona
-        MIDDLE_NAME: The
-        LAST_NAME: Octocat
-      run: |
-        echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
+    steps:
+      - name: Print a greeting
+        env:
+          MY_VAR: Hi there! My name is
+          FIRST_NAME: Mona
+          MIDDLE_NAME: The
+          LAST_NAME: Octocat
+        run: |
+          echo $MY_VAR $FIRST_NAME $MIDDLE_NAME $LAST_NAME.
 ```
 
 除了执行指定的命令外，我们也可以使用 `uses` 在 `step` 中调用 `action`（`aciton`可以自己写，也可以去市场找）。
-
 
 ```yaml
 jobs:
@@ -276,23 +276,23 @@ jobs:
         os: [ubuntu-latest, windows-2016]
         node-version: [12.x, 14.x]
     steps:
-    - uses: actions/checkout@v2 # 这里就是使用市场中提供的 action 将当前的仓库代码检出到虚拟机
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: ./.github/actions/setup-node  # 这里是使用自己写的 action 安装 node 环境（实际不存在，只是给大家演示写法，实际使用的还是市场提供的 actions/setup-node@v1）
-      with: # with 为这个 action 提供相应的参数
-        node-version: ${{ matrix.node-version }}
-    - name: npm install, and test
-      run: |
-        npm install
-        npm test
+      - uses: actions/checkout@v2 # 这里就是使用市场中提供的 action 将当前的仓库代码检出到虚拟机
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: ./.github/actions/setup-node # 这里是使用自己写的 action 安装 node 环境（实际不存在，只是给大家演示写法，实际使用的还是市场提供的 actions/setup-node@v1）
+        with: # with 为这个 action 提供相应的参数
+          node-version: ${{ matrix.node-version }}
+      - name: npm install, and test
+        run: |
+          npm install
+          npm test
 ```
-
 
 ## 使用 Github Actions 发布 Gatsby 到 Github Pages
 
 本来打算自己写一个发布的 action，结果发现已经有人已经造好了轮子，那我们就在巨人肩上玩玩吧。
 
 下面是我完整的 workflow 文件。
+
 ```yaml
 name: Gatsby Publish
 
@@ -305,8 +305,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1  # 这里还是使用市场提供的 action 检出代码到虚拟机
-      - uses: enriikke/gatsby-gh-pages-action@v2  # 这里就是巨人造好得轮子，可以构建 Gatsby 静态页面，并且发布到 Github Pages
+      - uses: actions/checkout@v1 # 这里还是使用市场提供的 action 检出代码到虚拟机
+      - uses: enriikke/gatsby-gh-pages-action@v2 # 这里就是巨人造好得轮子，可以构建 Gatsby 静态页面，并且发布到 Github Pages
         with:
           access-token: ${{ secrets.ACCESS_TOKEN }} # 我们需要提供相应的参数，这个 token 提供我会在下面讲到
           deploy-branch: page # 这里是指定提供 Github Pages 的分支，最终构件好的静态页面就会发布到这个分支
@@ -322,7 +322,7 @@ jobs:
 
 也就是在我们每次本地写好 Markdown 文章之后，推送到 Github，我们的 `workflow` 就会自动帮我们生成静态页面，并且发布到 Github Pages。
 
-### ${{ secrets.ACCESS_TOKEN }}
+### $\{\{ secrets.ACCESS_TOKEN \}\}
 
 在上面的 `steps` 第二步中，我们用到了一个 `${{ secrets.ACCESS_TOKEN }}`， 这是由于该 `action` 需要将构件好的静态页面 `push` 到我们的 `page` 分支，所以需要 Github 的访问权限，我们需要[自己生成 `Access_Token`](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)，并在项目设置页面中提供。
 
@@ -333,3 +333,4 @@ jobs:
 本文只是讲解了一些日常用法，关于 Github Actions 更深层次的学习，大家可以参考[官网文档](https://docs.github.com/en/actions/learn-github-actions)。
 
 Github Actions 使得定制开发工作流如此简单，在 DevOps 方面还有很多的可能性，必然会是日后发展的趋势（当然我是说它这种模式，毕竟，它是要收钱的🤣 🤣 🤣）。
+

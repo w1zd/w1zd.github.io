@@ -7,7 +7,9 @@ import Layout from "../components/layout"
 const Category = ({ data }) => {
   let cate = ""
   if (typeof window !== `undefined`) {
-    cate = decodeURIComponent(window.location.pathname.replace(/\/category\/(.*)\/.*/, "$1"));
+    cate = decodeURIComponent(
+      window.location.pathname.replace(/\/category\/(.*)\/.*/, "$1"),
+    )
   }
   return (
     <Layout title={cate} description={cate}>
@@ -26,7 +28,7 @@ export default Category
 export const pageQuery = graphql`
   query categoryQuery($limit: Int!, $skip: Int!, $category: String!) {
     allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
       limit: $limit
       skip: $skip
       filter: { frontmatter: { categories: { glob: $category } } }

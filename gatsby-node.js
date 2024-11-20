@@ -5,27 +5,25 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
   const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
-  const result = await graphql(
-    `
-      {
-        allMdx(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-              }
+  const result = await graphql(`
+    query {
+      allMdx(sort: { frontmatter: { date: DESC } }) {
+        edges {
+          node {
+            internal {
+              contentFilePath
+            }
+            fields {
+              slug
+            }
+            frontmatter {
+              title
             }
           }
         }
       }
-    `
-  )
+    }
+  `)
 
   if (result.errors) {
     throw result.errors
@@ -40,7 +38,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     createPage({
       path: post.node.fields.slug,
-      component: blogPost,
+      component: `${blogPost}?__contentFilePath=${post.node.internal.contentFilePath}`,
       context: {
         slug: post.node.fields.slug,
         previous,
@@ -97,31 +95,32 @@ exports.createPages = async ({ graphql, actions }) => {
   // })
 
   // create Tag Page
-  const tags = await graphql(
-    `
-      query tagQuery {
-        allMdx(filter: {}) {
-          group(field: frontmatter___tags) {
-            fieldValue
-            nodes {
-              id
-            }
+  const tags = await graphql(`
+    query tagQuery {
+      allMdx(filter: {}) {
+        group(field: { frontmatter: { tags: SELECT } }) {
+          fieldValue
+          nodes {
+            id
           }
         }
       }
-    `
-  )
+    }
+  `)
 
   tags.data.allMdx.group.forEach(item => {
     const numPagesOfTag = Math.ceil(item.nodes.length / postsPerPage)
     Array.from({ length: numPagesOfTag }).forEach((_, i) => {
       createPage({
-        path: i === 0 ? `/tag/${item.fieldValue}` : `/tag/${item.fieldValue}/${i + 1}`,
+        path:
+          i === 0
+            ? `/tag/${item.fieldValue}`
+            : `/tag/${item.fieldValue}/${i + 1}`,
         component: path.resolve("./src/templates/tag.tsx"),
         context: {
           limit: postsPerPage,
           skip: i * postsPerPage,
-          tag: item.fieldValue
+          tag: item.fieldValue,
         },
       })
     })

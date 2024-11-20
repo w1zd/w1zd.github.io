@@ -6,18 +6,15 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const Tag = ({ data }) => {
-  let tag = "";
+  let tag = ""
   if (typeof window !== `undefined`) {
-    tag = decodeURIComponent(window.location.pathname.replace("/tag/", ""));
+    tag = decodeURIComponent(window.location.pathname.replace("/tag/", ""))
   }
   return (
     <Layout title={tag} description={tag}>
       <div className="container">
         <PostsList posts={data.allMdx.nodes} catOrTagname={tag}></PostsList>
-        <Paginator
-          {...data.allMdx.pageInfo}
-          url="/category"
-        ></Paginator>
+        <Paginator {...data.allMdx.pageInfo} url="/category"></Paginator>
       </div>
     </Layout>
   )
@@ -26,7 +23,12 @@ const Tag = ({ data }) => {
 export default Tag
 export const pageQuery = graphql`
   query tagsQuery($limit: Int!, $skip: Int!, $tag: String!) {
-    allMdx(limit: $limit, skip: $skip, filter: {frontmatter: {tags: {glob: $tag}}}, sort: {fields: frontmatter___date}) {
+    allMdx(
+      limit: $limit
+      skip: $skip
+      filter: { frontmatter: { tags: { glob: $tag } } }
+      sort: { frontmatter: { date: ASC } }
+    ) {
       pageInfo {
         currentPage
         pageCount
