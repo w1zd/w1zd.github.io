@@ -29,7 +29,6 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.md`, `.mdx`],
-        remarkPlugins: [require(`remark-math`)],
         gatsbyRemarkPlugins: [
           {
             resolve: "gatsby-remark-katex",
@@ -123,49 +122,36 @@ module.exports = {
     {
       resolve: `gatsby-plugin-feed`,
       options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-        `,
         feeds: [
           {
             serialize: ({ query: { site, allMdx } }) => {
-              return allMdx.edges.map(edge => {
-                return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.excerpt,
-                  date: edge.node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [{ "content:encoded": edge.node.html }],
+              return allMdx.nodes.map(node => {
+                return Object.assign({}, node.frontmatter, {
+                  description: node.excerpt ?? node.excerpt,
+                  date: node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + node.fields.slug,
+                  custom_elements: [{ "content:encoded": node.body }],
                 })
               })
             },
             query: `
-              {
-                allMdx(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                ) {
-                  edges {
-                    node {
+                {
+                  allMdx(sort: {frontmatter: {date: DESC}}) {
+                   nodes {
                       excerpt
-                      html
-                      fields { slug }
+                      body
+                      fields {
+                        slug
+                      }
                       frontmatter {
                         title
                         date
+                        description
                       }
                     }
                   }
                 }
-              }
             `,
             output: "/rss.xml",
             title: "Wizard's Lair",

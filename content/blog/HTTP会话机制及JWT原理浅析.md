@@ -1,11 +1,11 @@
 ---
-title: HTTP 会话机制及 JWT 深入浅出 
+title: HTTP 会话机制及 JWT 深入浅出
 date: "2021-03-29T14:51:50.284Z"
 tags:
-- Front-end
-- JWT
+  - Front-end
+  - JWT
 categories:
-- 技术文章
+  - 技术文章
 toc: true
 ---
 
@@ -34,13 +34,14 @@ HTTP 协议属于无状态协议，在客户端使用 HTTP 协议与服务端通
 用户正常的登录操作将会如下图所示：
 
 ![cookie-session](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-55-56-9142b0e1e226be2566e792ecedc6291f-cookie-session-754c2e.jpg)
-<div style='display: none'>
+
+<div style={{display: 'none'}}>
 ```mermaid
 sequenceDiagram
-	participant Cookie
-	participant 客户端
-	participant 服务器
-	participant Session
+ participant Cookie
+ participant 客户端
+ participant 服务器
+ participant Session
     客户端->服务器: ① 登录请求：用户名&密码
     服务器->服务器: ② 验证用户名和密码
     服务器->Session: ③ 通过校验后，将用户信息存储到Session中
@@ -62,7 +63,8 @@ sequenceDiagram
 和上面 Cookie & Session 差别在于，在使用 Token 的时候，服务端信息存储的位置不局限于 Session 空间，而可以使用 Redis/MongoDB 等NoSQL数据库做分布式存储，这使得鉴权性能以及稳定性都有提升。
 
 注意，这里的 Token 只是一个单纯的通行证，此方式仍然需要在服务器端进行数据存储，随着用户数量的增长，服务器的开支也会随之增大。那么思考一下，如果 Token 本身就能携带信息，那么服务器端就不用再存储数据，是不是就解决了上述服务器储存开支的问题？
-## JWT 
+
+## JWT
 
 JWT（JSON Web Token) 可以算是一种规范化的 Token 身份认证方式，他规定了 Token 中携带信息的方式。
 
@@ -80,7 +82,7 @@ eyJpc3MiOiJqb2UiLA0KICJleHAiOjEzMDA4MTkzODAsDQogImh0dHA6Ly9leGFtcGxlLmNvbS9pc19y
 dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
 ```
 
-***注意： 这里的为了方便大家看清格式，我将原本的单行文本进行了换行，实际获取到的 JWT 是没有换行的。***
+**_注意： 这里的为了方便大家看清格式，我将原本的单行文本进行了换行，实际获取到的 JWT 是没有换行的。_**
 
 在获取到 JWT 之后，后续的请求需要将获取到的 Token 以 Authorization 为键添加到请求头中:
 
@@ -89,8 +91,9 @@ Authorization:Bearer 你的token
 ```
 
 比如 axios 默认请求头设置：
+
 ```javascript
-axios.defaults.headers['Authorization'] = `Bearer ${token}`
+axios.defaults.headers["Authorization"] = `Bearer ${token}`
 ```
 
 ### JWT 是如何生成的？
@@ -99,20 +102,23 @@ axios.defaults.headers['Authorization'] = `Bearer ${token}`
 
 #### JWT 的结构
 
-一个 JWT 中包含有三部分，中间用 `.` 隔开： 
-* header：使用 base64 处理过的 Token Meta。（`base64(header)`）
-* payload：使用 base64 处理过的实际携带的数据。（`base64(payload)`）
-* signature: 使用 HMACSHA256 从 `header` `paylaod` 提取。（`HMACSHA256(header + '.' + paylaod, '秘钥')`）
+一个 JWT 中包含有三部分，中间用 `.` 隔开：
+
+- header：使用 base64 处理过的 Token Meta。（`base64(header)`）
+- payload：使用 base64 处理过的实际携带的数据。（`base64(payload)`）
+- signature: 使用 HMACSHA256 从 `header` `paylaod` 提取。（`HMACSHA256(header + '.' + paylaod, '秘钥')`）
 
 ##### Header
 
 包含在 Header 中的 Token Meta 通常由两部分组成：令牌的类型（即 JWT），以及所使用的签名算法，如 `HMAC SHA256` 或 `RSA`。
+
 ```json
 {
   "alg": "HS256",
   "typ": "JWT"
 }
 ```
+
 ##### Payload
 
 Token 的第二部分是荷载（Payload)，荷载中包含声明（claims)。
@@ -121,7 +127,8 @@ Token 的第二部分是荷载（Payload)，荷载中包含声明（claims)。
 
 声明有三种类型（关于这个类型不必过多关注，对使用没有太大影响，了解即可）：
 
-* 预设（registered）：预设就是提前定义好的声明，JWT 不强制要求添加这些声明，但是建议添加，因为可以提供一组可操作性比较强的有用信息。
+- 预设（registered）：预设就是提前定义好的声明，JWT 不强制要求添加这些声明，但是建议添加，因为可以提供一组可操作性比较强的有用信息。
+
 ```
 # 大家注意这里的声明键名都是三个字母的，因为用于网络通讯， 所以 JWT 要求紧凑
 iss (issuer)
@@ -129,10 +136,12 @@ exp (expiration time)
 sub (subject)
 aud (audience)
 ```
-* 公开（public）：这个就随用户自己随便定义了，当然为了避免命名冲突，一般建议使用[IANA JSON Web Token Registry](https://www.iana.org/assignments/jwt/jwt.xhtml)里面的名字，或者用 URI 做为命名空间, 比如`xxxx.com_username`
-* 以及私有（private）：这个其实主要是用来传输数据用的。
+
+- 公开（public）：这个就随用户自己随便定义了，当然为了避免命名冲突，一般建议使用[IANA JSON Web Token Registry](https://www.iana.org/assignments/jwt/jwt.xhtml)里面的名字，或者用 URI 做为命名空间, 比如`xxxx.com_username`
+- 以及私有（private）：这个其实主要是用来传输数据用的。
 
 一段有效的荷载如下：
+
 ```json
 {
   "sub": "1234567890",
@@ -140,37 +149,34 @@ aud (audience)
   "admin": true
 }
 ```
-***<font color="red">需要大家注意的是：虽然 JWT 可以有效的防止数据被篡改，但是 Token 对于任何人来说其实还是可读的（其实相当于明文传输），所以不要将敏感信息放在 JWT 中</font>***
 
+**_<font color="red">需要大家注意的是：虽然 JWT 可以有效的防止数据被篡改，但是 Token 对于任何人来说其实还是可读的（其实相当于明文传输），所以不要将敏感信息放在 JWT 中</font>_**
 
 ##### Signature
 
 Token 中最后一部分就是签名，签名使得服务端可以对 Token 做有效性校验（是否服务端颁发以及是否有被篡改）。
 
 签名的算法就使用 Token Meta 中声明的算法，假设我们要使用 `HMAC SHA256` 进行签名，那么操作如下：
+
 ```javascript
-HMACSHA256(
-  base64UrlEncode(header) + "." +
-  base64UrlEncode(payload),
-  secret)
+HMACSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload), secret)
 ```
 
 在获取到签名字符串之后，我们将其和之前的两部分放在一起，组成最终的 JWT。
 
 ![encoded-jwt3.png](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-56-08-7eff2d69391c0683d058e0f5dc9049bb-encoded-jwt3-5de3fb.png)
 
-
 ### JWT 请求流程
-![jwt-sequence](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-55-41-6f08165be2cc0e587243f29b5202a0fb-jwt-sequence-8a9509.png)
 
+![jwt-sequence](https://raw.githubusercontent.com/w1zd/image-hosting/main/img/2022/05/10/11-55-41-6f08165be2cc0e587243f29b5202a0fb-jwt-sequence-8a9509.png)
 
 ### JWT 优势
 
 JWT 在现代应用开发中很受欢迎，原因有如下几点：
+
 1. 开销小，占用资源少（因为 JWT 自身携带信息，不需要在服务端进行存储，这样减少存储开支的同时也能省略查库操作提升效率）
 2. 能够很方便的进行跨域使用（比如第三方授权，或者集群中 SSO）
 3. 可以使用 JWT 实现安全的数据传输（这个特性很少用，目前关注点更多的放在令牌的签名校验上）
-
 
 ### 使用 JWT 要注意的问题
 
@@ -205,6 +211,7 @@ JWT 中会存储用户信息，所以处于安全考虑，有效期一般都会�
 5. 身份验证服务器需要公开一个 API，该 API 接受 `refresh_token`并检查其有效性并返回新的 `access_token` 。
 6. 刷新令牌过期后，注销用户不再返回新的 `access_token`。
 
-***注意这里的 `refresh_token` 只是另一个包含更少声明（Claims）的 JWT***
+**_注意这里的 `refresh_token` 只是另一个包含更少声明（Claims）的 JWT_**
 
 未经允许不得转载~ thx！
+
