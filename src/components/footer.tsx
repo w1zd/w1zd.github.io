@@ -17,12 +17,14 @@ const Footer = () => {
   return (
     <footer id="footer" className="footer">
       <div className="copyright">
-        <span>
-          © {author.name}
-        </span>
+        <span>© {author.name}</span>
       </div>
+      <a href="https://xn--sr8hvo.ws/previous">←</a>
+      <a href="https://xn--sr8hvo.ws">🕸💍</a>
+      <a href="https://xn--sr8hvo.ws/next">→</a>
     </footer>
   )
 }
 
 export default Footer
+
