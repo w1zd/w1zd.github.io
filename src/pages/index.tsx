@@ -31,7 +31,7 @@ const BlogIndex = ({data}) => {
           </div>
           <div className="links">
             {Object.keys(social).map(key => (
-              <a className="link-item" title={key} href={social[key]} key={key}>
+              <a className="link-item" title={key} href={social[key]} key={key} rel="me">
                 <i className={`iconfont icon-${key.toLowerCase()}`}></i>
               </a>
             ))}
