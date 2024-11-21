@@ -1,28 +1,14 @@
 import React, { useEffect, useState } from "react"
-import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 import Zoom from "react-medium-image-zoom"
+import Paginator from "../components/paginator"
 
-const loadGallery = async () => {
-  return await fetch("https://a.agg.workers.dev/")
-}
-
-const Moments = ({ data }) => {
-  const [gallery, setGallery] = useState([])
-  useEffect(() => {
-    ;(async () => {
-      try {
-        const res = await loadGallery()
-        setGallery(await res.json())
-      } catch (error) {}
-    })()
-  }, [])
-
+const Moments = ({ pageContext }) => {
   return (
     <Layout title="Moments">
       <div className="container">
         <div className="post-wrap gallery">
-          {gallery.map(v => {
+          {pageContext.items.map(v => {
             return (
               <div className="gallery-item" key={v.sha}>
                 <Zoom
@@ -42,6 +28,7 @@ const Moments = ({ data }) => {
             )
           })}
         </div>
+        <Paginator {...pageContext} url="/moments"></Paginator>
       </div>
     </Layout>
   )

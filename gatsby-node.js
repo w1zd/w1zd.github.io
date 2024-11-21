@@ -1,5 +1,6 @@
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const axios = require(`axios`)
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
@@ -93,6 +94,26 @@ exports.createPages = async ({ graphql, actions }) => {
   //     })
   //   })
   // })
+  //
+  // create moments
+  const { data: moments } = await axios.get("https://a.agg.workers.dev/")
+
+  const momentPerPage = 9
+  const totalPage = Math.ceil(moments.length / postsPerPage)
+  Array.from({ length: totalPage }).forEach((_, i) => {
+    createPage({
+      path: i === 0 ? `/moments` : `/moments/${i + 1}`,
+      component: path.resolve("./src/templates/moments.tsx"),
+      context: {
+        items: moments.slice(i * momentPerPage, (i + 1) * momentPerPage),
+        limit: momentPerPage,
+        skip: i * momentPerPage,
+        numPages: totalPage,
+        currentPage: i + 1,
+        pageCount: totalPage,
+      },
+    })
+  })
 
   // create Tag Page
   const tags = await graphql(`
