@@ -35,9 +35,9 @@ const BlogPostTemplate = ({ data, pageContext, children }) => {
             <div className="post-meta">
               {/* Author: */}
               {/* <a itemProp="author" rel="author" href="/"> */}
-              {data.site.siteMetadata.author.name}
+              {/* {data.site.siteMetadata.author.name} */}
               {/* </a> */}
-              &nbsp; / &nbsp;
+              {/* &nbsp; / &nbsp; */}
               <span className="post-time">
                 {/* Date: */}
                 {/* <a href="#/"> */}
