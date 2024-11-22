@@ -2,7 +2,7 @@ import React from "react"
 import { useLocation } from "@reach/router"
 import { useStaticQuery, graphql } from "gatsby"
 const Footer = () => {
-  const loaction = useLocation()
+  const location = useLocation()
   const data = useStaticQuery(graphql`
     query {
       site {
